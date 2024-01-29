@@ -1,0 +1,76 @@
+body {
+	position: relative;
+    background-color: #070707;
+    color: lightgray;
+    font-family: 'Courier New', Courier, monospace; /* retro cmd prompt look */
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    padding: 20px;
+}
+
+h1 {
+    color: lightgreen;
+    text-shadow: 0 0 10px lightgreen;
+}
+
+a {
+    color: darkgreen;
+    text-decoration: none;
+}
+
+a:hover {
+    color: lightgreen;
+    text-shadow: 0 0 5px lightgreen;
+}
+
+/*                   */
+/* Styles for images */
+.bottom-image {
+    position: absolute;
+    right: 20px; /* Adjust as needed for desktop */
+    top: 200px; /* Adjust as needed for desktop */
+    width: 400px; /* Adjust as needed for desktop */
+    height: auto; /* Keeps the aspect ratio */
+}
+
+/* Media query for mobile phones */
+@media screen and (max-width: 600px) {
+    .bottom-image {
+        right: 5px; /* Adjust for mobile */
+        bottom: 5px; /* Adjust for mobile */
+        width: 50px; /* Adjust for mobile */
+    }
+}
+
+/* Javascript game related CSS */
+#projectile-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* Full height of the viewport */
+    overflow: hidden; /* Hide projectiles that go outside the bounds */
+}
+
+.projectile {
+    position: absolute;
+    bottom: 0;
+    width: 5px; /* Visual size of the projectile */
+    height: 5px; /* Visual size of the projectile */
+    background-color: white;
+    border-radius: 50%;
+    pointer-events: none; /* Disable pointer events on the projectile itself */
+}
+
+.projectile::before {
+    content: '';
+    position: absolute;
+    top: -10px; /* Extend the area above the projectile */
+    left: -10px; /* Extend the area to the left of the projectile */
+    right: -10px; /* Extend the area to the right of the projectile */
+    bottom: -10px; /* Extend the area below the projectile */
+    background: transparent;
+    border-radius: 50%;
+    pointer-events: auto; /* Enable pointer events on the pseudo-element */
+}
