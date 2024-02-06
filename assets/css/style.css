@@ -36,15 +36,6 @@ a:hover {
     height: auto; /* Keeps the aspect ratio */
 }
 
-/* Media query for mobile phones */
-@media screen and (max-width: 600px) {
-    .bottom-image {
-        right: 5px; /* Adjust for mobile */
-        bottom: 5px; /* Adjust for mobile */
-        width: 50px; /* Adjust for mobile */
-    }
-}
-
 /* Javascript game related CSS */
 #projectile-container {
     position: relative;
@@ -74,3 +65,68 @@ a:hover {
     border-radius: 50%;
     pointer-events: auto; /* Enable pointer events on the pseudo-element */
 }
+
+/*----------------*/
+/*-MEDIA QUERIES--*/
+/*----------------*/
+
+/* Smartphones, iPhone, portrait 480x320 phones */
+@media (min-width:320px) {
+    /* Adjust styles for small smartphones */
+    .bottom-image {
+        width: 100px; /* Adjust for smaller screens */
+        right: 10px;
+        top: 100px;
+    }
+}
+
+/* Portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide */
+@media (min-width:481px) {
+    /* Adjust styles for larger smartphones and small tablets */
+    .bottom-image {
+        width: 150px; /* Adjust for medium screens */
+        right: 15px;
+        top: 150px;
+    }
+}
+
+/* Portrait tablets, portrait iPad, landscape e-readers, landscape phones */
+@media (min-width:641px) {
+    /* Adjust styles for large smartphones and portrait tablets */
+    .bottom-image {
+        width: 200px; /* Adjust for large screens */
+        right: 20px;
+        top: 200px;
+    }
+}
+
+/* Tablet, landscape iPad, lo-res laptops and desktops */
+@media (min-width:961px) {
+    /* Adjust styles for tablets and small laptops */
+    .bottom-image {
+        width: 250px; /* Adjust for extra large screens */
+        right: 25px;
+        top: 250px;
+    }
+}
+
+/* Big landscape tablets, laptops, and desktops */
+@media (min-width:1025px) {
+    /* Adjust styles for large tablets and laptops */
+    .bottom-image {
+        width: 300px; /* Adjust for bigger screens */
+        right: 30px;
+        top: 300px;
+    }
+}
+
+/* Hi-res laptops and desktops */
+@media (min-width:1281px) {
+    /* Adjust styles for high resolution laptops and desktops */
+    .bottom-image {
+        width: 350px; /* Adjust for hi-res screens */
+        right: 35px;
+        top: 350px;
+    }
+}
+
