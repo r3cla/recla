@@ -5,10 +5,14 @@ body {
     font-family: 'Courier New', Courier, monospace; /* retro cmd prompt look */
     margin: 0;
     padding: 0;
+    max-height: 100vh; /* Limit the height to the viewport height */
+    overflow: hidden; /* Hide overflow content */
 }
 
 .container {
     padding: 20px;
+    max-height: 100%; /* Limit the height to the parent's height */
+    overflow: auto; /* Add scroll for overflow content */
 }
 
 h1 {
