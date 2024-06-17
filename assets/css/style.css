@@ -1,76 +1,107 @@
 body {
-	position: relative;
-    background-color: #070707;
-    color: lightgray;
-    font-family: 'Courier New', Courier, monospace; /* retro cmd prompt look */
-    margin: 0;
+    background-color: #171810;
+    color: #00FF00;
+    font-family: Consolas, monospace;
+    margin-top: 0;
     padding: 0;
 }
 
 .container {
-    padding: 20px;
+    text-align: center;
 }
 
-h1 {
-    color: lightgreen;
-    text-shadow: 0 0 10px lightgreen;
+.logo {
+    margin-bottom: 0;
 }
 
-a {
-    color: darkgreen;
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 75px;
+    display: inline-block;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #00FF00;
     text-decoration: none;
+    font-size: 1.2em;
 }
 
-a:hover {
-    color: lightgreen;
-    text-shadow: 0 0 5px lightgreen;
+nav ul li a:hover {
+    color: #00FF33;
+    text-shadow: 0 0 5px #00FF33;
 }
 
-/*                   */
-/* Styles for images */
-.bottom-image {
-    position: absolute;
-    right: 20px; /* Adjust as needed for desktop */
-    top: 200px; /* Adjust as needed for desktop */
-    width: 400px; /* Adjust as needed for desktop */
-    height: auto; /* Keeps the aspect ratio */
+section {
+    padding: 50px 0;
 }
 
-/* Media query for mobile phones */
-@media screen and (max-width: 600px) {
-    .bottom-image {
-        right: 5px; /* Adjust for mobile */
-        bottom: 5px; /* Adjust for mobile */
-        width: 50px; /* Adjust for mobile */
-    }
-}
-
-/* Javascript game related CSS */
-#projectile-container {
-    position: relative;
+#contact-form {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
     width: 100%;
-    height: 100vh; /* Full height of the viewport */
-    overflow: hidden; /* Hide projectiles that go outside the bounds */
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
-.projectile {
-    position: absolute;
-    bottom: 0;
-    width: 5px; /* Visual size of the projectile */
-    height: 5px; /* Visual size of the projectile */
-    background-color: white;
-    border-radius: 50%;
-    pointer-events: none; /* Disable pointer events on the projectile itself */
+.modal-content {
+    background-color: #333;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    color: #00FF00;
+    font-family: Consolas, monospace;
 }
 
-.projectile::before {
-    content: '';
-    position: absolute;
-    top: -10px; /* Extend the area above the projectile */
-    left: -10px; /* Extend the area to the left of the projectile */
-    right: -10px; /* Extend the area to the right of the projectile */
-    bottom: -10px; /* Extend the area below the projectile */
-    background: transparent;
-    border-radius: 50%;
-    pointer-events: auto; /* Enable pointer events on the pseudo-element */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #00FF33;
+    text-shadow: 0 0 5px #00FF33;
+    cursor: pointer;
+}
+
+form label {
+    display: block;
+    margin: 15px 0 5px;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+form button {
+    background-color: #00FF00;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #00FF33;
+    text-shadow: 0 0 5px #00FF33;
 }
