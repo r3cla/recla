@@ -4,8 +4,6 @@ body {
     font-family: Consolas, monospace;
     margin-top: 0;
     padding: 0;
-    max-height: 100vh; /* Limit the height to the viewport height */
-    overflow: hidden; /* Hide overflow content */
 }
 
 .container {
