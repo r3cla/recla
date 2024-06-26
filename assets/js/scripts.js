@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (i < text.length) {
             element.innerHTML += text.charAt(i);
             i++;
-            setTimeout(() => typeWriter(element, text, i), 20);
+            setTimeout(() => typeWriter(element, text, i), 10);
         } else {
             element.classList.add('cursor');
         }
@@ -105,20 +105,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Typewriter effect for lists
     function typeWriterList(element, items, i = 0, j = 0) {
         if (i < items.length) {
+            let currentLi;
             if (j === 0) {
-                const li = document.createElement('li');
-                element.appendChild(li);
+                currentLi = document.createElement('li');
+                element.appendChild(currentLi);
+            } else {
+                currentLi = element.children[i];
             }
             const currentItem = items[i];
-            const currentLi = element.children[i];
             if (j < currentItem.length) {
                 currentLi.innerHTML += currentItem.charAt(j);
                 j++;
-                setTimeout(() => typeWriterList(element, items, i, j), 20);
+                setTimeout(() => typeWriterList(element, items, i, j), 10);
             } else {
                 i++;
-                j = 0;
-                setTimeout(() => typeWriterList(element, items, i, j), 100);
+                setTimeout(() => typeWriterList(element, items, i, 0), 20);
             }
         } else {
             element.classList.add('cursor');
