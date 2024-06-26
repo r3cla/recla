@@ -85,9 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
         skills: ["HTML/CSS", "JavaScript", "Python", "SQL", "Java", "Git"],
         projects: ["lennoxlawncare.co.nz", "e-commerce-platform.zip", "social-media-dashboard.tar.gz", "crypto-tracker.exe"],
         links: [
-            '<a href="https://www.facebook.com/yourprofile" target="_blank">Facebook</a>',
-            '<a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a>',
-            '<a href="https://github.com/yourprofile" target="_blank">GitHub</a>'
+            '<a href="https://www.facebook.com/yourprofile">Facebook</a>',
+            '<a href="https://www.linkedin.com/in/yourprofile">LinkedIn</a>',
+            '<a href="https://github.com/yourprofile">GitHub</a>'
         ]
     };
 
