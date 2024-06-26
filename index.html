@@ -3,52 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logie Tech Services</title>
+    <title>Logie Tech Services - Hacker Portfolio</title>
     <link rel="stylesheet" href="assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <img src="assets/images/logo.webp" alt="Logie Web Services Logo" class="logo">
-            <nav>
-                <ul>
-                    <li><a href="#about">[about]</a></li>
-                    <li><a href="#skills">[skills]</a></li>
-                    <li><a href="#projects">[projects]</a></li>
-                    <li><a href="#" id="contact-link">[contact]</a></li>
-                </ul>
-            </nav>
-        </header>
-        <section id="about">
-            <h2>About</h2>
-            <p>Placeholder text for the About section.</p>
+<div class="background-container"></div>
+<canvas id="backgroundCanvas"></canvas>
+<div class="container">
+    <header>
+        <pre class="ascii-art">
+ _     ___   ____ ___ _____
+| |   / _ \ / ___|_ _| ____|
+| |  | | | | |  _ | ||  _|
+| |__| |_| | |_| || || |___
+|_____\___/ \____|___|_____|
+        </pre>
+        <nav>
+            <ul>
+                <li><a href="#" id="contact-link">> contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="about" class="collapsible">
+            <h2>> About</h2>
+            <div class="content">
+                <div class="terminal">
+                    <p class="command">$ cat about.txt</p>
+                    <p class="output"></p>
+                </div>
+            </div>
         </section>
-        <section id="skills">
-            <h2>Skills</h2>
-            <p>Placeholder text for the Skills section.</p>
+        <section id="skills" class="collapsible">
+            <h2>> Skills</h2>
+            <div class="content">
+                <div class="terminal">
+                    <p class="command">$ ls skills/</p>
+                    <ul class="output"></ul>
+                </div>
+            </div>
         </section>
-        <section id="projects">
-            <h2>Projects</h2>
-            <p>Placeholder text for the Projects section.</p>
+        <section id="projects" class="collapsible">
+            <h2>> Projects</h2>
+            <div class="content">
+                <div class="terminal">
+                    <p class="command">$ ls projects/</p>
+                    <ul class="output"></ul>
+                </div>
+            </div>
         </section>
+        <section id="links" class="collapsible">
+            <h2>> Links</h2>
+            <div class="content">
+                <div class="terminal">
+                    <p class="command">$ ls links/</p>
+                    <ul class="output">
+                        <li><a href="https://www.facebook.com/yourprofile" target="_blank">Facebook</a></li>
+                        <li><a href="https://www.linkedin.com/in/yourprofile" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://github.com/yourprofile" target="_blank">GitHub</a></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+</div>
+<div id="contact-form" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>> Contact Me</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+            <label for="email">E-Mail:</label>
+            <input type="email" id="email" name="email">
+            <label for="message">Message:</label>
+            <textarea id="message" name="message"></textarea>
+            <button type="submit">Send</button>
+        </form>
     </div>
-    <div id="contact-form" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Contact Me</h2>
-            <form>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name">
-                <label for="email">E-Mail:</label>
-                <input type="email" id="email" name="email">
-                <label for="phone">Phone:</label>
-                <input type="tel" id="phone" name="phone">
-                <label for="message">Message:</label>
-                <textarea id="message" name="message"></textarea>
-                <button type="submit">Send</button>
-            </form>
-        </div>
-    </div>
-    <script src="assets/js/scripts.js"></script>
+</div>
+<script src="assets/js/scripts.js"></script>
 </body>
 </html>
