@@ -21,7 +21,7 @@
         </pre>
         <nav>
             <ul>
-                <li><a href="#" id="contact-link">> contact</a></li>
+                <li><a href="#" id="contact-link">[contact]</a></li>
             </ul>
         </nav>
     </header>
@@ -72,17 +72,20 @@
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2>> Contact Me</h2>
-        <form>
+        <form name="contact" netlify>
             <label for="name">Name:</label>
             <input type="text" id="name" name="name">
             <label for="email">E-Mail:</label>
             <input type="email" id="email" name="email">
             <label for="message">Message:</label>
             <textarea id="message" name="message"></textarea>
+            <div class="cf-turnstile" data-sitekey="your-site-key"></div>
+            <input type="hidden" name="cf-turnstile-response" id="cf-turnstile-response">
             <button type="submit">Send</button>
         </form>
     </div>
 </div>
+
 <script src="assets/js/scripts.js"></script>
 </body>
 </html>
