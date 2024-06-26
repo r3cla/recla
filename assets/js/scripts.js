@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Add canvas element for background effect
+    // Canvas element for background effect
     const canvas = document.createElement('canvas');
     canvas.id = 'backgroundCanvas';
     document.body.appendChild(canvas);
