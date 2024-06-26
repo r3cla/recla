@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Typewriter effect for lists
+// Typewriter effect for lists
     function typeWriterList(element, items, i = 0, j = 0) {
         if (i < items.length) {
             let currentLi;
@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentLi = document.createElement('li');
                 element.appendChild(currentLi);
             } else {
-                currentLi = element.children[i];
+                currentLi = element.lastElementChild;
             }
             const currentItem = items[i];
             if (j < currentItem.length) {
@@ -125,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
             element.classList.add('cursor');
         }
     }
+
 
     // Collapsible sections
     const collapsibles = document.querySelectorAll('.collapsible');
