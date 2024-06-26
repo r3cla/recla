@@ -1,16 +1,4 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    // Add Turnstile script dynamically
-    const script = document.createElement('script');
-    script.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js';
-    script.async = true;
-    script.defer = true;
-    document.head.appendChild(script);
-
-    // Add event listener for form submission to include Turnstile token
-    document.querySelector('form[name="contact"]').addEventListener('submit', function (event) {
-        const turnstileResponse = document.querySelector('.cf-turnstile').dataset.token;
-        document.getElementById('cf-turnstile-response').value = turnstileResponse;
-    });
+document.addEventListener('DOMContentLoaded', () => {
 
     // Add canvas element for background effect
     const canvas = document.createElement('canvas');
@@ -193,7 +181,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     window.onclick = function(event) {
-        if (event.target == contactForm) {
+        if (event.target === contactForm) {
             contactForm.style.display = 'none';
         }
     }
