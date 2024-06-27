@@ -3,7 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logie Tech Services - Hacker Portfolio</title>
+    <title>Logie Web Services NZ</title>
+    <!-- OG Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://logie.nz/">
+    <meta property="og:title" content="Logie Web Services NZ">
+    <meta property="og:description" content="Affordable web development focusing on locally owned small Kiwi business.">
+    <meta property="og:image" content="https://logie.nz/assets/images/card-image.png">
+    <!-- OG Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://logie.nz/">
+    <meta property="twitter:title" content="Logie Web Services NZ">
+    <meta property="twitter:description" content="Affordable web development focusing on locally owned small Kiwi business.">
+    <meta property="twitter:image" content="https://logie.nz/assets/images/card-image.png">
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/android-chrome-512x512.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <meta name="theme-color" content="#ffffff">
+    <!-- Styles -->
     <link rel="stylesheet" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
@@ -13,11 +35,11 @@
 <div class="container">
     <header>
         <pre class="ascii-art">
- _     ___   ____ ___ _____
-| |   / _ \ / ___|_ _| ____|
-| |  | | | | |  _ | ||  _|
-| |__| |_| | |_| || || |___
-|_____\___/ \____|___|_____|
+  _     ___   ____ ___ _____   _   _ _____
+ | |   / _ \ / ___|_ _| ____| | \ | |__  /
+ | |  | | | | |  _ | ||  _|   |  \| | / /
+ | |__| |_| | |_| || || |___ _| |\  |/ /_
+ |_____\___/ \____|___|_____(_)_| \_/____|
         </pre>
         <nav>
             <ul>
@@ -59,9 +81,7 @@
                 <div class="terminal">
                     <p class="command">$ ls links/</p>
                     <ul class="output">
-                        <li><a href="https://www.facebook.com/profile.php?id=61561257893956">Facebook</a></li>
-                        <li><a href="https://www.linkedin.com/in/nathan-addison/">LinkedIn</a></li>
-                        <li><a href="https://github.com/r3cla">GitHub</a></li>
+                        <div id="linkContainer"></div>
                     </ul>
                 </div>
             </div>
@@ -79,7 +99,6 @@
             <input type="email" id="email" name="email">
             <label for="message">Message:</label>
             <textarea id="message" name="message"></textarea>
-            <div class="cf-turnstile" data-sitekey="your-site-key"></div>
             <button type="submit">Send</button>
         </form>
     </div>

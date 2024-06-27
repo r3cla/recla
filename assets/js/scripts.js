@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
     draw();
 
     const content = {
-        about: "Greetings, I'm a web developer with a passion for creating elegant and efficient digital solutions. My approach combines cutting-edge technology with a nostalgic appreciation for the early days of computing. I have a particular interest in providing affordable web solutions to startups, small businesses, non-profits and charities.",
+        about: "I'm a web developer focused on building effective digital solutions. My work blends modern technologies with an appreciation for computing fundamentals. I specialize in creating cost-effective websites for startups, small businesses, and non-profit organizations.",
         skills: ["HTML/CSS", "JavaScript", "Python", "SQL", "Java", "Git"],
         projects: ["lennoxlawncare.co.nz", "e-commerce-platform.zip", "social-media-dashboard.tar.gz", "crypto-tracker.exe"],
         links: [
@@ -114,18 +114,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             const currentItem = items[i];
             if (j < currentItem.length) {
-                currentLi.innerHTML += currentItem.charAt(j);
-                j++;
-                setTimeout(() => typeWriterList(element, items, i, j), 10);
+                if (currentItem.startsWith('<a') && j === 0) {
+                    // If it's a link, add the whole element at once
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = currentItem;
+                    currentLi.appendChild(tempDiv.firstChild);
+                    i++;
+                    setTimeout(() => typeWriterList(element, items, i, 0), 40);
+                } else {
+                    currentLi.innerHTML += currentItem.charAt(j);
+                    j++;
+                    setTimeout(() => typeWriterList(element, items, i, j), 30);
+                }
             } else {
                 i++;
-                setTimeout(() => typeWriterList(element, items, i, 0), 20);
+                setTimeout(() => typeWriterList(element, items, i, 0), 40);
             }
         } else {
             element.classList.add('cursor');
         }
     }
-
 
     // Collapsible sections
     const collapsibles = document.querySelectorAll('.collapsible');
