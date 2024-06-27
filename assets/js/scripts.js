@@ -81,13 +81,13 @@ document.addEventListener('DOMContentLoaded', () => {
     draw();
 
     const content = {
-        about: "I'm a web developer focused on building effective digital solutions. My work blends modern technologies with an appreciation for computing fundamentals. I specialize in creating cost-effective websites for startups, small businesses, and non-profit organizations.",
-        skills: ["HTML/CSS", "JavaScript", "Python", "SQL", "Java", "Git"],
-        projects: ["lennoxlawncare.co.nz", "e-commerce-platform.zip", "social-media-dashboard.tar.gz", "crypto-tracker.exe"],
+        about: "As a passionate web developer based in New Zealand, I'm on a mission to empower local startups, small businesses, non-profits, and charities. My goal is to help these organizations overcome technological barriers, enabling them to thrive in the digital landscape.",
+        skills: ["HTML/CSS", "JavaScript", "Python", "SQL", "Git"],
+        projects: ["lennoxlawncare.co.nz", "Bees Auto Detailing (in progress..)"],
         links: [
-            '<a href="https://www.facebook.com/yourprofile">Facebook</a>',
-            '<a href="https://www.linkedin.com/in/yourprofile">LinkedIn</a>',
-            '<a href="https://github.com/yourprofile">GitHub</a>'
+            '<a href="https://www.facebook.com/profile.php?id=61561257893956">Facebook</a>',
+            '<a href="https://www.linkedin.com/in/nathan-addison">LinkedIn</a>',
+            '<a href="https://github.com/r3cla">GitHub</a>'
         ]
     };
 
