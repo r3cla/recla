@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
     };
 
-    // Typewriter effect for text
+    // Typewriter effect
     function typeWriter(element, text, i = 0) {
         if (i < text.length) {
             element.innerHTML += text.charAt(i);
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-// Typewriter effect for lists
+// Typewriter effect lists
     function typeWriterList(element, items, i = 0, j = 0) {
         if (i < items.length) {
             let currentLi;
