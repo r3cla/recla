@@ -22,27 +22,26 @@
         <label for="printTag">Print Tag:</label>
         <input type="text" id="printTag" name="printTag" placeholder="Enter print tag (e.g., LOB-EN001)" required>
         <button type="submit">Search</button>
+        <button type="button" id="refreshSearch">Refresh</button>
     </form>
     <div id="results"></div>
+
     <div class="api-access">API access courtesy of <a href="https://yugiohprices.docs.apiary.io" target="_blank">yugiohprices.docs.apiary.io</a></div>
 </div>
 
 <script>
     const printTagInput = document.getElementById('printTag');
+    const resultsDiv = document.getElementById('results');
 
-    // Convert input to uppercase as user types
     printTagInput.addEventListener('input', function() {
         this.value = this.value.toUpperCase();
     });
 
-    document.getElementById('searchForm').addEventListener('submit', async function(e) {
-        e.preventDefault();
-        const printTag = printTagInput.value.toUpperCase(); // Ensure uppercase when submitting
-        const resultsDiv = document.getElementById('results');
+    async function fetchCardData(printTag, forceRefresh = false) {
         resultsDiv.innerHTML = 'Loading...';
-
         try {
-            const response = await fetch(`/.netlify/functions/yugioh-price?printTag=${encodeURIComponent(printTag)}`);
+            const url = `/.netlify/functions/yugioh-price?printTag=${encodeURIComponent(printTag)}${forceRefresh ? '&refresh=1' : ''}`;
+            const response = await fetch(url);
             const data = await response.json();
 
             if (data.error) {
@@ -77,6 +76,19 @@
         } catch (error) {
             resultsDiv.innerHTML = 'An error occurred while fetching the data';
             console.error('Error:', error);
+        }
+    }
+
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const printTag = printTagInput.value.toUpperCase();
+        fetchCardData(printTag);
+    });
+
+    document.getElementById('refreshSearch').addEventListener('click', function() {
+        const printTag = printTagInput.value.toUpperCase();
+        if (printTag) {
+            fetchCardData(printTag, true);
         }
     });
 </script>

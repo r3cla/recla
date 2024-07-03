@@ -1,26 +1,12 @@
 export const handler = async (event) => {
-    console.log('Function invoked with event:', JSON.stringify(event));
-
-    const printTag = event.queryStringParameters?.printTag;
-    const refresh = event.queryStringParameters?.refresh === '1';
-
-    if (!printTag) {
-        console.log('Error: Print tag is required');
-        return {
-            statusCode: 400,
-            body: JSON.stringify({ error: "Print tag is required" })
-        };
-    }
-
-    console.log(`Fetching data for print tag: ${printTag}, Refresh: ${refresh}`);
+    console.log('Top 100 Cards function invoked');
 
     try {
         const fetch = (await import('node-fetch')).default;
-        const apiUrl = `https://yugiohprices.com/api/price_for_print_tag/${printTag}`;
-        const headers = refresh ? { 'Cache-Control': 'no-cache' } : {};
-
+        const apiUrl = 'http://yugiohprices.com/api/top_100_cards';
         console.log(`Calling API: ${apiUrl}`);
-        const response = await fetch(apiUrl, { headers });
+
+        const response = await fetch(apiUrl);
         console.log(`API response status: ${response.status}`);
 
         if (!response.ok) {
@@ -33,7 +19,7 @@ export const handler = async (event) => {
         }
 
         const data = await response.json();
-        console.log('API response data:', JSON.stringify(data));
+        console.log('API response data received');
 
         return {
             statusCode: 200,
