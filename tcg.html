@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yu-Gi-Oh Card Price Search</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="index.html" id="index-link">[home]</a></li>
+        </ul>
+    </nav>
+</header>
+
+<body>
+<div class="container">
+    <h1>Yugioh Card Price Search</h1>
+    <form id="searchForm">
+        <input type="text" id="printTag" placeholder="Enter print tag (e.g., LOB-EN001)" required>
+        <button type="submit">Search</button>
+    </form>
+    <div id="results"></div>
+    <div class="api-access">API access courtesy of <a href="https://yugiohprices.docs.apiary.io" target="_blank">yugiohprices.docs.apiary.io</a></div>
+</div>
+
+
+<script>
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const printTag = document.getElementById('printTag').value;
+        searchCard(printTag);
+    });
+
+    async function searchCard(printTag) {
+        const resultsDiv = document.getElementById('results');
+        resultsDiv.innerHTML = '<p>Searching...</p>';
+
+        try {
+            const response = await fetch(`https://yugiohprices.com/api/price_for_print_tag/${printTag}`);
+            const data = await response.json();
+
+            if (data.status === 'success') {
+                displayResults(data.data);
+            } else {
+                resultsDiv.innerHTML = `<p>Error: ${data.message || 'Unable to fetch price data'}</p>`;
+            }
+        } catch (error) {
+            resultsDiv.innerHTML = `<p>Error: ${error.message}</p>`;
+        }
+    }
+
+    function displayResults(data) {
+        const resultsDiv = document.getElementById('results');
+        let html = '<h2>Price Information</h2>';
+
+        if (data.price_data.status === 'success') {
+            const priceData = data.price_data.data;
+            html += `
+                    <p><strong>Card Name:</strong> ${data.name}</p>
+                    <p><strong>Print Tag:</strong> ${data.print_tag}</p>
+                    <h3>Prices:</h3>
+                    <ul>
+                        <li>Low: $${priceData.price_data.low}</li>
+                        <li>Average: $${priceData.price_data.average}</li>
+                        <li>High: $${priceData.price_data.high}</li>
+                    </ul>
+                    <p><strong>Shift (last 7 days):</strong> ${priceData.price_data.shift}%</p>
+                    <p><strong>Last Updated:</strong> ${new Date(priceData.price_data.updated_at).toLocaleString()}</p>
+                `;
+        } else {
+            html += '<p>No price data available for this print tag.</p>';
+        }
+
+        resultsDiv.innerHTML = html;
+    }
+</script>
+</body>
+</html>
