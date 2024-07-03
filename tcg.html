@@ -27,54 +27,35 @@
 </div>
 
 <script>
-    document.getElementById('searchForm').addEventListener('submit', function(e) {
+    document.getElementById('searchForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         const printTag = document.getElementById('printTag').value;
-        searchCard(printTag);
-    });
-
-    async function searchCard(printTag) {
         const resultsDiv = document.getElementById('results');
-        resultsDiv.innerHTML = '<p>Searching...</p>';
+        resultsDiv.innerHTML = 'Loading...';
 
         try {
-            const response = await fetch(`/api/proxy?printTag=${printTag}`);
+            const response = await fetch(`/.netlify/functions/yugioh-price?printTag=${encodeURIComponent(printTag)}`);
             const data = await response.json();
 
-            if (data.status === 'success') {
-                displayResults(data.data);
+            if (data.error) {
+                resultsDiv.innerHTML = `Error: ${data.error}`;
+            } else if (data.status === 'success') {
+                const price = data.data.price_data.status === 'success'
+                    ? `$${data.data.price_data.data.prices.average}`
+                    : 'Price not available';
+
+                resultsDiv.innerHTML = `
+                <h2>${data.data.name}</h2>
+                <p>Average Price: ${price}</p>
+            `;
             } else {
-                resultsDiv.innerHTML = `<p>Error: ${data.message || 'Unable to fetch price data'}</p>`;
+                resultsDiv.innerHTML = 'Unable to fetch price data';
             }
         } catch (error) {
-            resultsDiv.innerHTML = `<p>Error: ${error.message}</p>`;
+            resultsDiv.innerHTML = 'An error occurred while fetching the data';
         }
-    }
-
-    function displayResults(data) {
-        const resultsDiv = document.getElementById('results');
-        let html = '<h2>Price Information</h2>';
-
-        if (data.price_data.status === 'success') {
-            const priceData = data.price_data.data;
-            html += `
-                <p><strong>Card Name:</strong> ${data.name}</p>
-                <p><strong>Print Tag:</strong> ${data.print_tag}</p>
-                <h3>Prices:</h3>
-                <ul>
-                    <li>Low: $${priceData.price_data.low}</li>
-                    <li>Average: $${priceData.price_data.average}</li>
-                    <li>High: $${priceData.price_data.high}</li>
-                </ul>
-                <p><strong>Shift (last 7 days):</strong> ${priceData.price_data.shift}%</p>
-                <p><strong>Last Updated:</strong> ${new Date(priceData.price_data.updated_at).toLocaleString()}</p>
-            `;
-        } else {
-            html += '<p>No price data available for this print tag.</p>';
-        }
-
-        resultsDiv.innerHTML = html;
-    }
+    });
 </script>
+
 </body>
 </html>
