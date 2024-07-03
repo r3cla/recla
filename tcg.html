@@ -19,7 +19,8 @@
 <div class="container">
     <h1>Yugioh Card Price Search</h1>
     <form id="searchForm">
-        <input type="text" id="printTag" placeholder="Enter print tag (e.g., LOB-EN001)" required>
+        <label for="printTag">Print Tag:</label>
+        <input type="text" id="printTag" name="printTag" placeholder="Enter print tag (e.g., LOB-EN001)" required>
         <button type="submit">Search</button>
     </form>
     <div id="results"></div>
@@ -40,19 +41,35 @@
             if (data.error) {
                 resultsDiv.innerHTML = `Error: ${data.error}`;
             } else if (data.status === 'success') {
-                const price = data.data.price_data.status === 'success'
-                    ? `$${data.data.price_data.data.prices.average}`
-                    : 'Price not available';
+                const cardData = data.data;
+                const priceData = cardData.price_data.price_data;
+
+                let priceInfo = 'Price not available';
+                if (priceData.status === 'success' && priceData.data.prices) {
+                    priceInfo = `$${priceData.data.prices.average.toFixed(2)}`;
+                }
 
                 resultsDiv.innerHTML = `
-                <h2>${data.data.name}</h2>
-                <p>Average Price: ${price}</p>
-            `;
+                    <h2>${cardData.name}</h2>
+                    <p>Card Type: ${cardData.card_type}</p>
+                    <p>Set: ${cardData.price_data.name}</p>
+                    <p>Rarity: ${cardData.price_data.rarity}</p>
+                    <p>Average Price: ${priceInfo}</p>
+                `;
+
+                if (priceData.status === 'success' && priceData.data.prices) {
+                    resultsDiv.innerHTML += `
+                        <p>Highest Price: $${priceData.data.prices.high.toFixed(2)}</p>
+                        <p>Lowest Price: $${priceData.data.prices.low.toFixed(2)}</p>
+                        <p>Last Updated: ${new Date(priceData.data.prices.updated_at).toLocaleString()}</p>
+                    `;
+                }
             } else {
                 resultsDiv.innerHTML = 'Unable to fetch price data';
             }
         } catch (error) {
             resultsDiv.innerHTML = 'An error occurred while fetching the data';
+            console.error('Error:', error);
         }
     });
 </script>
