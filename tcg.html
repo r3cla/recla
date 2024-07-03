@@ -28,9 +28,16 @@
 </div>
 
 <script>
+    const printTagInput = document.getElementById('printTag');
+
+    // Convert input to uppercase as user types
+    printTagInput.addEventListener('input', function() {
+        this.value = this.value.toUpperCase();
+    });
+
     document.getElementById('searchForm').addEventListener('submit', async function(e) {
         e.preventDefault();
-        const printTag = document.getElementById('printTag').value;
+        const printTag = printTagInput.value.toUpperCase(); // Ensure uppercase when submitting
         const resultsDiv = document.getElementById('results');
         resultsDiv.innerHTML = 'Loading...';
 
