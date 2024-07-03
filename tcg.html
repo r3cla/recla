@@ -19,7 +19,7 @@
 <div class="container">
     <h1>Yugioh Card Price Search</h1>
     <form id="searchForm">
-        <label for="printTag"></label><input type="text" id="printTag" placeholder="Enter print tag (e.g., LOB-EN001)" required>
+        <input type="text" id="printTag" placeholder="Enter print tag (e.g., LOB-EN001)" required>
         <button type="submit">Search</button>
     </form>
     <div id="results"></div>
@@ -33,22 +33,30 @@
         searchCard(printTag);
     });
 
-    function searchCard(printTag) {
+    async function searchCard(printTag) {
         const resultsDiv = document.getElementById('results');
         resultsDiv.innerHTML = '<p>Searching...</p>';
 
-        // Create a JSONP request
-        const script = document.createElement('script');
-        script.src = `https://yugiohprices.com/api/price_for_print_tag/${printTag}?callback=handleResponse`;
-        document.body.appendChild(script);
+        try {
+            const response = await fetch(`/api/proxy?printTag=${printTag}`);
+            const data = await response.json();
+
+            if (data.status === 'success') {
+                displayResults(data.data);
+            } else {
+                resultsDiv.innerHTML = `<p>Error: ${data.message || 'Unable to fetch price data'}</p>`;
+            }
+        } catch (error) {
+            resultsDiv.innerHTML = `<p>Error: ${error.message}</p>`;
+        }
     }
 
-    function handleResponse(data) {
+    function displayResults(data) {
         const resultsDiv = document.getElementById('results');
         let html = '<h2>Price Information</h2>';
 
-        if (data.status === 'success') {
-            const priceData = data.price_data;
+        if (data.price_data.status === 'success') {
+            const priceData = data.price_data.data;
             html += `
                 <p><strong>Card Name:</strong> ${data.name}</p>
                 <p><strong>Print Tag:</strong> ${data.print_tag}</p>
