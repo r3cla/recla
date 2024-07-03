@@ -26,6 +26,12 @@
     </form>
     <div id="results"></div>
 
+    <h2>Top 100 Cards</h2>
+    <button id="fetchTop100">Fetch Top 100 Cards</button>
+    <div id="top100Container">
+        <ul id="top100List"></ul>
+    </div>
+
     <div class="api-access">API access courtesy of <a href="https://yugiohprices.docs.apiary.io" target="_blank">yugiohprices.docs.apiary.io</a></div>
 </div>
 
@@ -89,6 +95,31 @@
         const printTag = printTagInput.value.toUpperCase();
         if (printTag) {
             fetchCardData(printTag, true);
+        }
+    });
+
+    document.getElementById('fetchTop100').addEventListener('click', async function() {
+        const top100List = document.getElementById('top100List');
+        top100List.innerHTML = 'Loading...';
+
+        try {
+            const response = await fetch('/.netlify/functions/top-100-cards');
+            const data = await response.json();
+
+            if (data.error) {
+                top100List.innerHTML = `Error: ${data.error}`;
+            } else {
+                top100List.innerHTML = data.map(card => `
+                    <li>
+                        <strong>${card.name}</strong><br>
+                        Price: $${card.price_data.data.prices.average.toFixed(2)}<br>
+                        Last Updated: ${new Date(card.price_data.data.prices.updated_at).toLocaleString()}
+                    </li>
+                `).join('');
+            }
+        } catch (error) {
+            top100List.innerHTML = 'An error occurred while fetching the top 100 cards';
+            console.error('Error:', error);
         }
     });
 </script>
