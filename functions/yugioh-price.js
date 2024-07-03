@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-exports.handler = async function(event, context) {
+exports.handler = async function(event) {
     // Get the print tag from the query string
     const printTag = event.queryStringParameters.printTag;
 
@@ -12,7 +12,10 @@ exports.handler = async function(event, context) {
     }
 
     try {
-        const response = await fetch(`http://yugiohprices.com/api/price_for_print_tag/${printTag}`);
+        const response = await fetch(`https://yugiohprices.com/api/price_for_print_tag/${printTag}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
 
         return {
@@ -20,9 +23,10 @@ exports.handler = async function(event, context) {
             body: JSON.stringify(data)
         };
     } catch (error) {
+        console.error('Error:', error);
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: "Failed to fetch data" })
+            body: JSON.stringify({ error: "Failed to fetch data", details: error.message })
         };
     }
 };
