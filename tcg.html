@@ -106,21 +106,42 @@
             const response = await fetch('/.netlify/functions/top-100-cards');
             const result = await response.json();
 
+            console.log('API Response:', result); // Log the entire response
+
+            let cardData;
             if (result.status === 'success' && Array.isArray(result.data)) {
-                top100List.innerHTML = result.data.map((card, index) => `
-                    <li>
-                        <div class="card-name">#${index + 1}: ${card.name}</div>
-                        <div class="card-info">
-                            Price: $${card.price.toFixed(2)}<br>
-                            Set: ${card.card_set}<br>
-                            Number: ${card.card_number}<br>
-                            Rarity: ${card.rarity}<br>
-                            Price Shift: ${(card.price_shift * 100).toFixed(2)}%
-                        </div>
-                    </li>
-                `).join('');
+                cardData = result.data;
+            } else if (Array.isArray(result)) {
+                cardData = result;
+            } else if (typeof result === 'object' && result !== null) {
+                cardData = Object.values(result)[0];
+                if (!Array.isArray(cardData)) {
+                    throw new Error('Unexpected data structure');
+                }
             } else {
                 throw new Error('Unexpected data structure');
+            }
+
+            if (Array.isArray(cardData) && cardData.length > 0) {
+                top100List.innerHTML = cardData.map((card, index) => {
+                    // Log the structure of each card
+                    console.log(`Card ${index + 1} structure:`, card);
+
+                    return `
+                        <li>
+                            <div class="card-name">#${index + 1}: ${card.name || 'N/A'}</div>
+                            <div class="card-info">
+                                Price: $${(card.price || 0).toFixed(2)}<br>
+                                Set: ${card.card_set || 'N/A'}<br>
+                                Number: ${card.card_number || 'N/A'}<br>
+                                Rarity: ${card.rarity || 'N/A'}<br>
+                                Price Shift: ${((card.price_shift || 0) * 100).toFixed(2)}%
+                            </div>
+                        </li>
+                    `;
+                }).join('');
+            } else {
+                throw new Error('No card data found');
             }
         } catch (error) {
             console.error('Error fetching top 100 cards:', error);

@@ -14,7 +14,8 @@ export const handler = async (event) => {
         }
 
         const data = await response.json();
-        console.log('API response received successfully');
+        console.log('API response data structure:', JSON.stringify(Object.keys(data)));
+        console.log('First item in data (if array):', Array.isArray(data) ? JSON.stringify(data[0]) : 'Not an array');
 
         return {
             statusCode: 200,
