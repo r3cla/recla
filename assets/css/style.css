@@ -216,7 +216,17 @@ form button:hover {
     padding: 0;
 }
 #top100List li {
-    margin-bottom: 10px;
-    padding: 5px;
+    margin-bottom: 15px;
+    padding: 10px;
     border-bottom: 1px solid #eee;
+    background-color: #f9f9f9;
+}
+.card-name {
+    font-weight: bold;
+    color: #333;
+}
+.card-info {
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #666;
 }

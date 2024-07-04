@@ -10,26 +10,21 @@ export const handler = async (event) => {
         console.log(`API response status: ${response.status}`);
 
         if (!response.ok) {
-            const errorText = await response.text();
-            console.error(`API error: ${errorText}`);
-            return {
-                statusCode: response.status,
-                body: JSON.stringify({ error: "API request failed", details: errorText })
-            };
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
 
         const data = await response.json();
-        console.log('API response data received');
+        console.log('API response received successfully');
 
         return {
             statusCode: 200,
             body: JSON.stringify(data)
         };
     } catch (error) {
-        console.error('Unexpected error:', error);
+        console.error('Error in Top 100 Cards function:', error);
         return {
             statusCode: 500,
-            body: JSON.stringify({ error: "An unexpected error occurred", details: error.message })
+            body: JSON.stringify({ status: 'error', error: error.message })
         };
     }
 };
