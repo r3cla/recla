@@ -157,7 +157,7 @@ form textarea {
     font-family: 'VT323', monospace;
 }
 
-form button {
+button {
     background-color: #000;
     color: #0F0;
     padding: 10px 20px;
@@ -167,7 +167,7 @@ form button {
     transition: all 0.3s ease;
 }
 
-form button:hover {
+button:hover {
     background-color: #0F0;
     color: #000;
 }
@@ -205,12 +205,30 @@ form button:hover {
 }
 
 #top100Container {
-    max-height: 400px;
+    max-height: 500px;
     overflow-y: auto;
     border: 1px solid #ccc;
     padding: 10px;
     margin-top: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
+
+#top100Container::-webkit-scrollbar {
+    width: 10px;
+}
+#top100Container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+#top100Container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+#top100Container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 #top100List {
     list-style-type: none;
     padding: 0;
@@ -230,3 +248,4 @@ form button:hover {
     font-size: 0.9em;
     color: #666;
 }
+
