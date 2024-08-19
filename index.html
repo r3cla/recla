@@ -3,109 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Logie Web Services NZ</title>
-    <!-- OG Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://logie.nz/">
-    <meta property="og:title" content="Logie Web Services NZ">
-    <meta property="og:description" content="Affordable web development focusing on locally owned small Kiwi business.">
-    <meta property="og:image" content="https://logie.nz/assets/images/card-image.webp">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <!-- OG Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://logie.nz/">
-    <meta property="twitter:title" content="Logie Web Services NZ">
-    <meta property="twitter:description" content="Affordable web development focusing on locally owned small Kiwi business.">
-    <meta property="twitter:image" content="https://logie.nz/assets/images/card-image.webp">
-    <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="192x192" href="assets/images/android-chrome-192x192.png">
-    <link rel="icon" type="image/png" sizes="512x512" href="assets/images/android-chrome-512x512.png">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
-    <meta name="theme-color" content="#ffffff">
-    <!-- Styles -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <title>Coming Soon - Logie Web Services</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            color: #333;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            font-size: 3em;
+            margin: 0;
+        }
+        p {
+            font-size: 1.2em;
+            margin: 20px 0;
+        }
+        .contact-info {
+            margin-top: 30px;
+        }
+        input[type="email"] {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 300px;
+            max-width: 100%;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
 <body>
-<div class="background-container"></div>
-<canvas id="backgroundCanvas"></canvas>
 <div class="container">
-    <header>
-        <pre class="ascii-art">
-  _     ___   ____ ___ _____   _   _ _____
- | |   / _ \ / ___|_ _| ____| | \ | |__  /
- | |  | | | | |  _ | ||  _|   |  \| | / /
- | |__| |_| | |_| || || |___ _| |\  |/ /_
- |_____\___/ \____|___|_____(_)_| \_/____|
-        </pre>
-        <nav>
-            <ul>
-                <li><a href="#" id="contact-link">[contact]</a></li>
-                <li><a href="tcg.html" id="tcg-link">[yugioh prices]</a></li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <section id="about" class="collapsible">
-            <h2>> About</h2>
-            <div class="content">
-                <div class="terminal">
-                    <p class="command">$ cat about.txt</p>
-                    <p class="output"></p>
-                </div>
-            </div>
-        </section>
-        <section id="skills" class="collapsible">
-            <h2>> Skills</h2>
-            <div class="content">
-                <div class="terminal">
-                    <p class="command">$ ls skills/</p>
-                    <ul class="output"></ul>
-                </div>
-            </div>
-        </section>
-        <section id="projects" class="collapsible">
-            <h2>> Projects</h2>
-            <div class="content">
-                <div class="terminal">
-                    <p class="command">$ ls projects/</p>
-                    <ul class="output"></ul>
-                </div>
-            </div>
-        </section>
-        <section id="links" class="collapsible">
-            <h2>> Links</h2>
-            <div class="content">
-                <div class="terminal">
-                    <p class="command">$ ls links/</p>
-                    <ul class="output">
-                        <div id="linkContainer"></div>
-                    </ul>
-                </div>
-            </div>
-        </section>
-    </main>
+    <h1>Coming Soon</h1>
+    <p>In the meantime, feel free to reach out to me at <a href="mailto:naddison@logie.nz">naddison@logie.nz</a></p>
 </div>
-<div id="contact-form" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>> Contact Me</h2>
-        <form name="contact" netlify>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name">
-            <label for="email">E-Mail:</label>
-            <input type="email" id="email" name="email">
-            <label for="message">Message:</label>
-            <textarea id="message" name="message"></textarea>
-            <button type="submit">Send</button>
-        </form>
-    </div>
-</div>
-<script src="assets/js/scripts.js"></script>
 </body>
 </html>
