@@ -67,9 +67,9 @@ nav a:hover {
 }
 
 .profile-image {
-    width: 250px;
-    height: 250px;
-    margin: 5rem auto;
+    width: 400px;
+    height: 400px;
+    margin: 2rem auto;
     object-fit: cover;
     display: block;
 }
