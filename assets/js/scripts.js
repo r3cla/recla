@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             ctx.beginPath();
             ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-            ctx.fillStyle = '#0F0';
+            ctx.fillStyle = 'rgb(255,230,182)';
             ctx.fill();
 
             nodes.forEach(otherNode => {
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     ctx.beginPath();
                     ctx.moveTo(node.x, node.y);
                     ctx.lineTo(otherNode.x, otherNode.y);
-                    ctx.strokeStyle = '#0F0';
+                    ctx.strokeStyle = 'rgb(250, 216, 154)';
                     ctx.stroke();
                 }
             });
@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.beginPath();
                 ctx.moveTo(node.x, node.y);
                 ctx.lineTo(mouse.x, mouse.y);
-                ctx.strokeStyle = '#0F0';
+                ctx.strokeStyle = '#ffe6b6';
                 ctx.stroke();
             }
         });
