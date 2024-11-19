@@ -6,57 +6,25 @@
     <meta name="description" content="Digital empowerment for small businesses and startups in New Zealand and internationally. Affordable web solutions and discounted services for non-profit organizations.">
     <meta name="keywords" content="web development, digital empowerment, small business, startup, New Zealand, non-profit, web solutions">
     <meta name="author" content="Nathan Logie">
-
-    <!-- Open Graph data -->
     <meta property="og:title" content="Logie Web Services - Digital Empowerment for Small Businesses and Startups">
     <meta property="og:description" content="Digital empowerment for small businesses and startups in New Zealand and internationally. Affordable web solutions and discounted services for non-profit organizations.">
     <meta property="og:image" content="assets/images/Nadd.png">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.logie.nz/">
-    <!-- End Open Graph data -->
-
-    <!-- Favicon -->
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
     <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
     <link rel="manifest" href="assets/site.webmanifest">
-    <!-- End Favicon -->
-
     <title>Logie Web Services NZ</title>
-    <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-985029263">
-    </script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'AW-985029263');
-    </script>
-    <!-- End Google tag (gtag.js) -->
 </head>
 <body>
-
 <nav>
     <div class="nav-content">
-        <div class="logo-container">
-            <a href="index.html" class="logo">
-                <span class="logo-text">Logie</span>
-                <span class="logo-accent">Web Services</span>
-                <span class="logo-semicolon">;</span>
-            </a>
-        </div>
-        <div class="nav-links">
-            <a href="getmeonline.html" class="nav-link">
-                <span class="nav-link-text">get online</span>
-            </a>
-            <a href="pricing.html" class="nav-link">
-                <span class="nav-link-text">pricing</span>
-            </a>
-        </div>
+        <a href="index.html" class="logo">logie;</a>
+        <a href="getmeonline.html">get online</a>
+        <!-- <a href="work.html">my work</a> -->
     </div>
 </nav>
 
@@ -67,16 +35,9 @@
         With a passion for digital empowerment, I offer accessible, high-quality web solutions to small businesses and startups in New Zealand and internationally. Notably, I'm committed to providing specially discounted services for non-profit organizations within New Zealand, ensuring their vital work remains visible and impactful online.   </p>
     <script src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script>
     <script>kofiwidget2.init('Support Me', '#76A0C1', 'logienz');kofiwidget2.draw();</script>
-
-    <div class="style-toggle-container">
-        <span class="style-toggle-label">CSS</span>
-        <label class="style-toggle-switch">
-            <input type="checkbox" id="styleToggle" checked>
-            <span class="style-toggle-slider"></span>
-        </label>
-    </div>
-
 </main>
+
+
 
 <footer>
     <div class="copyright">
@@ -94,19 +55,5 @@
 
 <script src="assets/js/scripts.js"></script>
 <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const styleToggle = document.getElementById('styleToggle');
-        const styleSheet = document.querySelector('link[href$="style.css"]');
-
-        styleToggle.addEventListener('change', function() {
-            if (this.checked) {
-                styleSheet.disabled = false;
-            } else {
-                styleSheet.disabled = true;
-            }
-        });
-    });
-</script>
 </body>
 </html>

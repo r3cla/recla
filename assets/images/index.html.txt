@@ -39,24 +39,11 @@
     <!-- End Google tag (gtag.js) -->
 </head>
 <body>
-
 <nav>
     <div class="nav-content">
-        <div class="logo-container">
-            <a href="index.html" class="logo">
-                <span class="logo-text">Logie</span>
-                <span class="logo-accent">Web Services</span>
-                <span class="logo-semicolon">;</span>
-            </a>
-        </div>
-        <div class="nav-links">
-            <a href="getmeonline.html" class="nav-link">
-                <span class="nav-link-text">get online</span>
-            </a>
-            <a href="pricing.html" class="nav-link">
-                <span class="nav-link-text">pricing</span>
-            </a>
-        </div>
+        <a href="index.html" class="logo">logie;</a>
+        <a href="getmeonline.html">get online</a>
+        <!-- <a href="work.html">my work</a> -->
     </div>
 </nav>
 
@@ -77,6 +64,8 @@
     </div>
 
 </main>
+
+
 
 <footer>
     <div class="copyright">
