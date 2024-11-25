@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yu-Gi-Oh Card Price Search</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="index-0.html" id="index-link">[home]</a></li>
+        </ul>
+    </nav>
+</header>
+
+<body>
+<div class="container">
+    <h1>Yugioh Card Price Search</h1>
+    <form id="searchForm">
+        <label for="printTag">Print Tag:</label>
+        <input type="text" id="printTag" name="printTag" placeholder="Enter print tag (e.g., LOB-EN001)" required>
+        <button type="submit">Search</button>
+        <button type="button" id="refreshSearch">Refresh</button>
+    </form>
+    <div id="results"></div>
+
+    <h2>Top 100 Cards</h2>
+    <button id="fetchTop100">Fetch Top 100 Cards</button>
+    <div id="top100Container">
+        <ul id="top100List"></ul>
+    </div>
+
+    <div class="api-access">API access courtesy of <a href="https://yugiohprices.docs.apiary.io" target="_blank">yugiohprices.docs.apiary.io</a></div>
+</div>
+
+<script>
+    const printTagInput = document.getElementById('printTag');
+    const resultsDiv = document.getElementById('results');
+
+    printTagInput.addEventListener('input', function() {
+        this.value = this.value.toUpperCase();
+    });
+
+    async function fetchCardData(printTag, forceRefresh = false) {
+        resultsDiv.innerHTML = 'Loading...';
+        try {
+            const url = `/.netlify/functions/yugioh-price?printTag=${encodeURIComponent(printTag)}${forceRefresh ? '&refresh=1' : ''}`;
+            const response = await fetch(url);
+            const data = await response.json();
+
+            if (data.error) {
+                resultsDiv.innerHTML = `Error: ${data.error}`;
+            } else if (data.status === 'success') {
+                const cardData = data.data;
+                const priceData = cardData.price_data.price_data;
+
+                let priceInfo = 'Price not available';
+                if (priceData.status === 'success' && priceData.data.prices) {
+                    priceInfo = `$${priceData.data.prices.average.toFixed(2)}`;
+                }
+
+                resultsDiv.innerHTML = `
+                    <h2>${cardData.name}</h2>
+                    <p>Card Type: ${cardData.card_type}</p>
+                    <p>Set: ${cardData.price_data.name}</p>
+                    <p>Rarity: ${cardData.price_data.rarity}</p>
+                    <p>Average Price: ${priceInfo}</p>
+                `;
+
+                if (priceData.status === 'success' && priceData.data.prices) {
+                    resultsDiv.innerHTML += `
+                        <p>Highest Price: $${priceData.data.prices.high.toFixed(2)}</p>
+                        <p>Lowest Price: $${priceData.data.prices.low.toFixed(2)}</p>
+                        <p>Last Updated: ${new Date(priceData.data.prices.updated_at).toLocaleString()}</p>
+                    `;
+                }
+            } else {
+                resultsDiv.innerHTML = 'Unable to fetch price data';
+            }
+        } catch (error) {
+            resultsDiv.innerHTML = 'An error occurred while fetching the data';
+            console.error('Error:', error);
+        }
+    }
+
+    document.getElementById('searchForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const printTag = printTagInput.value.toUpperCase();
+        fetchCardData(printTag);
+    });
+
+    document.getElementById('refreshSearch').addEventListener('click', function() {
+        const printTag = printTagInput.value.toUpperCase();
+        if (printTag) {
+            fetchCardData(printTag, true);
+        }
+    });
+
+    document.getElementById('fetchTop100').addEventListener('click', async function() {
+        const top100List = document.getElementById('top100List');
+        top100List.innerHTML = 'Loading...';
+
+        try {
+            const response = await fetch('/.netlify/functions/top-100-cards');
+            const result = await response.json();
+
+            console.log('API Response:', result); // Log the entire response
+
+            let cardData;
+            if (result.status === 'success' && Array.isArray(result.data)) {
+                cardData = result.data;
+            } else if (Array.isArray(result)) {
+                cardData = result;
+            } else if (typeof result === 'object' && result !== null) {
+                cardData = Object.values(result)[0];
+                if (!Array.isArray(cardData)) {
+                    throw new Error('Unexpected data structure');
+                }
+            } else {
+                throw new Error('Unexpected data structure');
+            }
+
+            if (Array.isArray(cardData) && cardData.length > 0) {
+                top100List.innerHTML = cardData.map((card, index) => {
+                    // Log the structure of each card
+                    console.log(`Card ${index + 1} structure:`, card);
+
+                    return `
+                        <li>
+                            <div class="card-name">#${index + 1}: ${card.name || 'N/A'}</div>
+                            <div class="card-info">
+                                Price: $${(card.price || 0).toFixed(2)}<br>
+                                Set: ${card.card_set || 'N/A'}<br>
+                                Number: ${card.card_number || 'N/A'}<br>
+                                Rarity: ${card.rarity || 'N/A'}<br>
+                                Price Shift: ${((card.price_shift || 0) * 100).toFixed(2)}%
+                            </div>
+                        </li>
+                    `;
+                }).join('');
+            } else {
+                throw new Error('No card data found');
+            }
+        } catch (error) {
+            console.error('Error fetching top 100 cards:', error);
+            top100List.innerHTML = `An error occurred while fetching the top 100 cards: ${error.message}`;
+        }
+    });
+</script>
+
+</body>
+</html>
