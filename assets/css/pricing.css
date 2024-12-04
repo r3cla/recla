@@ -18,14 +18,14 @@
 
 .pricing-page .pricing-header h2 {
     color: rgb(250, 216, 154) !important;
-    font-size: 2.8rem !important;
+    font-size: 2.7rem !important;
     margin-bottom: 0.5rem !important;
     line-height: 1.2 !important;
 }
 
 .pricing-page .pricing-header h3 {
     color: rgb(118, 160, 193) !important;
-    font-size: 1.6rem !important;
+    font-size: 1.5rem !important;
     margin-bottom: 1rem !important;
 }
 
@@ -33,7 +33,7 @@
     color: #d4d4d4 !important;
     font-size: 0.85rem !important;
     line-height: 1.5 !important;
-    margin-top: 1rem !important;
+    margin-top: 0 !important;
 }
 
 /* Pricing Container Grid */
@@ -41,7 +41,7 @@
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 2rem !important;
-    margin: 1rem auto !important;
+    margin: 0.8rem auto !important;
     padding: 0 !important;
     max-width: 1200px !important;
     width: 100% !important;
@@ -69,7 +69,7 @@
 /* Card Title and Description */
 .pricing-page .pricing-title {
     color: rgb(118, 160, 193) !important;
-    font-size: 1.8rem !important;
+    font-size: 1.7rem !important;
     margin-bottom: 0.75rem !important;
     text-align: center !important;
 }
@@ -78,7 +78,7 @@
     color: #d4d4d4 !important;
     text-align: center !important;
     margin-bottom: 1.5rem !important;
-    font-size: 1rem !important;
+    font-size: 0.9rem !important;
     line-height: 1.4 !important;
     flex-grow: 0 !important;
     min-height: 3em !important;
@@ -94,7 +94,7 @@
 
 .pricing-page .currency {
     color: rgb(250, 216, 154) !important;
-    font-size: 1.8rem !important;
+    font-size: 1.7rem !important;
     vertical-align: top !important;
     margin-right: 0.1rem !important;
     line-height: 1 !important;
@@ -102,9 +102,9 @@
 
 .pricing-page .price {
     color: rgb(250, 216, 154) !important;
-    font-size: 3.2rem !important;
+    font-size: 3rem !important;
     font-weight: bold !important;
-    line-height: 1 !important;
+    line-height: 0.6 !important;
 }
 
 .pricing-page .period {
@@ -130,6 +130,7 @@
 .pricing-page .setup-fee span {
     color: rgb(250, 216, 154) !important;
     font-size: 0.9rem !important;
+    font-weight: bold; !important;
     white-space: nowrap !important;
 }
 
@@ -144,7 +145,7 @@
 .pricing-page .feature-list li {
     display: flex !important;
     align-items: flex-start !important;
-    margin-bottom: 1.2rem !important;
+    margin-bottom: 1.1rem !important;
     color: #d4d4d4 !important;
     gap: 1rem !important;
 }
@@ -154,28 +155,28 @@
     width: 20px !important;
     height: 20px !important;
     stroke: rgb(118, 160, 193) !important;
-    margin-top: 0.25rem !important;
+    margin-top: 0.1rem !important;
     flex-shrink: 0 !important;
 }
 
 .pricing-page .feature-list li span {
-    font-size: 1rem !important;
-    line-height: 1.4 !important;
+    font-size: 0.9rem !important;
+    line-height: 1 !important;
 }
 
 /* Get Started Button */
 .pricing-page .pricing-btn {
     display: inline-block !important;
     width: 100% !important;
-    padding: 1rem !important;
+    padding: 0.8rem !important;
     background: rgb(118, 160, 193) !important;
     color: #1a1a1a !important;
     text-align: center !important;
     text-decoration: none !important;
-    border-radius: 0.5rem !important;
+    border-radius: 0.8rem !important;
     transition: all 0.3s ease !important;
     margin-top: auto !important;
-    font-size: 1.1rem !important;
+    font-size: 1rem !important;
     font-weight: 600 !important;
     border: 1px solid transparent !important;
 }
@@ -190,7 +191,7 @@
 /* Footer Note */
 .pricing-page .pricing-note {
     text-align: center !important;
-    margin: 2rem auto 0 !important;
+    margin: 1rem auto 1.5rem !important;
     padding: 1rem !important;
     background: rgba(45, 45, 45, 0.3) !important;
     backdrop-filter: blur(5px) !important;
@@ -236,25 +237,7 @@
     }
 
     .pricing-page .pricing-header h2 {
-        font-size: 2rem !important;
-    }
-
-    .pricing-page .pricing-header h3 {
-        font-size: 1.3rem !important;
-    }
-
-    .pricing-page .pricing-card {
-        padding: 1.5rem !important;
-    }
-
-    .pricing-page .price {
-        font-size: 3rem !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .pricing-page .pricing-header h2 {
-        font-size: 1.8rem !important;
+        font-size: 1.9rem !important;
     }
 
     .pricing-page .pricing-header h3 {
@@ -262,15 +245,33 @@
     }
 
     .pricing-page .pricing-card {
-        padding: 1.25rem !important;
+        padding: 1.5rem !important;
     }
 
     .pricing-page .price {
-        font-size: 2.8rem !important;
+        font-size: 2.9rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .pricing-page .pricing-header h2 {
+        font-size: 1.7rem !important;
+    }
+
+    .pricing-page .pricing-header h3 {
+        font-size: 1.1rem !important;
+    }
+
+    .pricing-page .pricing-card {
+        padding: 1.2rem !important;
+    }
+
+    .pricing-page .price {
+        font-size: 2.7rem !important;
     }
 
     .pricing-page .currency {
-        font-size: 1.4rem !important;
+        font-size: 1.3rem !important;
     }
 
     .pricing-page .setup-fee {

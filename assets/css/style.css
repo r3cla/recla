@@ -224,6 +224,12 @@ footer {
     z-index: 1000;
 }
 
+.footer-link-separator {
+    font-weight: bold;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+}
+
 .copyright {
     color: #b3b3b3;
 }
@@ -257,7 +263,7 @@ footer {
 }
 
 .footer-links a:hover {
-    color: #ffffff;
+    text-decoration: underline;
 }
 
 /* Ko-Fi Button Styling */

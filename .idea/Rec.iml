@@ -12,5 +12,6 @@
     <orderEntry type="library" name="for-form-embed-handler" level="application" />
     <orderEntry type="library" name="overlay-widget" level="application" />
     <orderEntry type="library" name="Widget_2" level="application" />
+    <orderEntry type="library" name="marked" level="application" />
   </component>
 </module>
