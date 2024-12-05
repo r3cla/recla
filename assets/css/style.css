@@ -1,10 +1,29 @@
-/* Font Face */
+/* ======================
+   Table of Contents
+   ======================
+   1. Font Faces
+   2. Reset & Base Styles
+   3. Layout & Structure
+   4. Navigation
+   5. Logo Styles
+   6. Content Areas
+   7. Blog Styles
+   8. Footer
+   9. Components & Utilities
+   10. Mobile Optimizations
+*/
+
+/* ======================
+   1. Font Faces
+   ====================== */
 @font-face {
     font-family: 'Sveningsson';
     src: url('../fonts/svenings.ttf') format('truetype');
 }
 
-/* Global Styles */
+/* ======================
+   2. Reset & Base Styles
+   ====================== */
 * {
     margin: 0;
     padding: 0;
@@ -23,21 +42,53 @@ body {
     overflow-y: auto;
 }
 
-/* Background Canvas */
+.js-warning {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background-color: rgba(193, 118, 118, 0.51);
+    color: white;
+    text-align: center;
+    padding: 10px;
+    z-index: 1000;
+    font-size: 0.8rem;
+}
+
+/* ======================
+   3. Layout & Structure
+   ====================== */
 #backgroundCanvas {
     position: fixed;
+    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.8)), url('../images/hero.webp');
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     z-index: -1;
-    background-color: #1a1a1a;
+    background-size: cover;
 }
 
-/* Navigation */
+main {
+    width: 100%;
+    max-width: 800px;
+    padding: 1rem 2rem;
+    text-align: center;
+    border-radius: 8px;
+    margin: 0 auto 4rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+/* ======================
+   4. Navigation
+   ====================== */
 nav {
     width: 100%;
-    background-color: rgba(25, 25, 25, 0.95);
+    background-color: rgba(25, 25, 25, 0.90);
     padding: 1.2rem 2rem;
     position: sticky;
     top: 0;
@@ -52,42 +103,6 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: baseline;
-    text-decoration: none;
-    font-family: 'Sveningsson', monospace;
-    transition: transform 0.3s ease;
-}
-
-.logo:hover {
-    transform: translateY(-1px);
-}
-
-.logo-text {
-    color: rgb(118, 160, 193);
-    font-size: 1.5rem;
-    font-weight: 600;
-}
-
-.logo-accent {
-    color: rgb(250, 216, 154);
-    font-size: 1.2rem;
-    margin-left: 0.5rem;
-    opacity: 0.9;
-}
-
-.logo-semicolon {
-    color: rgb(118, 160, 193);
-    font-size: 1.5rem;
-    margin-left: 0.2rem;
 }
 
 .nav-links {
@@ -124,23 +139,53 @@ nav {
     width: 100%;
 }
 
-/* Main Content */
-main {
-    width: 100%;
-    max-width: 800px;
-    padding: 1rem 2rem;
-    text-align: center;
-    background-color: rgba(26, 26, 26, 0.5);
-    backdrop-filter: blur(3px);
-    border-radius: 8px;
-    margin: 0 auto 4rem;
-    flex: 1;
+.nav-link.active {
+    font-weight: bold;
+    color: #ffffff;
+    border-bottom: 2px solid currentColor;
+}
+/* ======================
+   5. Logo Styles
+   ====================== */
+.logo-container {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    position: relative;
 }
 
+.logo {
+    display: flex;
+    align-items: baseline;
+    text-decoration: none;
+    font-family: 'Sveningsson', monospace;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: translateY(-1px);
+}
+
+.logo-text {
+    color: rgb(118, 160, 193);
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.logo-accent {
+    color: rgb(250, 216, 154);
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+    opacity: 0.9;
+}
+
+.logo-semicolon {
+    color: rgb(118, 160, 193);
+    font-size: 1.5rem;
+    margin-left: 0.2rem;
+}
+
+/* ======================
+   6. Content Areas
+   ====================== */
 .intro {
     font-size: 1.2rem;
     color: rgb(118, 160, 193);
@@ -191,7 +236,6 @@ main {
     border-radius: 4px;
 }
 
-/* Profile Image */
 .profile-image {
     width: 400px;
     height: 400px;
@@ -200,91 +244,26 @@ main {
     display: block;
 }
 
-@media (max-height: 800px) {
-    .profile-image {
-        width: 300px;
-        height: 300px;
-        margin: 1rem auto;
-    }
+.form-help {
+    margin: 20px 0;
+    font-size: 0.95rem;
 }
 
-/* Footer */
-footer {
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    background-color: rgba(45, 45, 45, 0.2);
-    padding: 0.8rem;
-    text-align: center;
-    font-size: 0.9rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    z-index: 1000;
-}
-
-.footer-link-separator {
-    font-weight: bold;
-    margin-left: 0.1rem;
-    margin-right: 0.1rem;
-}
-
-.copyright {
-    color: #b3b3b3;
-}
-
-.social-icons {
-    display: flex;
-    align-items: center;
-}
-
-.social-icons a {
-    text-decoration: none;
-    margin-left: 0.1rem;
-    transition: opacity 0.3s ease;
-    display: flex;
-    align-items: center;
-}
-
-.social-icons a:hover {
-    opacity: 0.8;
-}
-
-.social-icon {
-    width: 32px;
-    height: 32px;
-}
-
-.footer-links a {
-    color: rgb(250, 216, 154);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
+.form-help a {
+    color: #76A0C1;
     text-decoration: underline;
+    font-weight: 500;
+    padding: 2px 4px;
+    transition: color 0.2s ease;
 }
 
-/* Ko-Fi Button Styling */
-.kofi-button {
-    margin: 2rem auto !important;
-    transform: scale(0.85) !important;
+.form-help a:hover {
+    color: #5888b0;
 }
 
-.kofi-button button.kofi-button {
-    background-color: #76A0C1 !important;
-    color: #1a1a1a !important;
-    font-family: 'Sveningsson', monospace !important;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2) !important;
-}
-
-.kofi-button button.kofi-button:hover {
-    background-color: #4C7482 !important;
-    color: #ffffff !important;
-}
-
-/* Blog Styles */
+/* ======================
+   7. Blog Styles
+   ====================== */
 .blog-container {
     width: 100%;
     max-width: 800px;
@@ -308,6 +287,7 @@ footer {
     margin-bottom: 0;
 }
 
+/* Blog Typography */
 .blog-post h1 {
     color: rgb(250, 216, 154);
     font-size: 2.5rem;
@@ -334,6 +314,7 @@ footer {
     font-size: 1rem;
 }
 
+/* Blog Content Elements */
 .blog-post img {
     max-width: 100%;
     height: auto;
@@ -409,7 +390,7 @@ footer {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-
+/* Blog List Styles */
 .blog-list {
     margin-top: 20px;
     padding: 2rem;
@@ -447,7 +428,109 @@ footer {
     background: rgba(118, 160, 193, 0.2);
 }
 
-/* Mobile Optimizations */
+/* ======================
+   8. Footer
+   ====================== */
+footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(45, 45, 45, 0.2);
+    padding: 0.8rem;
+    text-align: center;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    z-index: 1000;
+}
+
+.footer-link-separator {
+    font-weight: bold;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+}
+
+.copyright {
+    color: #b3b3b3;
+}
+
+.social-icons {
+    display: flex;
+    align-items: center;
+}
+
+.social-icons a {
+    text-decoration: none;
+    margin-left: 0.1rem;
+    transition: opacity 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.social-icons a:hover {
+    opacity: 0.8;
+}
+
+.social-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.footer-links a {
+    color: rgb(250, 216, 154);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* ======================
+   9. Components & Utilities
+   ====================== */
+
+/* Hero Button */
+.learn-more-button {
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: #76A0C1;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.4s ease;
+    margin-top: 25px;
+}
+
+.learn-more-button:hover {
+    background-color: rgba(255, 255, 255, 0.85);
+    color: #76A0C1;
+    font-weight: bold;
+}
+
+
+/*----------------------------*/
+/*                            */
+/*                            */
+/*  10. Mobile Optimizations  */
+/*                            */
+/*                            */
+/*----------------------------*/
+
+
+/* Height-based Adjustments */
+@media (max-height: 800px) {
+    .profile-image {
+        width: 300px;
+        height: 300px;
+        margin: 1rem auto;
+    }
+}
+
+/* Tablet & Small Screens */
 @media (max-width: 768px) {
     .blog-container {
         padding: 1rem;
@@ -503,6 +586,7 @@ footer {
     }
 }
 
+/* Mobile Phones */
 @media (max-width: 480px) {
     .blog-post {
         padding: 1rem;
@@ -526,6 +610,7 @@ footer {
     }
 }
 
+/* Small Tablets */
 @media (max-width: 600px) {
     .blog-container {
         padding: 0.75rem;
@@ -548,4 +633,5 @@ footer {
     .footer-links a {
         margin-top: 0.5rem;
     }
+
 }
