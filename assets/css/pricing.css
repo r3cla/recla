@@ -29,11 +29,28 @@
     margin-bottom: 1rem !important;
 }
 
-.pricing-page .pricing-plsnote {
-    color: #d4d4d4 !important;
-    font-size: 0.85rem !important;
-    line-height: 1.5 !important;
-    margin-top: 0 !important;
+.pricing-page .pricing-btn:hover {
+    background: #4C7482 !important;
+    color: #ffffff !important;
+    transform: translateY(-2px) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.pricing-plsnote {
+    font-size: 0.8rem; !important;
+    font-weight: 800; !important;
+}
+
+.pricing-plsnote a {
+    color: #76A0C1; !important;
+    text-decoration: underline; !important;
+    font-weight: 500; !important;
+    padding: 2px 4px; !important;
+    transition: color 0.2s ease; !important;
+}
+
+.pricing-plsnote a:hover {
+    color: #5888b0; !important;
 }
 
 /* Pricing Container Grid */
@@ -41,7 +58,6 @@
     display: grid !important;
     grid-template-columns: repeat(3, 1fr) !important;
     gap: 2rem !important;
-    margin: 0.8rem auto !important;
     padding: 0 !important;
     max-width: 1200px !important;
     width: 100% !important;
@@ -53,7 +69,7 @@
     background: rgba(45, 45, 45, 0.4) !important;
     backdrop-filter: blur(10px) !important;
     border-radius: 1rem !important;
-    padding: 2rem !important;
+    padding: 1.6rem !important;
     transition: transform 0.3s ease, box-shadow 0.3s ease !important;
     display: flex !important;
     flex-direction: column !important;
@@ -63,13 +79,13 @@
 
 .pricing-page .pricing-card:hover {
     transform: translateY(-5px) !important;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 10px 20px rgba(255, 230, 182, 0.5) !important;
 }
 
 /* Card Title and Description */
 .pricing-page .pricing-title {
     color: rgb(118, 160, 193) !important;
-    font-size: 1.7rem !important;
+    font-size: 1.6rem !important;
     margin-bottom: 0.75rem !important;
     text-align: center !important;
 }
@@ -179,13 +195,6 @@
     font-size: 1rem !important;
     font-weight: 600 !important;
     border: 1px solid transparent !important;
-}
-
-.pricing-page .pricing-btn:hover {
-    background: #4C7482 !important;
-    color: #ffffff !important;
-    transform: translateY(-2px) !important;
-    border-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 /* Footer Note */
