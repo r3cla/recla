@@ -1,5 +1,5 @@
 /* ======================
-   Table of Contents
+   Table of Contents (style.css)
    ======================
    1. Font Faces
    2. Reset & Base Styles
@@ -144,6 +144,19 @@ nav {
     color: #ffffff;
     border-bottom: 2px solid currentColor;
 }
+
+.theme-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+}
+
 /* ======================
    5. Logo Styles
    ====================== */
