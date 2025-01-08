@@ -1,6 +1,0 @@
-[build]
-functions = "functions"
-[functions]
-node_bundler = "esbuild"
-[functions.yugioh-price]
-timeout = 30

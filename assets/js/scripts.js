@@ -17,7 +17,7 @@ window.addEventListener("resize", () => {
     height = canvas.height = Math.max(window.innerHeight, document.body.scrollHeight);
     redistributeParticles();
 });
-let targetParticleCount = 125;
+let targetParticleCount = 80;
 let initialParticleCount = 10;
 let currentParticleCount = initialParticleCount;
 let particles = [];
