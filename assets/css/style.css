@@ -31,6 +31,13 @@
     font-family: 'Sveningsson', monospace;
 }
 
+img {
+    pointer-events: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+}
+
 body {
     background-color: #1a1a1a;
     color: #d4d4d4;
