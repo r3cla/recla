@@ -17,15 +17,15 @@
 }
 
 .pricing-page .pricing-header h2 {
-    color: rgb(250, 216, 154) !important;
-    font-size: 2.7rem !important;
-    margin-bottom: 0.5rem !important;
+    color: rgb(247, 207, 132) !important;
+    font-size: 2.8rem !important;
     line-height: 1.2 !important;
 }
 
 .pricing-page .pricing-header h3 {
-    color: rgb(118, 160, 193) !important;
-    font-size: 1.5rem !important;
+    color: rgb(244, 218, 170) !important;
+    font-size: 1.3rem !important;
+    font-weight: 100;
     margin-bottom: 1rem !important;
 }
 
