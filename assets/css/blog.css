@@ -59,7 +59,7 @@ main {
 .blog-post h2 {
     font-size: 1.875rem;
     line-height: 1.3;
-    margin-top: calc(var(--spacing-base) * 2);
+    margin-top: calc(var(--spacing-base) * 1.3);
     margin-bottom: var(--spacing-base);
     color: var(--color-text);
     font-weight: 600;
@@ -75,7 +75,7 @@ main {
 .post-meta {
     color: var(--color-muted);
     font-size: 0.875rem;
-    margin-bottom: calc(var(--spacing-base) * 2);
+    margin-bottom: calc(var(--spacing-base) * 1.5);
 }
 
 .reading-time {
@@ -84,7 +84,7 @@ main {
 
 /* Content elements */
 .blog-post p {
-    margin-bottom: calc(var(--spacing-base) * 1.5);
+    margin-bottom: calc(var(--spacing-base) * 1.3);
 }
 
 .blog-post a {
@@ -107,8 +107,8 @@ main {
 /* Lists */
 .feature-list,
 .numbered-list {
-    margin: calc(var(--spacing-base) * 1.5) 0;
-    padding-left: calc(var(--spacing-base) * 1.5);
+    margin: calc(var(--spacing-base) * 1.3) 0;
+    padding-left: calc(var(--spacing-base) * 1.3);
 }
 
 .feature-list li,
@@ -146,12 +146,12 @@ figcaption {
     background-color: #F7FAFC;
     border-left: 4px solid var(--color-primary);
     padding: calc(var(--spacing-base) * 1.5);
-    margin: calc(var(--spacing-base) * 2) 0;
+    margin: calc(var(--spacing-base) * 1.5) 0;
     border-radius: 0 0.5rem 0.5rem 0;
 }
 
 .conclusion {
-    margin-top: calc(var(--spacing-base) * 2);
+    margin-top: calc(var(--spacing-base) * 1.5);
     padding-top: calc(var(--spacing-base) * 1.5);
     border-top: 2px solid #E2E8F0;
 }
