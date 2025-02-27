@@ -17,8 +17,8 @@
    1. Font Faces
    ====================== */
 @font-face {
-    font-family: 'Sveningsson';
-    src: url('../fonts/svenings.ttf') format('truetype');
+    font-family: 'Roboto';
+    src: url('../fonts/Roboto.ttf') format('truetype');
 }
 
 /* ======================
@@ -28,7 +28,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Sveningsson', monospace;
+    font-family: 'Roboto', monospace;
 }
 
 img {
