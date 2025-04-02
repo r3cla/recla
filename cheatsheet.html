@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital De-Shitification</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .app-button {
+            background-color: rgba(45, 45, 45, 0.25);
+            border-radius: 8px;
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            cursor: pointer;
+            justify-content: space-between;
+            border: none;
+            text-align: left;
+            font-size: 1rem;
+            color: #a0aec0;
+        }
+
+        .app-button:hover {
+            background-color: rgba(118, 160, 193, 0.1);
+        }
+
+        .app-button .left {
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-content {
+            display: none;
+            background-color: rgba(26, 26, 26, 0.2);
+            border-radius: 0 0 8px 8px;
+            margin-top: -10px;
+            margin-bottom: 10px;
+            padding: 15px;
+        }
+
+        .alternative-app {
+            background-color: rgba(118, 160, 193, 0.1);
+            color: rgb(250, 216, 154);
+            border-radius: 8px;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+
+        .chevron {
+            transition: transform 0.3s;
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+        }
+
+        .icon {
+            margin-right: 6px;
+        }
+
+        .privacy-note {
+            color: #f79e5a;
+            font-size: 0.9rem;
+        }
+
+        /* Badge styles */
+        .badge {
+            border-radius: 4px;
+            padding: 2px 6px;
+            font-size: 0.7rem;
+            margin-left: 6px;
+            font-weight: semibold;
+        }
+
+        .recommended {
+            background-color: #ffffa2;
+            color: #000000;
+        }
+
+        .mobile {
+            background-color: #de62e7;
+            color: #000000;
+        }
+
+        .chromium {
+            background-color: #42d2ff;
+            color: #2d3436;
+        }
+
+        .paid {
+            background-color: #fdcb6e;
+            color: #2d3436;
+        }
+
+        .open-source {
+            background-color: #55efc4;
+            color: #2d3436;
+        }
+
+        .self-hosted {
+            background-color: #ffdede;
+            color: #00002d;
+        }
+
+        .use-adblock {
+            background-color: #ffffff;
+            color: #f79e5a;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <span class="logo-text">Digital</span>
+                    <span class="logo-accent">De-Shitification</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div id="backgroundCanvas"></div>
+
+    <main>
+        <div class="info-bar">
+            A "cheatsheet" of alternatives to mainstream apps and software
+        </div>
+
+        <div class="blog-container">
+            <!-- Twitter -->
+            <button class="app-button" onclick="toggleDropdown('twitter')">
+                <div class="left">
+                    <i class="fa-brands fa-twitter icon"></i> Twitter / Threads
+                </div>
+                <i class="fa-solid fa-chevron-down chevron" id="twitter-chevron"></i>
+            </button>
+            <div class="dropdown-content" id="twitter-dropdown">
+                <div class="alternative-app">
+                    <i class="fa-solid fa-feather-pointed icon"></i> BlueSky
+                    <span class = "badge recommended">Recommended</span>
+                    <span class = "badge open-source">Open Source</span>
+                </div>
+                <div class="alternative-app">
+                    <i class="fa-solid fa-feather-pointed icon"></i> Mastodon
+                    <span class = "badge open-source">Open Source</span>
+                </div>
+            </div>
+
+            <!-- Instagram -->
+            <button class="app-button" onclick="toggleDropdown('instagram')">
+                <div class="left">
+                    <i class="fa-brands fa-instagram icon"></i> Instagram
+                </div>
+                <i class="fa-solid fa-chevron-down chevron" id="instagram-chevron"></i>
+            </button>
+            <div class="dropdown-content" id="instagram-dropdown">
+                <div class="alternative-app">
+                    <i class="fa-solid fa-image icon"></i> Pixelfed
+                    <span class = "badge open-source">Open Source</span>
+                </div>
+            </div>
+
+            <!-- WhatsApp -->
+            <button class="app-button" onclick="toggleDropdown('whatsapp')">
+                <div class="left">
+                    <i class="fa-brands fa-whatsapp icon"></i> WhatsApp / FB Messenger
+                </div>
+                <i class="fa-solid fa-chevron-down chevron" id="whatsapp-chevron"></i>
+            </button>
+            <div class="dropdown-content" id="whatsapp-dropdown">
+                <div class="alternative-app">
+                    <i class="fa-solid fa-lock icon"></i> Signal
+                    <span class = "badge recommended">Recommended</span>
+                    <span class = "badge open-source">Open Source</span>
+                </div>
+            </div>
+
+            <!-- Email -->
+            <button class="app-button" onclick="toggleDropdown('email')">
+                <div class="left">
+                    <i class="fa-solid fa-envelope icon"></i> Gmail / Outlook
+                </div>
+                <i class="fa-solid fa-chevron-down chevron" id="email-chevron"></i>
+            </button>
+            <div class="dropdown-content" id="email-dropdown">
+                <div class="alternative-app">
+                    <i class="fa-solid fa-shield icon"></i> Proton Mail
+                    <span class = "badge open-source">Open Source</span>
+                </div>
+                <div class="alternative-app">
+                    <i class="fa-solid fa-shield icon"></i> Tuta
+                    <span class = "badge open-source">Open Source</span>
+                </div>
+            </div>
+
+            <!-- Streaming -->
+            <button class="app-button" onclick="toggleDropdown('streaming')">
+                <div class="left">
+                    <i class="fa-solid fa-tv icon"></i> Netflix / Prime / Disney+
+                </div>
+                <i class="fa-solid fa-chevron-down chevron" id="streaming-chevron"></i>
+            </button>
+            <div class="dropdown-content" id="streaming-dropdown">
+                <div class="alternative-app">
+                    <i class="fa-solid fa-film icon"></i> Stremio
+                </div>
+                <div class="alternative-app">
+                    <i class="fa-solid fa-film icon"></i> Plex
+                </div>
+            </div>
+
+            <!-- Browsers -->
+            <button class="app-button" onclick="toggleDropdown('browsers')">
+                <div class="left">
+                    <i class="fa-brands fa-chrome icon"></i> Chrome / Edge
+                </div>
+                <i class="fa-solid fa-chevron-down chevron" id="browsers-chevron"></i>
+            </button>
+            <div class="dropdown-content" id="browsers-dropdown">
+                <div class="alternative-app">
+                    <i class="fa-brands fa-firefox-browser icon"></i> Firefox
+                    <span class="badge recommended">Recommended</span>
+                    <span class="badge open-source">Open Source</span>
+                </div>
+                <div class="alternative-app">
+                    <i class="fa-brands fa-firefox-browser icon"></i> Thorium
+                    <span class="badge chromium">Chromium</span>
+                    <span class="badge open-source">Open Source</span>
+                </div>
+            </div>
+
+            <!-- Search Engines -->
+            <button class="app-button" onclick="toggleDropdown('search')">
+                <div class="left">
+                    <i class="fa-brands fa-google icon"></i> Google / Bing
+                </div>
+                <i class="fa-solid fa-chevron-down chevron" id="search-chevron"></i>
+            </button>
+            <div class="dropdown-content" id="search-dropdown">
+                <div class="alternative-app">
+                    <i class="fa-solid fa-search icon"></i> DuckDuckGo
+                    <span class="badge recommended">Recommended</span>
+                </div>
+                <div class="alternative-app">
+                    <i class="fa-solid fa-search icon"></i> Startpage
+                </div>
+                <div class="alternative-app">
+                    <i class="fa-solid fa-search icon"></i> Kagi
+                    <span class="badge recommended">Recommended</span>
+                    <span class="badge paid">Paid</span>
+                </div>
+                <div class="alternative-app">
+                    <i class="fa-solid fa-search icon"></i> Ecosia
+                </div>
+            </div>
+
+            <!-- Music -->
+            <button class="app-button" onclick="toggleDropdown('music')">
+                <div class="left">
+                    <i class="fa-solid fa-music icon"></i> Spotify
+                </div>
+                <i class="fa-solid fa-chevron-down chevron" id="music-chevron"></i>
+            </button>
+            <div class="dropdown-content" id="music-dropdown">
+                <div class="alternative-app">
+                    <i class="fa-solid fa-music icon"></i> Tidal
+                </div>
+                <div class="alternative-app">
+                    <i class="fa-solid fa-music icon"></i> Deezer
+                </div>
+            </div>
+
+            <!-- Reddit -->
+            <button class="app-button" onclick="toggleDropdown('reddit')">
+                <div class="left">
+                    <i class="fa-brands fa-reddit icon"></i> Reddit
+                </div>
+                <i class="fa-solid fa-chevron-down chevron" id="reddit-chevron"></i>
+            </button>
+            <div class="dropdown-content" id="reddit-dropdown">
+                <div class="alternative-app">
+                    <i class="fa-solid fa-smile icon"></i> Lemmy
+                </div>
+            </div>
+
+            <!-- AI -->
+            <button class="app-button" onclick="toggleDropdown('ai')">
+                <div class="left">
+                    <i class="fa-solid fa-robot icon"></i> ChatGPT / Claude
+                </div>
+                <i class="fa-solid fa-chevron-down chevron" id="ai-chevron"></i>
+            </button>
+            <div class="dropdown-content" id="ai-dropdown">
+                <div class="alternative-app">
+                    <i class="fa-solid fa-robot icon"></i> Ollama
+                    <span class ="badge self-hosted">Self Hosted</span>
+                </div>
+                <div class="alternative-app">
+                    <i class="fa-solid fa-robot icon"></i> Huggingface
+                </div>
+            </div>
+
+            <!-- YouTube -->
+            <button class="app-button" onclick="toggleDropdown('youtube')">
+                <div class="left">
+                    <i class="fa-brands fa-youtube icon"></i> YouTube
+                </div>
+                <i class="fa-solid fa-chevron-down chevron" id="youtube-chevron"></i>
+            </button>
+            <div class="dropdown-content" id="youtube-dropdown">
+                <div class="alternative-app">
+                    <i class="fa-solid fa-video icon"></i> PeerTube
+                </div>
+                <div class="alternative-app">
+                    <i class="fa-solid fa-video icon"></i> NewPipe
+                </div>
+                <div class="alternative-app">
+                    <i class="fa-solid fa-video icon"></i> FreeTube
+                </div>
+            </div>
+
+            <!-- Privacy -->
+                <div class="alternative-app">
+                    <span class ="privacy-note">No matter what apps you use, remember to always use adblockers (uBlock Origin) and privacy-focused browsers (Firefox) to protect yourself. More information can be found at www.PrivacyGuides.org.</span>
+                    </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="copyright">Updated 2025-03-24</div>
+    </footer>
+
+    <script>
+        function toggleDropdown(id) {
+            const dropdown = document.getElementById(id + '-dropdown');
+            const chevron = document.getElementById(id + '-chevron');
+
+            if (dropdown.style.display === 'block') {
+                dropdown.style.display = 'none';
+                chevron.classList.remove('rotate');
+            } else {
+                dropdown.style.display = 'block';
+                chevron.classList.add('rotate');
+            }
+        }
+    </script>
+</body>
+
+</html>

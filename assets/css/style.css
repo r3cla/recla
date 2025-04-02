@@ -74,6 +74,8 @@ body {
     height: 100%;
     z-index: -1;
     background-size: cover;
+    opacity: 60%;
+    transition: opacity 0.5s ease;
 }
 
 main {
@@ -474,6 +476,7 @@ footer {
 
 .copyright {
     color: #b3b3b3;
+    margin-top: -10px;
 }
 
 .social-icons {
@@ -508,6 +511,41 @@ footer {
     text-decoration: underline;
 }
 
+.particle-toggle {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    z-index: 1500;
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 5px 8px;
+    border-radius: 15px;
+  }
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 12px;
+    height: 16px;
+    margin-right: 5px;
+  }
+
+  .switch input {
+    opacity: 0.7;
+    width: 1.1;
+    height: 1;
+  }
+  
+  .toggle-label {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 0;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
 /* ======================
    9. Components & Utilities
    ====================== */
