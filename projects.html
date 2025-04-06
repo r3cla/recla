@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en-NZ">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfolio of web development projects by Logie Web Services - showcasing custom websites, web applications and design work for clients in New Zealand and internationally.">
+    <meta name="keywords"
+        content="web developer portfolio, NZ web projects, web design examples, custom websites, web applications, responsive design, Wellington web developer, Auckland web services">
+    <meta name="author" content="Nathan Logie">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Web Development Projects | Logie Web Services">
+    <meta property="og:site_name" content="Logie Web Services">
+    <meta property="og:description"
+        content="Portfolio of web development and design projects by Logie Web Services, serving clients in New Zealand and internationally.">
+    <meta property="og:image" content="https://www.logie.nz/assets/images/Nadd.png">
+    <meta property="og:image:alt" content="Logie Web Services Logo">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.logie.nz/projects.html">
+    <meta property="og:locale" content="en_NZ">
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Web Development Projects | Logie Web Services">
+    <meta name="twitter:description"
+        content="Portfolio of web development and design projects by Logie Web Services, serving clients in New Zealand and internationally.">
+    <meta name="twitter:image" content="https://www.logie.nz/assets/images/Nadd.png">
+    <meta name="twitter:image:alt" content="Logie Web Services Logo">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+    <link rel="canonical" href="https://www.logie.nz/projects.html">
+    <!-- Additional SEO Tags -->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="google" content="notranslate">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="Logie Web Services">
+    <meta name="application-name" content="Logie Web Services">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <!-- Title & Stylesheets -->
+    <title>Web Development Projects | Logie Web Services</title>
+    <link rel="stylesheet" href="assets/css/reset.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        /* Project-specific styles */
+        .projects-container {
+            width: 100%;
+            max-width: 600px;
+            background-color: rgba(45, 45, 45, 0.5);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0 auto;
+        }
+
+        .projects-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .projects-title {
+            color: rgb(250, 216, 154);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            text-shadow: 0 0 5px rgba(118, 160, 193, 0.3), 0 0 10px rgba(118, 160, 193, 0.2);
+        }
+
+        .projects-subtitle {
+            color: rgb(118, 160, 193);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background-color: rgba(45, 45, 45, 0.3);
+            border-radius: 8px;
+            overflow: hidden;
+            -webkit-backdrop-filter: blur(3px);
+            backdrop-filter: blur(3px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 180px;
+            object-fit: contain;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .project-image {
+            opacity: 0.9;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            color: rgb(250, 216, 154);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            text-shadow: 0 0 5px rgba(118, 160, 193, 0.3), 0 0 10px rgba(118, 160, 193, 0.2);
+        }
+
+        .project-description {
+            color: #d4d4d4;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .project-tag {
+            background-color: rgba(118, 160, 193, 0.2);
+            color: rgb(250, 216, 154);
+            padding: 0.3rem 0.7rem;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-family: 'Consolas', monospace;
+            backdrop-filter: blur(3px);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .demo-link {
+            background-color: rgba(118, 160, 193, 0.8);
+            color: white;
+        }
+
+        .demo-link:hover {
+            background-color: rgba(118, 160, 193, 1);
+        }
+
+        .repo-link {
+            background-color: rgba(45, 45, 45, 0.5);
+            color: rgb(250, 216, 154);
+            border: 1px solid rgba(250, 216, 154, 0.3);
+        }
+
+        .repo-link:hover {
+            background-color: rgba(250, 216, 154, 0.2);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .projects-title {
+                font-size: 1.8rem;
+            }
+
+            .project-card {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="backgroundCanvas"></canvas>
+
+    <nav>
+        <div class="nav-content">
+            <div class="logo-container">
+                <a href="index.html" class="logo">
+                    <span class="logo-text">Logie</span>
+                    <span class="logo-accent">Web Services</span>
+                    <span class="logo-semicolon">;</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="https://form.jotform.com/243067662032856" class="nav-link">
+                    <span class="nav-link-text">free quote</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <noscript>
+            <div class="js-warning">
+                This website works best with JavaScript enabled. Some features may be limited.
+            </div>
+        </noscript>
+
+        <div class="projects-container">
+            <div class="projects-header">
+                <h1 class="projects-title">My Projects</h1>
+                <p class="projects-subtitle">
+                    Here's a showcase of some websites and web applications I've developed.
+                    Each project demonstrates different skills and technologies in web development.
+                </p>
+            </div>
+
+            <div class="projects-grid" id="projects-grid">
+                <!-- Projects will be dynamically loaded here -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="copyright">
+            © 2025. All rights reserved.
+        </div>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/logienz/" target="_blank">
+                <img src="assets/images/fb.svg" alt="Facebook page for Logie Web Services" class="social-icon">
+            </a>
+        </div>
+        <div class="footer-links">
+            <a href="privacy.html">privacy</a>
+            <span class="footer-link-separator">|</span>
+            <a href="terms.html">terms</a>
+        </div>
+    </footer>
+
+    <script src="assets/js/scripts.js"></script>
+    <script>
+        // Project data
+        const projects = [
+            {
+                id: 1,
+                title: 'Terminal Themed Portfolio Website',
+                description: 'Intended to be a portfolio in the form of a terminal with basic commands to view projects, skills etc. Built with React/Typescript.',
+                image: 'https://i.postimg.cc/RZY32NnX/firefox-Wm1-Pd-PRj-Vf.png',
+                category: 'web',
+                tags: ['TypeScript', 'React', 'Tailwind', 'Vite', 'Netlify', 'Open-Source'],
+                repoUrl: 'https://github.com/r3cla/TerminalPorfolio',
+                demoUrl: 'https://recfolio.netlify.app/'
+            },
+            {
+                id: 2,
+                title: 'BlueSky Text 2 Image Web App',
+                description: 'A simple web application that generates an image from given text for sharing on BlueSky.',
+                image: 'https://i.postimg.cc/1tGfgB7j/firefox-D8z4-D7y-IDn.png',
+                category: 'web',
+                tags: ['TypeScript', 'React', 'Tailwind', 'Vite', 'Open-Source'],
+                repoUrl: 'https://github.com/r3cla/bsky-txt2img',
+                demoUrl: 'https://r3cla.github.io/bsky-txt2img/'
+            },
+            {
+                id: 3,
+                title: 'Hub Tree Web App',
+                description: 'Quickly extracts file structures from GitHub repositories and displays them in a tree view. Allows copying the file structure and downloading as a zip file.',
+                image: 'https://i.postimg.cc/tTjgHPRt/firefox-x-Bc-FB5h-D8h.png',
+                category: 'web',
+                tags: ['TypeScript', 'React', 'Next.js', 'Lucide React', 'shadcn ui', 'Open-Source'],
+                repoUrl: 'https://github.com/r3cla/HubTree',
+                demoUrl: 'https://r3cla.github.io/HubTree/',
+            },
+            {
+                id: 4,
+                title: 'CivicCanvas Web Template',
+                description: 'A CSS3/HTML5 responsive web template. Created so that users with basic HTML knowledge can easily adapt it for their own needs.',
+                image: 'https://raw.githubusercontent.com/r3cla/civiccanvas/main/preview.png',
+                category: 'web',
+                tags: ['HTML', 'CSS', 'JavaScript', 'Template', 'Netlify', 'Open-Source'],
+                repoUrl: 'https://github.com/r3cla/civiccanvas',
+                demoUrl: 'https://civiccanvas.netlify.app/',
+            },
+            {
+                id: 5,
+                title: 'NetliForm - HTML Form Creator',
+                description: 'Create HTML forms with ease. Minimal code knowledge required. Export the form as HTML and use it in your projects. Pre-configured with Netlify attributes.',
+                image: 'https://i.postimg.cc/rsbXqXCX/firefox-fm-Uhp4-UCg-A.png',
+                category: 'web',
+                tags: ['TypeScript', 'React', 'Tailwind CSS'],
+                repoUrl: null,
+                demoUrl: 'https://r3cla.github.io/netli-form/',
+            },
+            {
+                id: 6,
+                title: 'Lennoxs Lawncare & Property Maintenance Website',
+                description: 'A business website for a local lawncare and property maintenance company.',
+                image: 'https://i.postimg.cc/j2B9G6tR/firefox-O1k-Vr2-In-P0.png',
+                category: 'web',
+                tags: ['HTML', 'CSS', 'JavaScript', 'Netlify'],
+                repoUrl: null,
+                demoUrl: 'https://www.lennoxlawncare.co.nz/',
+            }
+        ];
+
+        // Function to create project cards
+        function renderProjects() {
+            const projectsGrid = document.getElementById('projects-grid');
+
+            projects.forEach(project => {
+                const projectCard = document.createElement('div');
+                projectCard.className = 'project-card';
+
+                // Create image element
+                const image = document.createElement('img');
+                image.className = 'project-image';
+                image.src = project.image;
+                image.alt = project.title;
+                projectCard.appendChild(image);
+
+                // Create content container
+                const content = document.createElement('div');
+                content.className = 'project-content';
+
+                // Create title
+                const title = document.createElement('h2');
+                title.className = 'project-title';
+                title.textContent = project.title;
+                content.appendChild(title);
+
+                // Create description
+                const description = document.createElement('p');
+                description.className = 'project-description';
+                description.textContent = project.description;
+                content.appendChild(description);
+
+                // Create tags
+                const tagsContainer = document.createElement('div');
+                tagsContainer.className = 'project-tags';
+
+                project.tags.forEach(tag => {
+                    const tagElement = document.createElement('span');
+                    tagElement.className = 'project-tag';
+                    tagElement.textContent = tag;
+                    tagsContainer.appendChild(tagElement);
+                });
+
+                content.appendChild(tagsContainer);
+
+                // Create links
+                const linksContainer = document.createElement('div');
+                linksContainer.className = 'project-links';
+
+                // Demo link
+                if (project.demoUrl) {
+                    const demoLink = document.createElement('a');
+                    demoLink.className = 'project-link demo-link';
+                    demoLink.href = project.demoUrl;
+                    demoLink.target = '_blank';
+                    demoLink.textContent = 'View Demo';
+                    linksContainer.appendChild(demoLink);
+                }
+
+                // Repo link
+                if (project.repoUrl) {
+                    const repoLink = document.createElement('a');
+                    repoLink.className = 'project-link repo-link';
+                    repoLink.href = project.repoUrl;
+                    repoLink.target = '_blank';
+                    repoLink.textContent = 'Source Code';
+                    linksContainer.appendChild(repoLink);
+                }
+
+                content.appendChild(linksContainer);
+                projectCard.appendChild(content);
+                projectsGrid.appendChild(projectCard);
+            });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProjects();
+        });
+    </script>
+</body>
+
+</html>
