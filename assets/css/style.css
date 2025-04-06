@@ -171,14 +171,15 @@ nav {
    ====================== */
 .logo-container {
     display: flex;
+    justify-content: center;
     align-items: center;
+    padding: 0.5rem;
 }
 
 .logo {
     display: flex;
     align-items: baseline;
     text-decoration: none;
-    font-family: 'Sveningsson', monospace;
     transition: transform 0.3s ease;
 }
 
@@ -186,32 +187,87 @@ nav {
     transform: translateY(-1px);
 }
 
+.logo-text, .logo-accent, .logo-semicolon {
+    font-family: 'Consolas', monospace;
+}
+
 .logo-text {
     color: rgb(118, 160, 193);
     font-size: 1.5rem;
+    margin-right: 0.5rem;
+    text-shadow: 0 0 5px rgba(118, 160, 193, 0.8), 0 0 10px rgba(118, 160, 193, 0.6);
+    word-spacing: -0.3rem;
+    font-weight: 600;
+}
+
+.logo-text:hover {
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(118, 160, 193, 0.8), 0 0 10px rgba(118, 160, 193, 0.6);
     font-weight: 600;
 }
 
 .logo-accent {
     color: rgb(250, 216, 154);
-    font-size: 1.2rem;
-    margin-left: 0.5rem;
-    opacity: 0.9;
+    font-size: 1.5rem;
+    margin-left: 0.2rem;
+    word-spacing: -0.3rem;
+    text-shadow: 0 0 5px rgba(250, 216, 154, 0.8), 0 0 10px rgba(250, 216, 154, 0.6);
+}
+
+.logo-accent:hover {
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(250, 216, 154, 0.8), 0 0 10px rgba(250, 216, 154, 0.6);
+}
+.logo-accent:hover .logo-semicolon {
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(250, 216, 154, 0.8), 0 0 10px rgba(250, 216, 154, 0.6);
 }
 
 .logo-semicolon {
-    color: rgb(118, 160, 193);
+    color: rgba(118, 160, 193, 0.478);
     font-size: 1.5rem;
     margin-left: 0.2rem;
+    animation: blink 1.2s infinite;
 }
 
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    49% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    99% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 /* ======================
    6. Content Areas
    ====================== */
 .intro {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: rgb(118, 160, 193);
+    margin-bottom: 1rem;
+    margin-top: -4rem;
     line-height: 1.6;
+    text-align: center;
+    max-width: 800px;
+
+}
+
+.intro-header {
+    color: rgb(250, 216, 154);
+    font-size: 1.5rem;
+    margin-bottom: -2rem;
+    text-align: center;
+    font-weight: 600;
+    text-shadow: 0 0 5px rgba(118, 160, 193, 0.3), 0 0 10px rgba(118, 160, 193, 0.2);
 }
 
 .form-placeholder {
@@ -261,9 +317,10 @@ nav {
 .profile-image {
     width: 400px;
     height: 400px;
-    margin: 2rem auto;
+    margin: 0.5rem auto;
     object-fit: cover;
     display: block;
+    transition: transform 0.3s ease;
 }
 
 .form-help {
