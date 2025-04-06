@@ -23,10 +23,4 @@ document.addEventListener("DOMContentLoaded", function() {
     
     // Add a basic scroll listener to update canvas height
     window.addEventListener("scroll", updateCanvasHeight, { passive: true });
-    
-    // Remove the particle toggle UI since we don't need it anymore
-    const particleToggle = document.querySelector('.particle-toggle');
-    if (particleToggle) {
-        particleToggle.remove();
-    }
 });
