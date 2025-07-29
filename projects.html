@@ -5,255 +5,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
-        content="Portfolio of web development projects by Logie Web Services - showcasing custom websites, web applications and design work for clients in New Zealand and internationally.">
-    <meta name="keywords"
-        content="web developer portfolio, NZ web projects, web design examples, custom websites, web applications, responsive design, Wellington web developer, Auckland web services">
-    <meta name="author" content="Nathan Logie">
-    <meta name="robots" content="index, follow">
-    <meta name="language" content="English">
+        content="Nathan Addison's web development portfolio showcasing websites, web applications, and creative projects. View some of my work in web development and design.">
+
     <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Web Development Projects | Logie Web Services">
-    <meta property="og:site_name" content="Logie Web Services">
+    <meta property="og:title" content="Nathan Addison - Portfolio">
+    <meta property="og:site_name" content="Nathan Addison Portfolio">
     <meta property="og:description"
-        content="Portfolio of web development and design projects by Logie Web Services, serving clients in New Zealand and internationally.">
+        content="Explore Nathan Addison's web development portfolio featuring custom websites, web applications, and creative digital projects.">
     <meta property="og:image" content="https://www.logie.nz/assets/images/Nadd.png">
-    <meta property="og:image:alt" content="Logie Web Services Logo">
+    <meta property="og:image:alt" content="Nathan Addison Portfolio">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.logie.nz/projects.html">
+    <meta property="og:url" content="https://www.logie.nz/projects">
     <meta property="og:locale" content="en_NZ">
+
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Web Development Projects | Logie Web Services">
+    <meta name="twitter:title" content="Nathan Addison - Portfolio">
     <meta name="twitter:description"
-        content="Portfolio of web development and design projects by Logie Web Services, serving clients in New Zealand and internationally.">
+        content="Explore Nathan Addison's web development portfolio featuring custom websites, web applications, and creative digital projects.">
     <meta name="twitter:image" content="https://www.logie.nz/assets/images/Nadd.png">
-    <meta name="twitter:image:alt" content="Logie Web Services Logo">
+    <meta name="twitter:image:alt" content="Nathan Addison Portfolio">
+
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
     <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
-    <link rel="manifest" href="assets/site.webmanifest">
-    <link rel="canonical" href="https://www.logie.nz/projects.html">
-    <!-- Additional SEO Tags -->
-    <meta name="format-detection" content="telephone=no">
-    <meta name="google" content="notranslate">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Logie Web Services">
-    <meta name="application-name" content="Logie Web Services">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <!-- Title & Stylesheets -->
-    <title>Web Development Projects | Logie Web Services</title>
-    <link rel="stylesheet" href="assets/css/reset.css">
+
+    <link rel="canonical" href="https://www.logie.nz/projects">
+
+    <title>Nathan Addison - Portfolio</title>
     <link rel="stylesheet" href="assets/css/projects.css">
+
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Nathan Addison",
+  "jobTitle": "Web Developer",
+  "url": "https://www.logie.nz/projects",
+  "worksFor": {
+    "@type": "Organization",
+    "name": "Logie Web Services NZ",
+    "url": "https://www.logie.nz"
+  },
+  "knowsAbout": ["Web Development", "Website Design", "Software Development"],
+  "sameAs": [
+    "https://github.com/r3cla",
+    "https://www.facebook.com/logienz"
+  ]
+}
+</script>
 
 </head>
 
 <body>
-    <canvas id="backgroundCanvas"></canvas>
 
-    <nav>
-        <div class="nav-content">
-            <div class="logo-container">
-                <a href="index.html" class="logo">
-                    <span class="logo-text">Logie</span>
-                    <span class="logo-accent">Web Services</span>
-                    <span class="logo-semicolon">|</span>
-                </a>
-            </div>
-            <div class="nav-links">
-                <a href="https://form.jotform.com/243067662032856" class="nav-link">
-                    <span class="nav-link-text">free quote</span>
-                </a>
-            </div>
+    <div class="markdown-body">
+        <div class="logo">
+            <h1>Nathan Addison - Portfolio</h1>
+            <h2 id="go-back"><a href="/index.html">Go back to Logie.nz</a></h2>
         </div>
-    </nav>
 
-    <main>
-        <noscript>
-            <div class="js-warning">
-                This website works best with JavaScript enabled. Some features may be limited.
-            </div>
-        </noscript>
+        <blockquote>
+            <p>A collection of websites and projects I've created over the last few years.</p>
+        </blockquote>
 
-        <div class="projects-container">
-            <div class="projects-header">
-                <h1 class="projects-title">My Projects</h1>
-                <p class="projects-subtitle">
-                    Here's a showcase of some websites and web applications I've developed.
-                    Each project demonstrates different skills and technologies in web development.
-                </p>
-            </div>
+        <h2>Personal Projects</h2>
+        <ul>
+            <li><a href="https://github.com/r3cla/HubTree">HubTree</a> - A little project I worked on in my freetime
+                that fetches folder structures for public GitHub repos in text format with proper indenting.
+                <span class="language-badges">
+                    <span class="badge badge-react">React</span>
+                    <span class="badge badge-ts">TS</span>
+                </span>
+            </li>
+            <li><a href="https://github.com/r3cla/Variable-Auto-Clicker">Variable Auto Clicker</a> - A simple
+                auto-clicker program I made in C# that allows you to set custom intervals for clicking. Based on Garry's
+                Hood source code.
+                <span class="language-badges">
+                    <span class="badge badge-csharp">C#</span>
+                </span>
+            </li>
+        </ul>
 
-            <div class="projects-grid" id="projects-grid">
-                <!-- Projects will be dynamically loaded here -->
-            </div>
-        </div>
-    </main>
+        <h2>Websites</h2>
+        <ul>
+            <li><a href="https://www.lennoxlawncare.co.nz/">Lennox's Lawncare</a> - Website I made for a local lawncare
+                and property maintenance business.
+                <span class="language-badges">
+                    <span class="badge badge-js">JS</span>
+                    <span class="badge badge-css3">CSS3</span>
+                    <span class="badge badge-html5">HTML5</span>
+                </span>
+            </li>
+            <li><a href="https://www.cpmrentals.co.nz">Complete Property Management</a> - Made for a NZ-based
+                property management business with dynamic property listings.
+                <span class="language-badges">
+                    <span class="badge badge-js">JS</span>
+                    <span class="badge badge-css3">CSS3</span>
+                    <span class="badge badge-html5">HTML5</span>
+                    <span class="badge badge-palace">Palace API</span>
+                </span>
+            </li>
+            <li><a href="https://www.zankartrealm.nz/">ZANK ART REALM</a> - Helped code and design for a local
+                art and craft business. Hosted on Shopify.
+                <span class="badge badge-css3">CSS3</span>
+                <span class="badge badge-html5">HTML5</span>
+                <span class="badge badge-liquid">Liquid</span>
+            </li>
+            <li><a href="https://www.beescleandetailing.nz">Bees Clean Detailing</a> - A website I made for a local
+                vehicle detailing business with a basic booking system.
+                <span class="badge badge-js">JS</span>
+                <span class="badge badge-css3">CSS3</span>
+                <span class="badge badge-html5">HTML5</span>
+            </li>
+            <li><a href="https://github.com/r3cla/civiccanvas">CivicCanvas (HTML Template)</a> - A website template I
+                made, available open-source on my GitHub account.
+                <span class="badge badge-js">JS</span>
+                <span class="badge badge-css3">CSS3</span>
+                <span class="badge badge-html5">HTML5</span>
+            </li>
+        </ul>
 
-    <footer>
-        <div class="copyright">
-            © 2025. All rights reserved.
-        </div>
-        <div class="social-icons">
-            <a href="https://www.facebook.com/logienz/" target="_blank">
-                <img src="assets/images/fb.webp" alt="Facebook page for Logie Web Services" class="social-icon">
-            </a>
-        </div>
-        <div class="footer-links">
-            <a href="privacy.html">privacy</a>
-            <span class="footer-link-separator">|</span>
-            <a href="terms.html">terms</a>
-        </div>
-    </footer>
+        <h2>Experiments / Partially Complete Projects</h2>
+        <ul>
+            <li><a href="https://github.com/r3cla/ASCIIDungeonGen">ASCII Dungeon Generator</a> - Generates simple
+                dungeons for classic roguelite games in ASCII format.</li>
+            <li><a href="https://github.com/r3cla/bsky-txt2img">Txt-To-Img Generator</a> - Creates simple text posts in
+                image format catered for social media sharing.</li>
+            <li><a href="https://github.com/r3cla/TerminalPorfolio">Terminal Portfolio</a> - Intended to function as a
+                creative portfolio that imitates a computer terminal's interface. Developed using React.</li>
+            <li><a href="https://github.com/r3cla/lootfilter">Loot Filter</a> - A loot filter editor for Path of Exile
+                2. Deprecated and likely doesn't function anymore.</li>
+            <li><a href="https://github.com/r3cla/TextOcean">TextOcean</a> - A browser based text editor I worked on
+                briefly. It is in a very early stage of development, currently not being updated. The idea was to make a
+                self hosted, open-source alternative to Pastebin with the built in power of Monaco Editor for sharing
+                and backing up code snippets securely.</li>
+            <li><a href="https://github.com/r3cla/VideoSharingApp-Example">Video Sharing App (Android)</a> - A simple
+                video sharing app I made for my degree. It is not intended for production use. The code is available as
+                reference.</li>
+        </ul>
 
-    <script src="assets/js/scripts.js"></script>
-    <script>
-        // Project data
-        const projects = [
-            {
-                id: 1,
-                title: 'Terminal Themed Portfolio Website',
-                description: 'Intended to be a portfolio in the form of a terminal with basic commands to view projects, skills etc. Built with React/Typescript.',
-                image: 'https://i.postimg.cc/RVY5VnHX/terminalport-preview.webp',
-                category: 'web',
-                tags: ['TypeScript', 'React', 'Tailwind', 'Vite', 'Netlify', 'Open-Source'],
-                repoUrl: 'https://github.com/r3cla/TerminalPorfolio',
-                demoUrl: 'https://recfolio.netlify.app/'
-            },
-            {
-                id: 2,
-                title: 'Bees Auto Detailing Website',
-                description: 'A simple website for a local auto detailing business. Built with HTML/CSS/JavaScript.',
-                image: 'https://i.postimg.cc/T3W8yYjG/beesauto-preview.webp',
-                category: 'web',
-                tags: ['HTML', 'CSS', 'JavaScript', 'Netlify'],
-                repoUrl: null,
-                demoUrl: 'https://beesautodetailing.nz/'
-            },
-            {
-                id: 3,
-                title: 'Hub Tree Web App',
-                description: 'Quickly extracts file structures from GitHub repositories and displays them in a tree view. Allows copying the file structure and downloading as a zip file.',
-                image: 'https://i.postimg.cc/tTjgHPRt/firefox-x-Bc-FB5h-D8h.png',
-                category: 'web',
-                tags: ['TypeScript', 'React', 'Next.js', 'Lucide React', 'shadcn ui', 'Open-Source'],
-                repoUrl: 'https://github.com/r3cla/HubTree',
-                demoUrl: 'https://r3cla.github.io/HubTree/',
-            },
-            {
-                id: 4,
-                title: 'CivicCanvas Web Template',
-                description: 'A CSS3/HTML5 responsive web template. Created so that users with basic HTML knowledge can easily adapt it for their own needs.',
-                image: 'https://i.postimg.cc/SQDb3PN0/civiccanvas-preview.webp',
-                category: 'web',
-                tags: ['HTML', 'CSS', 'JavaScript', 'Template', 'Netlify', 'Open-Source'],
-                repoUrl: 'https://github.com/r3cla/civiccanvas',
-                demoUrl: 'https://civiccanvas.netlify.app/',
-            },
-            {
-                id: 5,
-                title: 'NetliForm - HTML Form Creator',
-                description: 'Create HTML forms with ease. Minimal code knowledge required. Export the form as HTML and use it in your projects. Pre-configured with Netlify attributes.',
-                image: 'https://i.postimg.cc/ZKnzSLCW/netliform-preview.webp',
-                category: 'web',
-                tags: ['TypeScript', 'React', 'Tailwind CSS'],
-                repoUrl: null,
-                demoUrl: 'https://r3cla.github.io/netli-form/',
-            },
-            {
-                id: 6,
-                title: 'Lennoxs Lawncare & Property Maintenance Website',
-                description: 'A business website for a local lawncare and property maintenance company.',
-                image: 'https://i.postimg.cc/1zxkDhMF/lennoxlawns-preview.webp',
-                category: 'web',
-                tags: ['HTML', 'CSS', 'JavaScript', 'Netlify'],
-                repoUrl: null,
-                demoUrl: 'https://www.lennoxlawncare.co.nz/',
-            }
-        ];
+    </div>
 
-        // Function to create project cards
-        function renderProjects() {
-            const projectsGrid = document.getElementById('projects-grid');
-
-            projects.forEach(project => {
-                const projectCard = document.createElement('div');
-                projectCard.className = 'project-card';
-
-                // Create image element
-                const image = document.createElement('img');
-                image.className = 'project-image';
-                image.src = project.image;
-                image.alt = project.title;
-                projectCard.appendChild(image);
-
-                // Create content container
-                const content = document.createElement('div');
-                content.className = 'project-content';
-
-                // Create title
-                const title = document.createElement('h2');
-                title.className = 'project-title';
-                title.textContent = project.title;
-                content.appendChild(title);
-
-                // Create description
-                const description = document.createElement('p');
-                description.className = 'project-description';
-                description.textContent = project.description;
-                content.appendChild(description);
-
-                // Create tags
-                const tagsContainer = document.createElement('div');
-                tagsContainer.className = 'project-tags';
-
-                project.tags.forEach(tag => {
-                    const tagElement = document.createElement('span');
-                    tagElement.className = 'project-tag';
-                    tagElement.textContent = tag;
-                    tagsContainer.appendChild(tagElement);
-                });
-
-                content.appendChild(tagsContainer);
-
-                // Create links
-                const linksContainer = document.createElement('div');
-                linksContainer.className = 'project-links';
-
-                // Demo link
-                if (project.demoUrl) {
-                    const demoLink = document.createElement('a');
-                    demoLink.className = 'project-link demo-link';
-                    demoLink.href = project.demoUrl;
-                    demoLink.target = '_blank';
-                    demoLink.textContent = 'View Demo';
-                    linksContainer.appendChild(demoLink);
-                }
-
-                // Repo link
-                if (project.repoUrl) {
-                    const repoLink = document.createElement('a');
-                    repoLink.className = 'project-link repo-link';
-                    repoLink.href = project.repoUrl;
-                    repoLink.target = '_blank';
-                    repoLink.textContent = 'Source Code';
-                    linksContainer.appendChild(repoLink);
-                }
-
-                content.appendChild(linksContainer);
-                projectCard.appendChild(content);
-                projectsGrid.appendChild(projectCard);
-            });
-        }
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', () => {
-            renderProjects();
-        });
-    </script>
 </body>
 
 </html>

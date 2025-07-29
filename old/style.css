@@ -252,11 +252,10 @@ nav {
 
 .intro-header {
     color: rgb(250, 216, 154);
-    font-size: 1.9rem;
-    margin-top: 5rem;
+    font-size: 1.5rem;
     margin-bottom: -2rem;
     text-align: center;
-    font-weight: 900;
+    font-weight: 600;
     text-shadow: 0 0 5px rgba(118, 160, 193, 0.3), 0 0 10px rgba(118, 160, 193, 0.2);
 }
 
@@ -305,9 +304,9 @@ nav {
 }
 
 .profile-image {
-    width: auto;
-    height: 475px;
-    margin: 0;
+    width: 400px;
+    height: 400px;
+    margin: 0.5rem auto;
     object-fit: cover;
     display: block;
     transition: transform 0.3s ease;
@@ -331,7 +330,7 @@ nav {
 }
 
 /* ======================
-   7. Blog Styles
+   Services Page Styles
    ====================== */
 
 

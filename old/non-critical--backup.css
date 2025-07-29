@@ -1,53 +1,34 @@
-/* ======================
-   Table of Contents (style.css)
-   ======================
-   1. Font Faces
-   2. Reset & Base Styles
-   3. Layout & Structure
-   4. Navigation
-   5. Logo Styles
-   6. Content Areas
-   7. Blog Styles
-   8. Footer
-   9. Components & Utilities
-   10. Mobile Optimizations
-*/
+/* Non-Critical CSS - Loaded Asynchronously */
 
-/* ======================
-   1. Font Faces
-   ====================== */
-   @font-face {
+/* Color Variables for Better Contrast */
+:root {
+    --primary-blue: #84b4da;    
+    --primary-blue-dark: rgb(89, 148, 197);
+    --primary-gold: #ffcf7a;   
+    --text-primary: #e8e8e8;      
+    --text-secondary: #c4c4c4;   
+    --background-dark: #1a1a1a;
+    --background-overlay: rgba(25, 25, 25, 0.4);
+}
+
+/* Font Face */
+@font-face {
     font-family: 'Roboto';
     src: url('../fonts/Roboto.ttf') format('truetype');
     font-display: swap;
 }
 
-/* ======================
-   2. Reset & Base Styles
-   ====================== */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', monospace;
+/* Enhanced Body Styles */
+body {
+    color: var(--text-primary);
 }
 
+/* Enhanced Interactions & Animations */
 img {
     pointer-events: none;
     -webkit-user-select: none;
     user-select: none;
     -webkit-touch-callout: none;
-}
-
-body {
-    background-color: #1a1a1a;
-    color: #d4d4d4;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow-x: hidden;
-    overflow-y: auto;
 }
 
 .js-warning {
@@ -63,70 +44,10 @@ body {
     font-size: 0.8rem;
 }
 
-/* ======================
-   3. Layout & Structure
-   ====================== */
-#backgroundCanvas {
-    position: fixed;
-    background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.8)), url('../images/hero.webp');
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background-size: cover;
-    opacity: 90%;
-    transition: opacity 0.5s ease;
-}
-
-main {
-    width: 100%;
-    max-width: 800px;
-    padding: 1rem 2rem;
-    text-align: center;
-    border-radius: 8px;
-    margin: 0 auto 0;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: relative;
-}
-
-/* ======================
-   4. Navigation
-   ====================== */
-nav {
-    width: 100%;
-    background-color: rgba(25, 25, 25, 0.4);
-    padding: 1.2rem 2rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.nav-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.nav-links {
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-}
-
+/* Enhanced Navigation Effects */
 .nav-link {
     position: relative;
-    color: rgb(250, 216, 154);
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 0.5rem 0;
+    color: var(--primary-gold);
     transition: color 0.3s ease;
 }
 
@@ -137,7 +58,7 @@ nav {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: rgb(118, 160, 193);
+    background-color: var(--primary-blue);
     transition: width 0.3s ease;
 }
 
@@ -155,20 +76,8 @@ nav {
     border-bottom: 2px solid currentColor;
 }
 
-/* ======================
-   5. Logo Styles
-   ====================== */
-.logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0.5rem;
-}
-
+/* Logo Animations */
 .logo {
-    display: flex;
-    align-items: baseline;
-    text-decoration: none;
     transition: transform 0.3s ease;
 }
 
@@ -181,85 +90,66 @@ nav {
 }
 
 .logo-text {
-    color: rgb(118, 160, 193);
-    font-size: 1.5rem;
-    margin-right: 0.5rem;
-    text-shadow: 0 0 5px rgba(118, 160, 193, 0.8), 0 0 10px rgba(118, 160, 193, 0.6);
+    color: var(--primary-blue);
+    text-shadow: 0 0 5px rgba(139, 180, 212, 0.8), 0 0 10px rgba(139, 180, 212, 0.6);
     word-spacing: -0.3rem;
-    font-weight: 600;
 }
 
 .logo-text:hover {
     color: #ffffff;
-    text-shadow: 0 0 5px rgba(118, 160, 193, 0.8), 0 0 10px rgba(118, 160, 193, 0.6);
-    font-weight: 600;
+    text-shadow: 0 0 5px rgba(139, 180, 212, 0.8), 0 0 10px rgba(139, 180, 212, 0.6);
 }
 
 .logo-accent {
-    color: rgb(250, 216, 154);
-    font-size: 1.5rem;
-    margin-left: 0.2rem;
+    color: var(--primary-gold);
     word-spacing: -0.3rem;
-    text-shadow: 0 0 5px rgba(250, 216, 154, 0.8), 0 0 10px rgba(250, 216, 154, 0.6);
+    text-shadow: 0 0 5px rgba(255, 207, 122, 0.8), 0 0 10px rgba(255, 207, 122, 0.6);
 }
 
 .logo-accent:hover {
     color: #ffffff;
-    text-shadow: 0 0 5px rgba(250, 216, 154, 0.8), 0 0 10px rgba(250, 216, 154, 0.6);
+    text-shadow: 0 0 5px rgba(255, 207, 122, 0.8), 0 0 10px rgba(255, 207, 122, 0.6);
 }
+
 .logo-accent:hover .logo-semicolon {
     color: #ffffff;
-    text-shadow: 0 0 5px rgba(250, 216, 154, 0.8), 0 0 10px rgba(250, 216, 154, 0.6);
+    text-shadow: 0 0 5px rgba(255, 207, 122, 0.8), 0 0 10px rgba(255, 207, 122, 0.6);
 }
 
 .logo-semicolon {
-    color: rgba(118, 160, 193, 0.478);
-    font-size: 1.5rem;
-    margin-left: 0.2rem;
+    color: rgba(139, 180, 212, 0.6);
     animation: blink 1.2s infinite;
 }
 
 @keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    49% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-    }
-    99% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-/* ======================
-   6. Content Areas
-   ====================== */
-.intro {
-    font-size: 1.1rem;
-    color: rgb(118, 160, 193);
-    margin-bottom: 1rem;
-    margin-top: -4rem;
-    line-height: 1.6;
-    text-align: center;
-    max-width: 800px;
-
+    0% { opacity: 1; }
+    49% { opacity: 1; }
+    50% { opacity: 0; }
+    99% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
+/* Enhanced Background */
+#backgroundCanvas {
+    transition: opacity 0.5s ease;
+}
+
+/* Enhanced Profile Image */
+.profile-image {
+    transition: transform 0.3s ease;
+}
+
+/* Enhanced Content Styles */
 .intro-header {
-    color: rgb(250, 216, 154);
-    font-size: 1.9rem;
-    margin-top: 5rem;
-    margin-bottom: -2rem;
-    text-align: center;
-    font-weight: 900;
-    text-shadow: 0 0 5px rgba(118, 160, 193, 0.3), 0 0 10px rgba(118, 160, 193, 0.2);
+    color: var(--primary-gold);
+    text-shadow: 0 0 5px rgba(139, 180, 212, 0.3), 0 0 10px rgba(139, 180, 212, 0.2);
 }
 
+.intro {
+    color: var(--primary-blue);
+}
+
+/* Additional Content Styles */
 .form-placeholder {
     max-height: 800px;
     width: 100%;
@@ -271,7 +161,7 @@ nav {
 }
 
 .privacy-title {
-    color: rgb(118, 160, 193);
+    color: var(--primary-blue);
     font-size: 2.5rem;
     margin: 1rem 0 2rem;
     text-align: center;
@@ -287,7 +177,7 @@ nav {
 }
 
 .privacy-text {
-    color: #d4d4d4;
+    color: var(--text-primary);
     line-height: 1.6;
     font-size: 0.9rem;
     margin-bottom: 1.5rem;
@@ -304,22 +194,13 @@ nav {
     border-radius: 15px;
 }
 
-.profile-image {
-    width: auto;
-    height: 475px;
-    margin: 0;
-    object-fit: cover;
-    display: block;
-    transition: transform 0.3s ease;
-}
-
 .form-help {
     margin: 20px 0;
     font-size: 0.95rem;
 }
 
 .form-help a {
-    color: #76A0C1;
+    color: var(--primary-blue);
     text-decoration: underline;
     font-weight: 500;
     padding: 2px 4px;
@@ -327,17 +208,10 @@ nav {
 }
 
 .form-help a:hover {
-    color: #5888b0;
+    color: #a8c7e0;
 }
 
-/* ======================
-   7. Blog Styles
-   ====================== */
-
-
-/* ======================
-   8. Footer
-   ====================== */
+/* Footer */
 footer {
     position: relative;
     bottom: 0;
@@ -360,7 +234,7 @@ footer {
 }
 
 .copyright {
-    color: #b3b3b3;
+    color: var(--text-secondary);
 }
 
 .social-icons {
@@ -389,10 +263,10 @@ footer {
 
 .footer-links a {
     position: relative;
-    color: rgb(250, 216, 154);
+    color: var(--primary-gold);
     text-decoration: none;
     transition: color 0.3s ease;
-    padding: 0.3rem 0; /* Smaller padding than nav links */
+    padding: 0.3rem 0;
 }
 
 .footer-links a::after {
@@ -402,7 +276,7 @@ footer {
     height: 2px;
     bottom: 0;
     left: 0;
-    background-color: rgb(118, 160, 193);
+    background-color: var(--primary-blue);
     transition: width 0.3s ease;
 }
 
@@ -414,40 +288,27 @@ footer {
     width: 100%;
 }
 
-/* ======================
-   9. Components & Utilities
-   ====================== */
-
-/* Hero Button */
+/* Components & Utilities */
 .learn-more-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #76A0C1;
+    background-color: var(--primary-blue-dark);
     color: white;
     text-decoration: none;
-    border-radius: 12px;
+    border-radius: 10px;
     font-weight: 500;
 }
 
 .learn-more-button:hover {
     background-color: rgba(255, 255, 255, 0.95);
-    color: #76A0C1;
+    color: var(--primary-blue-dark);
     font-weight: bold;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     transform: translateY(-2px);
     transition: transform 0.2s ease, background-color 0.4s ease;
 }
 
-
-/*----------------------------*/
-/*                            */
-/*                            */
-/*  10. Mobile Optimizations  */
-/*                            */
-/*                            */
-/*----------------------------*/
-
-/* Height-based Adjustments */
+/* Mobile Optimizations */
 @media (max-height: 800px) {
     .profile-image {
         width: 300px;
@@ -456,7 +317,6 @@ footer {
     }
 }
 
-/* Tablet & Small Screens */
 @media (max-width: 768px) {
     nav {
         padding: 0.5rem 1rem;
@@ -512,7 +372,6 @@ footer {
     }
 }
 
-/* Small Tablets */
 @media (max-width: 600px) {
     .nav-links {
         flex-wrap: wrap;
@@ -542,7 +401,7 @@ footer {
     }
     
     .footer-link-separator {
-        display: none; /* Remove separators on small screens */
+        display: none;
     }
     
     .intro {
@@ -562,7 +421,6 @@ footer {
     }
 }
 
-/* Mobile Phones */
 @media (max-width: 480px) {
     body {
         padding: 0;
@@ -626,7 +484,6 @@ footer {
     }
 }
 
-/* Large Screens */
 @media (min-width: 1200px) {
     main {
         max-width: 1000px;
@@ -647,23 +504,14 @@ footer {
     .nav-link {
         font-size: 1.1rem;
     }
-}  
+}
 
-/*---------------------*/
-/*                     */
-/*                     */
-/*  11. Accessibility  */
-/*                     */
-/*                     */
-/*---------------------*/
-
-/* Focus state improvements */
+/* Accessibility */
 a:focus, button:focus, input:focus, textarea:focus, select:focus {
-    outline: 2px solid rgb(140, 180, 210);
+    outline: 2px solid #a8c7e0;
     outline-offset: 2px;
 }
 
-/* Screen reader only content */
 .sr-only {
     position: absolute;
     width: 1px;
@@ -676,14 +524,175 @@ a:focus, button:focus, input:focus, textarea:focus, select:focus {
     border: 0;
 }
 
-/* Make sure text remains visible during webfont load */
 .font-display {
     font-display: swap;
 }
 
 
+/* Services Page Styles */
+.services-title {
+    color: var(--primary-gold);
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+    font-weight: 600;
+}
 
-/* ======================
-   End of CSS
-   ====================== */
-/* End of style.css */
+.services-intro {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    text-align: center;
+}
+
+.services-intro p {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.service-card {
+    background-color: rgba(45, 45, 45, 0.7);
+    border-radius: 12px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.service-icon {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.service-title {
+    color: var(--primary-blue);
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.service-description {
+    color: var(--text-primary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+}
+
+.service-features li {
+    color: var(--text-secondary);
+    padding: 0.3rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.service-features li::before {
+    content: '✓';
+    color: var(--primary-gold);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}
+
+.services-cta {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    margin-top: 2rem;
+}
+
+.cta-title {
+    color: var(--primary-gold);
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.cta-description {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: var(--primary-blue);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: rgba(255, 255, 255, 0.95);
+    color: var(--primary-blue);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Mobile optimizations for services */
+@media (max-width: 768px) {
+    .services-title {
+        font-size: 2rem;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .service-card {
+        padding: 1.5rem;
+    }
+    
+    .services-cta {
+        padding: 2rem 1rem;
+    }
+    
+    .cta-title {
+        font-size: 1.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-title {
+        font-size: 1.6rem;
+    }
+    
+    .service-card {
+        padding: 1rem;
+    }
+    
+    .service-icon {
+        font-size: 2.5rem;
+    }
+    
+    .service-title {
+        font-size: 1.2rem;
+    }
+}
+
+/* End of non-critical.css */
