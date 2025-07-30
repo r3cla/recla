@@ -14,6 +14,19 @@
 */
 
 /* ======================
+   0. Global Variables
+   ====================== */
+:root {
+    --pri: #76A0C1; /* Primary color */
+    --pri-dark: #5888b0; /* Darker primary color */
+    --sec: #FAD89A; /* Secondary color */
+    --bg: #1a1a1a; /* Background color */
+    --text: #d4d4d4; /* Text color */
+    --accent: rgba(118, 160, 193, 0.8); /* Accent color */
+
+}
+
+/* ======================
    1. Font Faces
    ====================== */
    @font-face {
@@ -422,20 +435,22 @@ footer {
 .learn-more-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #76A0C1;
-    color: white;
+    font-size: 1.1rem;
+    background-color: var(--pri-dark);
+    color: var(--text);
     text-decoration: none;
-    border-radius: 12px;
-    font-weight: 500;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-top: 1rem;
 }
 
 .learn-more-button:hover {
-    background-color: rgba(255, 255, 255, 0.95);
-    color: #76A0C1;
-    font-weight: bold;
+    background-color: var(--accent);
+    color: var(--sec);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-    transform: translateY(-2px);
-    transition: transform 0.2s ease, background-color 0.4s ease;
+    border-radius: 15px;
+    transform: translateY(-1.5px);
+    transition: transform 0.2s ease, background-color 0.4s ease, border-radius 0.5s ease;
 }
 
 
