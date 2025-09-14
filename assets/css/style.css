@@ -310,6 +310,16 @@ nav {
     margin-bottom: 1.5rem;
 }
 
+.privacy-link a {
+    color: #007bff; /* Blue color - change to your preference */
+    text-decoration: underline;
+}
+
+.privacy-link:hover a {
+    color: #0056b3; /* Darker blue on hover */
+    text-decoration: none;
+}
+
 .contact-info {
     margin-top: 2rem;
     padding: 0.8rem;
@@ -663,6 +673,29 @@ footer {
         font-size: 1.1rem;
     }
 }  
+
+/* Desktop and tablet - show embedded PDF */
+@media screen and (min-width: 768px) {
+    .pdf-embed-wrapper {
+        display: block;
+    }
+    .mobile-download-notice {
+        display: none;
+    }
+}
+
+/* Mobile - hide embedded PDF, show download link */
+@media screen and (max-width: 767px) {
+    .pdf-embed-wrapper {
+        display: none;
+    }
+    .mobile-download-notice {
+        display: block;
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
+    }
+}
 
 /*---------------------*/
 /*                     */
