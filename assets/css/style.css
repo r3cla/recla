@@ -674,29 +674,6 @@ footer {
     }
 }  
 
-/* Desktop and tablet - show embedded PDF */
-@media screen and (min-width: 768px) {
-    .pdf-embed-wrapper {
-        display: block;
-    }
-    .mobile-download-notice {
-        display: none;
-    }
-}
-
-/* Mobile - hide embedded PDF, show download link */
-@media screen and (max-width: 767px) {
-    .pdf-embed-wrapper {
-        display: none;
-    }
-    .mobile-download-notice {
-        display: block;
-        padding: 20px;
-        border-radius: 5px;
-        text-align: center;
-    }
-}
-
 /*---------------------*/
 /*                     */
 /*                     */
