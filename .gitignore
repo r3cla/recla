@@ -2,9 +2,6 @@ node_modules/
 package-lock.json
 .idea/
 .vscode/
-/build
-/dist
-/.netlify
 .env
 .env.local
 .env.development.local
@@ -13,6 +10,4 @@ package-lock.json
 npm-debug.log*
 logs/
 *.log
-.github/copilot-instructions.md
-COLOR_ENHANCEMENT_SUMMARY.md
-MODERNIZATION_SUMMARY.md
+/.github
