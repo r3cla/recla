@@ -34,7 +34,7 @@
     <link rel="canonical" href="https://www.logie.nz/projects">
 
     <title>Nathan Addison - Portfolio</title>
-    <link rel="stylesheet" href="assets/css/projects.css">
+    <link rel="stylesheet" href="assets/css/style.css">
 
     <script type="application/ld+json">
 {
@@ -60,109 +60,200 @@
 
 <body>
 
-    <div class="markdown-body">
-        <div class="logo">
-            <h1>Nathan Addison - Portfolio</h1>
-            <h2 id="go-back"><a href="/index.html">Go back to Logie.nz</a></h2>
+    <canvas id="backgroundCanvas"></canvas>
+
+    <nav>
+        <div class="nav-content">
+            <div class="logo-container">
+                <a class='logo' href='/'>
+                    <span class="logo-text">Logie</span>
+                    <span class="logo-accent">Web Services</span>
+                    <span class="logo-semicolon">|</span>
+                </a>
+            </div>
+            <div class="nav-links">
+                <a href="https://form.jotform.com/243067662032856" class="nav-link">
+                    <span class="nav-link-text">Free Quote</span>
+                </a>
+                <a class='nav-link active' href='/projects.html'>
+                    <span class="nav-link-text">Portfolio</span>
+                </a>
+                <a class='nav-link' href='/faq.html'>
+                    <span class="nav-link-text">FAQ</span>
+                </a>
+            </div>
         </div>
+    </nav>
 
-        <blockquote>
-            <p>A collection of websites and projects I've created over the last few years.</p>
-        </blockquote>
+    <main>
+        <h1 class="intro-header">Portfolio & Projects</h1>
+        
+        <section class="intro-section">
+            <p class="intro">
+                A collection of websites and projects I've created over the last few years. From client work to personal experiments, 
+                each project represents a unique challenge and learning opportunity in web development.
+            </p>
+        </section>
 
-        <h2>Personal Projects</h2>
-        <ul>
-            <li><a href="https://github.com/r3cla/HubTree">HubTree</a> - Fetches folder structures for public repos in
-                text format with proper indenting.
-                <span class="language-badges">
-                    <span class="badge badge-react">React</span>
-                    <span class="badge badge-ts">TS</span>
-                </span>
-            </li>
-            <li><a href="https://github.com/r3cla/Variable-Auto-Clicker">Variable Auto Clicker</a> - Auto-clicker
-                program made in C# that allows you to set custom intervals for clicking. Based on Garry's
-                Hood source code.
-                <span class="language-badges">
-                    <span class="badge badge-csharp">C#</span>
-                </span>
-            </li>
-        </ul>
+        <section class="portfolio-section glass-card">
+            <h2 class="section-title">Personal Projects</h2>
+            <ul class="project-list">
+                <li class="project-item">
+                    <a href="https://github.com/r3cla/HubTree" class="project-link">HubTree</a>
+                    <p class="project-description">Fetches folder structures for public repos in text format with proper indenting.</p>
+                    <div class="tech-badges">
+                        <span class="badge badge-react">React</span>
+                        <span class="badge badge-ts">TypeScript</span>
+                    </div>
+                </li>
+                <li class="project-item">
+                    <a href="https://github.com/r3cla/Variable-Auto-Clicker" class="project-link">Variable Auto Clicker</a>
+                    <p class="project-description">Auto-clicker program made in C# that allows you to set custom intervals for clicking. Based on Garry's Hood source code.</p>
+                    <div class="tech-badges">
+                        <span class="badge badge-csharp">C#</span>
+                    </div>
+                </li>
+            </ul>
+        </section>
 
-        <h2>Websites</h2>
-        <ul>
-            <li><a href="https://www.lennoxlawncare.co.nz/">Lennox's Lawncare</a> - Website I made for a Taranaki-based
-                lawncare
-                and property maintenance business.
-                <span class="language-badges">
-                    <span class="badge badge-js">JS</span>
-                    <span class="badge badge-css3">CSS3</span>
-                    <span class="badge badge-html5">HTML5</span>
-                </span>
-            </li>
-            <li><a href="https://www.cpmrentals.co.nz">Complete Property Management</a> - Made for a Waikato-based
-                property management business with dynamic property listings utilizing Palace API and Netlify Functions.
-                <span class="language-badges">
-                    <span class="badge badge-js">JS</span>
-                    <span class="badge badge-css3">CSS3</span>
-                    <span class="badge badge-html5">HTML5</span>
-                    <span class="badge badge-palace">Palace API</span>
-                </span>
-            </li>
-            <li><a href="https://www.gopivotal.nz">Pivotal Property Solutions</a> - Website I made for a Hamilton-based
-                fencing and
-                landscaping business.
-                <span class="language-badges">
-                    <span class="badge badge-js">JS</span>
-                    <span class="badge badge-css3">CSS3</span>
-                    <span class="badge badge-html5">HTML5</span>
-                </span>
-            </li>
-            <li><a href="https://www.zankartrealm.nz/">ZANK ART REALM</a> - Helped code and design for a local
-                art and craft business. Hosted on Shopify.
-                <span class="badge badge-css3">CSS3</span>
-                <span class="badge badge-html5">HTML5</span>
-                <span class="badge badge-liquid">Liquid</span>
-            </li>
-            <li><a href="https://www.beescleandetailing.nz">Bees Clean Detailing</a> - A website I made for a
-                Paeroa-based
-                vehicle detailing business with a basic booking system.
-                <span class="badge badge-js">JS</span>
-                <span class="badge badge-css3">CSS3</span>
-                <span class="badge badge-html5">HTML5</span>
-            </li>
-            <li><a href="#">Wanganui RSA Trust</a> - Currently working on a new website for the Wanganui RSA Trust.
-                <span class="badge badge-js">JS</span>
-                <span class="badge badge-css3">CSS3</span>
-                <span class="badge badge-html5">HTML5</span>
-            </li>
-            <li><a href="https://github.com/r3cla/civiccanvas">CivicCanvas (HTML Template)</a> - Website template I
-                made, available open-source on my GitHub account.
-                <span class="badge badge-js">JS</span>
-                <span class="badge badge-css3">CSS3</span>
-                <span class="badge badge-html5">HTML5</span>
-            </li>
-        </ul>
+        <section class="portfolio-section glass-card">
+            <h2 class="section-title">Client Websites</h2>
+            <ul class="project-list">
+                <li class="project-item">
+                    <a href="https://www.lennoxlawncare.co.nz/" class="project-link">Lennox's Lawncare</a>
+                    <p class="project-description">Website I made for a Taranaki-based lawncare and property maintenance business.</p>
+                    <div class="tech-badges">
+                        <span class="badge badge-js">JavaScript</span>
+                        <span class="badge badge-css3">CSS3</span>
+                        <span class="badge badge-html5">HTML5</span>
+                    </div>
+                </li>
+                <li class="project-item">
+                    <a href="https://www.cpmrentals.co.nz" class="project-link">Complete Property Management</a>
+                    <p class="project-description">Made for a Waikato-based property management business with dynamic property listings utilizing Palace API and Netlify Functions.</p>
+                    <div class="tech-badges">
+                        <span class="badge badge-js">JavaScript</span>
+                        <span class="badge badge-css3">CSS3</span>
+                        <span class="badge badge-html5">HTML5</span>
+                        <span class="badge badge-api">Palace API</span>
+                    </div>
+                </li>
+                <li class="project-item">
+                    <a href="https://www.gopivotal.nz" class="project-link">Pivotal Property Solutions</a>
+                    <p class="project-description">Website I made for a Hamilton-based fencing and landscaping business.</p>
+                    <div class="tech-badges">
+                        <span class="badge badge-js">JavaScript</span>
+                        <span class="badge badge-css3">CSS3</span>
+                        <span class="badge badge-html5">HTML5</span>
+                    </div>
+                </li>
+                <li class="project-item">
+                    <a href="https://www.zankartrealm.nz/" class="project-link">ZANK ART REALM</a>
+                    <p class="project-description">Helped code and design for a local art and craft business. Hosted on Shopify.</p>
+                    <div class="tech-badges">
+                        <span class="badge badge-css3">CSS3</span>
+                        <span class="badge badge-html5">HTML5</span>
+                        <span class="badge badge-liquid">Liquid</span>
+                    </div>
+                </li>
+                <li class="project-item">
+                    <a href="https://www.beescleandetailing.nz" class="project-link">Bees Clean Detailing</a>
+                    <p class="project-description">A website I made for a Paeroa-based vehicle detailing business with a basic booking system.</p>
+                    <div class="tech-badges">
+                        <span class="badge badge-js">JavaScript</span>
+                        <span class="badge badge-css3">CSS3</span>
+                        <span class="badge badge-html5">HTML5</span>
+                    </div>
+                </li>
+                <li class="project-item">
+                    <span class="project-link in-progress">Wanganui RSA Trust</span>
+                    <p class="project-description">Currently working on a new website for the Wanganui RSA Trust.</p>
+                    <div class="tech-badges">
+                        <span class="badge badge-js">JavaScript</span>
+                        <span class="badge badge-css3">CSS3</span>
+                        <span class="badge badge-html5">HTML5</span>
+                        <span class="badge badge-wip">In Progress</span>
+                    </div>
+                </li>
+                <li class="project-item">
+                    <a href="https://github.com/r3cla/civiccanvas" class="project-link">CivicCanvas (HTML Template)</a>
+                    <p class="project-description">Website template I made, available open-source on my GitHub account.</p>
+                    <div class="tech-badges">
+                        <span class="badge badge-js">JavaScript</span>
+                        <span class="badge badge-css3">CSS3</span>
+                        <span class="badge badge-html5">HTML5</span>
+                    </div>
+                </li>
+            </ul>
+        </section>
 
-        <h2>Other Projects</h2>
-        <ul>
-            <li><a href="https://github.com/r3cla/ASCIIDungeonGen">ASCII Dungeon Generator</a> - Generates simple
-                dungeons for classic roguelite games in ASCII format.</li>
-            <li><a href="https://github.com/r3cla/bsky-txt2img">Txt-To-Img Generator</a> - Creates simple text posts in
-                image format catered for social media sharing.</li>
-            <li><a href="https://github.com/r3cla/TerminalPorfolio">Terminal Portfolio</a> - Creative portfolio that imitates a computer terminal's interface. Developed using React.</li>
-            <li><a href="https://github.com/r3cla/lootfilter">Loot Filter</a> - Loot filter editor for Path of Exile
-                2. Deprecated.</li>
-            <li><a href="https://github.com/r3cla/TextOcean">TextOcean</a> - A browser based text editor. It is in a very early stage of development, currently not being updated. The idea was to make a
-                self hosted, open-source alternative to Pastebin with the built in power of Monaco Editor for sharing
-                and backing up code snippets securely.</li>
-            <li><a href="https://github.com/r3cla/VideoSharingApp-Example">Video Sharing App (Android)</a> - A simple
-                video sharing app I made for my degree. It is not intended for production use. The code is available as
-                reference.</li>
-            <li><a href="https://github.com/r3cla/jotform-defer-load">Jotform Defer Loader</a> - A small script
-                that defers loading of Jotform forms until they are in view, improving page load times.</li>
-        </ul>
+        <section class="portfolio-section glass-card">
+            <h2 class="section-title">Other Projects</h2>
+            <ul class="project-list">
+                <li class="project-item">
+                    <a href="https://github.com/r3cla/ASCIIDungeonGen" class="project-link">ASCII Dungeon Generator</a>
+                    <p class="project-description">Generates simple dungeons for classic roguelite games in ASCII format.</p>
+                </li>
+                <li class="project-item">
+                    <a href="https://github.com/r3cla/bsky-txt2img" class="project-link">Txt-To-Img Generator</a>
+                    <p class="project-description">Creates simple text posts in image format catered for social media sharing.</p>
+                </li>
+                <li class="project-item">
+                    <a href="https://github.com/r3cla/TerminalPorfolio" class="project-link">Terminal Portfolio</a>
+                    <p class="project-description">Creative portfolio that imitates a computer terminal's interface. Developed using React.</p>
+                </li>
+                <li class="project-item">
+                    <a href="https://github.com/r3cla/lootfilter" class="project-link">Loot Filter</a>
+                    <p class="project-description">Loot filter editor for Path of Exile 2. Deprecated.</p>
+                </li>
+                <li class="project-item">
+                    <a href="https://github.com/r3cla/TextOcean" class="project-link">TextOcean</a>
+                    <p class="project-description">A browser based text editor. It is in a very early stage of development, currently not being updated. The idea was to make a self hosted, open-source alternative to Pastebin with the built in power of Monaco Editor for sharing and backing up code snippets securely.</p>
+                </li>
+                <li class="project-item">
+                    <a href="https://github.com/r3cla/VideoSharingApp-Example" class="project-link">Video Sharing App (Android)</a>
+                    <p class="project-description">A simple video sharing app I made for my degree. It is not intended for production use. The code is available as reference.</p>
+                </li>
+                <li class="project-item">
+                    <a href="https://github.com/r3cla/jotform-defer-load" class="project-link">Jotform Defer Loader</a>
+                    <p class="project-description">A small script that defers loading of Jotform forms until they are in view, improving page load times.</p>
+                </li>
+            </ul>
+        </section>
 
-    </div>
+        <section class="intro-section">
+            <p class="intro">
+                Interested in working together? Let's create something amazing for your business.
+            </p>
+            <a href="https://form.jotform.com/243067662032856" class="learn-more-button">Get a Free Quote</a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="copyright">
+            © 2025. All rights reserved.
+        </div>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/logienz/" target="_blank" rel="noopener noreferrer">
+                <img src="assets/images/fb.webp" alt="Facebook page for Logie Web Services" class="social-icon">
+            </a>
+        </div>
+        <div class="footer-links">
+            <a href='/privacy.html'>Privacy</a>
+        </div>
+    </footer>
+
+    <script src="assets/js/scripts.js"></script>
+    <script defer
+        src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+        data-cf-beacon='{"rayId":"935247d1986ad9ab","version":"2025.4.0-1-g37f21b1","r":1,"token":"7a5bef7770f8486190d6527a9db925ad","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}'
+        crossorigin="anonymous"></script>
+    <script defer
+        src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+        data-cf-beacon='{"rayId":"966a44c01ad7d9ab","version":"2025.7.0","r":1,"token":"7a5bef7770f8486190d6527a9db925ad","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}'
+        crossorigin="anonymous"></script>
 
 </body>
 

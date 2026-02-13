@@ -1,0 +1,11 @@
+# Logie Web Services - Robots.txt
+User-agent: *
+Allow: /
+
+# Disallow test and development files
+Disallow: /test-colors.html
+Disallow: /old/
+Disallow: /resources/
+
+# Sitemap location
+Sitemap: https://www.logie.nz/sitemap.xml
