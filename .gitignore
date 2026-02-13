@@ -14,3 +14,5 @@ npm-debug.log*
 logs/
 *.log
 .github/copilot-instructions.md
+COLOR_ENHANCEMENT_SUMMARY.md
+MODERNIZATION_SUMMARY.md
