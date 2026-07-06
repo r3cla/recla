@@ -363,34 +363,6 @@
     </footer>
 
     <script src="assets/js/scripts.js"></script>
-    <script>
-        // FAQ Collapsible functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const faqQuestions = document.querySelectorAll('.faq-question');
-            
-            faqQuestions.forEach(question => {
-                question.addEventListener('click', function() {
-                    const isExpanded = this.getAttribute('aria-expanded') === 'true';
-                    const answer = this.nextElementSibling;
-                    
-                    // Toggle current item
-                    this.setAttribute('aria-expanded', !isExpanded);
-                    this.classList.toggle('active');
-                    
-                    if (!isExpanded) {
-                        answer.style.maxHeight = answer.scrollHeight + 'px';
-                    } else {
-                        answer.style.maxHeight = '0';
-                    }
-                });
-            });
-        });
-    </script>
-    <script defer
-        src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
-        integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
-        data-cf-beacon='{"rayId":"935247d1986ad9ab","version":"2025.4.0-1-g37f21b1","r":1,"token":"7a5bef7770f8486190d6527a9db925ad","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}'
-        crossorigin="anonymous"></script>
     <script defer
         src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
         integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="

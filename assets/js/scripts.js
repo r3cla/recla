@@ -1,26 +1,30 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Get canvas element
+    // Canvas background sizing
     const canvas = document.getElementById("backgroundCanvas");
-    if (!canvas) return; // Safety check
-    
-    // Set initial dimensions
-    canvas.width = window.innerWidth;
-    canvas.height = Math.max(window.innerHeight, document.body.scrollHeight);
-    
-    // Update canvas size on window resize
-    window.addEventListener("resize", () => {
+    if (canvas) {
         canvas.width = window.innerWidth;
         canvas.height = Math.max(window.innerHeight, document.body.scrollHeight);
-    });
-    
-    // Simple function to update canvas height when page content changes
-    function updateCanvasHeight() {
-        const newHeight = Math.max(window.innerHeight, document.body.scrollHeight);
-        if (canvas.height !== newHeight) {
-            canvas.height = newHeight;
-        }
+
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = Math.max(window.innerHeight, document.body.scrollHeight);
+        });
+
+        window.addEventListener("scroll", () => {
+            const newHeight = Math.max(window.innerHeight, document.body.scrollHeight);
+            if (canvas.height !== newHeight) canvas.height = newHeight;
+        }, { passive: true });
     }
-    
-    // Add a basic scroll listener to update canvas height
-    window.addEventListener("scroll", updateCanvasHeight, { passive: true });
+
+    // FAQ accordion
+    const faqQuestions = document.querySelectorAll(".faq-question");
+    faqQuestions.forEach(question => {
+        question.addEventListener("click", function() {
+            const isExpanded = this.getAttribute("aria-expanded") === "true";
+            const answer = this.nextElementSibling;
+            this.setAttribute("aria-expanded", !isExpanded);
+            this.classList.toggle("active");
+            answer.style.maxHeight = isExpanded ? "0" : answer.scrollHeight + "px";
+        });
+    });
 });
