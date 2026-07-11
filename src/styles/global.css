@@ -906,6 +906,12 @@ nav.nav {
     border-color: rgba(165, 204, 232, 0.3);
 }
 
+.badge-wordpress {
+    background: rgba(33, 117, 155, 0.15);
+    color: #4d9fc4;
+    border-color: rgba(33, 117, 155, 0.3);
+}
+
 .badge-wip {
     background: rgba(242, 196, 100, 0.15);
     color: var(--tertiary-text);
