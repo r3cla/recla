@@ -1,0 +1,35 @@
+---
+export interface Badge {
+    cls: string;
+    label: string;
+}
+
+export interface Props {
+    title: string;
+    href?: string;
+    description: string;
+    badges?: Badge[];
+}
+
+const { title, href, description, badges = [] } = Astro.props;
+---
+
+<li class="project-item">
+    <h3 class="project-title">
+        <span class="dot">&gt;</span>{" "}
+        {href ? (
+            <a href={href} class="project-link" target="_blank" rel="noopener noreferrer" data-typewriter data-text={title}>{title}</a>
+        ) : (
+            <span class="project-link in-progress" data-typewriter data-text={title}>{title}</span>
+        )}
+        <span class="project-cursor" aria-hidden="true">_</span>
+    </h3>
+    <p class="project-description">{description}</p>
+    {badges.length > 0 && (
+        <div class="tech-badges">
+            {badges.map((badge) => (
+                <span class={`badge ${badge.cls}`}>{badge.label}</span>
+            ))}
+        </div>
+    )}
+</li>

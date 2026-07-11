@@ -1,0 +1,97 @@
+---
+import SeoHead from "../components/SeoHead.astro";
+import BackgroundCanvas from "../components/BackgroundCanvas.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+
+export interface Props {
+    title: string;
+    description: string;
+    ogDescription?: string;
+    twitterDescription?: string;
+    path: string;
+    ogType?: string;
+    twitterCard?: "summary" | "summary_large_image";
+    imageAlt?: string;
+    structuredData: Record<string, unknown>;
+    current?: "projects" | "faq" | "blog";
+}
+
+const {
+    title,
+    description,
+    ogDescription,
+    twitterDescription,
+    path,
+    ogType,
+    twitterCard,
+    imageAlt,
+    structuredData,
+    current,
+} = Astro.props;
+---
+
+<html lang="en-NZ" class="dark-scheme">
+    <head>
+        <SeoHead
+            title={title}
+            description={description}
+            ogDescription={ogDescription}
+            twitterDescription={twitterDescription}
+            path={path}
+            ogType={ogType}
+            twitterCard={twitterCard}
+            imageAlt={imageAlt}
+            structuredData={structuredData}
+        />
+        <script is:inline>
+            (function () {
+                var stored = localStorage.getItem("theme");
+                var isDark = stored ? stored === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+                document.documentElement.classList.toggle("dark-scheme", isDark);
+                document.documentElement.classList.toggle("light-scheme", !isDark);
+            })();
+        </script>
+    </head>
+
+    <body>
+        <BackgroundCanvas />
+
+        <Nav current={current} />
+
+        <main>
+            <noscript>
+                <div class="js-warning">
+                    This website works best with JavaScript enabled. Some features may be limited.
+                </div>
+            </noscript>
+
+            <slot />
+        </main>
+
+        <Footer />
+
+        <script is:inline defer
+            src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"
+            integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ=="
+            data-cf-beacon='{"rayId":"966a44c01ad7d9ab","version":"2025.7.0","r":1,"token":"7a5bef7770f8486190d6527a9db925ad","serverTiming":{"name":{"cfExtPri":true,"cfEdge":true,"cfOrigin":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}}}'
+            crossorigin="anonymous"></script>
+
+        <script>
+            const elevateTargets = document.querySelectorAll("[data-elevate]");
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    for (const entry of entries) {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("is-elevated");
+                            observer.unobserve(entry.target);
+                        }
+                    }
+                },
+                { threshold: 0.15 }
+            );
+            elevateTargets.forEach((target) => observer.observe(target));
+        </script>
+    </body>
+</html>

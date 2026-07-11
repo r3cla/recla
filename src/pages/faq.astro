@@ -1,0 +1,107 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import FaqItem from "../components/FaqItem.astro";
+
+const faqs = [
+    {
+        question: "How much does a website cost in New Zealand?",
+        answer: "Website costs vary significantly based on complexity, features, and your specific requirements. Projects can range anywhere from <strong>$300 to $1000+ NZD</strong>. Simple sites are more affordable, while feature-rich or e-commerce sites cost more. I offer flexible payment plans and special rates for non-profits and startups. Contact me for a free, personalized quote based on your specific needs.",
+    },
+    {
+        question: "How long does it take to build a website?",
+        answer: "Timeline depends on project scope. A basic website typically takes <strong>2-4 weeks</strong> from initial consultation to launch. More complex sites with custom features may take <strong>6-12 weeks</strong>. The process includes planning, design approval, development, content integration, testing, and launch. I'll provide a detailed timeline during our initial consultation and keep you updated throughout the project.",
+    },
+    {
+        question: "Do you work with small businesses and startups?",
+        answer: "Yes! Small businesses and startups are my primary focus. I understand the unique challenges NZ small businesses face and offer affordable solutions without compromising quality. I provide personalized service, flexible payment options, and scalable solutions that grow with your business. I also offer special discounted rates for non-profit organizations and community projects.",
+    },
+    {
+        question: "Do you provide website hosting and domain registration?",
+        answer: "Yes, I can assist with both hosting and domain registration. I work with reliable NZ and international hosting providers to ensure fast loading times for your target audience. I can recommend the best hosting solution for your needs and budget, help with setup, and provide ongoing technical support. Domain registration for .nz, .co.nz, and other extensions is also available.",
+    },
+    {
+        question: "Can you help with SEO for my New Zealand business?",
+        answer: "Absolutely! All websites I build include fundamental SEO optimization: fast loading speeds, mobile responsiveness, proper meta tags, structured data, and clean code. I also offer ongoing SEO services including keyword research for NZ markets, local SEO optimization, content strategy, and Google Business Profile setup. This helps your business rank well in New Zealand search results.",
+    },
+    {
+        question: "Do you offer website maintenance and support?",
+        answer: "Yes, I provide ongoing website maintenance and support packages. Services include security updates, content updates, backups, performance monitoring, and technical support. Maintenance plans can be customized to your needs, whether you need monthly updates or on-demand assistance. I ensure your website stays secure, fast, and up-to-date.",
+    },
+    {
+        question: "Can you redesign my existing website?",
+        answer: "Yes, I specialize in website redesigns and modernization. Whether your site looks outdated, isn't mobile-friendly, or needs improved functionality, I can help. The process includes analyzing your current site, understanding your goals, designing a modern interface, and migrating content. I'll ensure your redesigned site maintains your SEO rankings and improves user experience.",
+    },
+    {
+        question: "What platforms and technologies do you use?",
+        answer: "I work with a variety of modern web technologies based on project needs. This includes custom HTML/CSS/JavaScript for maximum performance, WordPress for content-heavy sites, and e-commerce platforms like Shopify or WooCommerce. I prioritize clean, maintainable code, fast loading speeds, and mobile responsiveness. Technology choices are always tailored to your specific requirements and technical comfort level.",
+    },
+    {
+        question: "Will my website work on mobile phones and tablets?",
+        answer: "Absolutely! Every website I build is fully responsive and mobile-optimized from the start. With over 60% of web traffic coming from mobile devices in New Zealand, mobile-first design is essential. Your site will look great and function perfectly on all devices – smartphones, tablets, laptops, and desktops. I test thoroughly across different screen sizes and browsers.",
+    },
+    {
+        question: "What areas of New Zealand do you serve?",
+        answer: "While I'm based in Wanganui, I work with clients throughout New Zealand and Australia. Most communication happens online via email and project management tools, making location irrelevant. I've successfully completed projects for businesses in Auckland, the Taranaki, the Waikato, and other regions. Remote collaboration allows me to serve clients anywhere while maintaining high-quality, personalized service.",
+    },
+];
+
+const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer.replace(/<[^>]+>/g, ""),
+        },
+    })),
+};
+---
+
+<BaseLayout
+    title="Frequently Asked Questions - Logie Web Services NZ"
+    description="Frequently asked questions about web development services in New Zealand. Learn about pricing, timelines, hosting, SEO, and custom website solutions for NZ businesses."
+    ogDescription="Common questions about web development services, pricing, timelines, and support for New Zealand small businesses and startups."
+    twitterDescription="Common questions about web development services, pricing, timelines, and support for New Zealand small businesses."
+    path="/faq.html"
+    twitterCard="summary"
+    structuredData={structuredData}
+    current="faq"
+>
+    <h1 class="intro-header">Frequently Asked Questions</h1>
+
+    <section class="intro-section">
+        <p class="intro">
+            Have questions about web development services in New Zealand? Find answers to common questions about
+            pricing, timelines, hosting, and how I can help your business succeed online.
+        </p>
+    </section>
+
+    <section class="faq-container" data-elevate>
+        {faqs.map((faq) => <FaqItem question={faq.question} answer={faq.answer} />)}
+    </section>
+
+    <section class="intro-section">
+        <p class="intro">
+            Still have questions? I'm here to help! Get in touch for a free consultation and let's discuss how I
+            can help your business grow online.
+        </p>
+        <a href="https://form.jotform.com/243067662032856" class="learn-more-button">Get a Free Quote</a>
+    </section>
+</BaseLayout>
+
+<script>
+    const faqQuestions = document.querySelectorAll<HTMLButtonElement>(".faq-question");
+    faqQuestions.forEach((question) => {
+        question.addEventListener("click", function () {
+            const isExpanded = question.getAttribute("aria-expanded") === "true";
+            const answer = question.nextElementSibling as HTMLElement | null;
+            question.setAttribute("aria-expanded", String(!isExpanded));
+            question.classList.toggle("active");
+            if (answer) {
+                answer.style.maxHeight = isExpanded ? "0" : `${answer.scrollHeight}px`;
+            }
+        });
+    });
+</script>

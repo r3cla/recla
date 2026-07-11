@@ -1,0 +1,96 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: "Logie Web Services NZ",
+    description: "Professional and affordable web development services for small businesses and startups in New Zealand",
+    url: "https://www.logie.nz",
+    address: {
+        "@type": "PostalAddress",
+        addressCountry: "NZ",
+        addressRegion: "Wanganui",
+    },
+    geo: {
+        "@type": "GeoCoordinates",
+        latitude: "-39.93333",
+        longitude: "175.05",
+    },
+    areaServed: [
+        { "@type": "Country", name: "New Zealand" },
+        { "@type": "Country", name: "Australia" },
+    ],
+    serviceType: ["Web Development", "Website Design", "Software Development"],
+    priceRange: "$$",
+};
+---
+
+<BaseLayout
+    title="Web Development & Design Services NZ | Logie Web Services"
+    description="Professional web development services in New Zealand specializing in custom websites, e-commerce solutions, and web applications. Affordable web development for small businesses, startups, and non-profits across NZ."
+    ogDescription="Professional web development for NZ small businesses and startups. Affordable, custom websites and e-commerce solutions with personalized service. Serving Wellington, Auckland, and beyond."
+    twitterDescription="Professional web development for NZ small businesses and startups. Affordable, custom websites and e-commerce solutions with personalized service."
+    path="/"
+    structuredData={structuredData}
+>
+    <section class="hero-section">
+        <img src="/assets/images/logienz.webp" alt="Logie Web Services logo" class="profile-image profile-image--logo" />
+        <div class="hero-content">
+            <h1 class="intro-header">Web Development for New Zealand Businesses</h1>
+            <p class="hero-sub">Custom websites that won't break the bank.</p>
+            <a href="https://form.jotform.com/243067662032856" class="learn-more-button">Book a Free Quote</a>
+        </div>
+    </section>
+
+    <div class="value-cards" data-elevate>
+        <div class="value-card">
+            <h3>Affordable</h3>
+            <p>Competitive pricing for small businesses, with special discounts for registered non-profits.</p>
+        </div>
+        <div class="value-card">
+            <h3>Responsive</h3>
+            <p>Every site looks and works great on any device — mobile, tablet, or desktop.</p>
+        </div>
+        <div class="value-card">
+            <h3>Personal</h3>
+            <p>Work directly with me — no agencies, no middlemen. Just you and your developer.</p>
+        </div>
+    </div>
+</BaseLayout>
+
+<script>
+    import { gsap } from "gsap";
+
+    const hero = document.querySelector(".hero-section");
+    const heading = hero?.querySelector(".intro-header");
+    const sub = hero?.querySelector(".hero-sub");
+    const button = hero?.querySelector(".learn-more-button");
+    const figure = hero?.querySelector(".profile-image");
+
+    if (hero && heading && sub && button && figure) {
+        // .learn-more-button and .profile-image each have their own CSS `transition`
+        // (for hover) on the same properties GSAP drives here; left alone, the two
+        // animation systems fight and the tween gets stuck at its start value. Turn
+        // the CSS transition off for the entrance, then restore it afterwards.
+        const buttonEl = button as HTMLElement;
+        const figureEl = figure as HTMLElement;
+        buttonEl.style.transition = "none";
+        figureEl.style.transition = "none";
+
+        const tl = gsap.timeline({
+            delay: 0.15,
+            defaults: { ease: "power2.out", duration: 0.5 },
+            onComplete: () => {
+                buttonEl.style.transition = "";
+                figureEl.style.transition = "";
+            },
+        });
+
+        tl.set(hero, { autoAlpha: 1 });
+        tl.from(heading, { opacity: 0, yPercent: 40 });
+        tl.from(sub, { opacity: 0, yPercent: 20 }, "-=0.3");
+        tl.from(button, { opacity: 0, scale: 0.6, duration: 0.6, ease: "elastic.out(1, 0.5)" }, "-=0.2");
+        tl.from(figure, { opacity: 0, duration: 0.8 }, "-=0.5");
+    }
+</script>

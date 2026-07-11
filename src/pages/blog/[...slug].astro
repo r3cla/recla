@@ -1,0 +1,49 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+export async function getStaticPaths() {
+    const posts = await getCollection("blog");
+    return posts.map((post) => ({
+        params: { slug: post.id },
+        props: { post },
+    }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.data.title,
+    description: post.data.description,
+    datePublished: post.data.pubDate.toISOString(),
+    dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+    author: {
+        "@type": "Person",
+        name: "Nathan Addison",
+    },
+    publisher: {
+        "@type": "Organization",
+        name: "Logie Web Services NZ",
+    },
+};
+---
+
+<BaseLayout
+    title={`${post.data.title} - Logie Web Services Blog`}
+    description={post.data.description}
+    path={`/blog/${post.id}.html`}
+    ogType="article"
+    structuredData={structuredData}
+    current="blog"
+>
+    <article class="prose" data-elevate>
+        <p class="blog-meta">
+            {post.data.pubDate.toLocaleDateString("en-NZ", { year: "numeric", month: "long", day: "numeric" })}
+        </p>
+        <h1>{post.data.title}</h1>
+        <Content />
+    </article>
+</BaseLayout>

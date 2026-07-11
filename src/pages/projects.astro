@@ -1,0 +1,219 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: "Nathan Addison",
+    jobTitle: "Web Developer",
+    url: "https://www.logie.nz/projects.html",
+    worksFor: {
+        "@type": "Organization",
+        name: "Logie Web Services NZ",
+        url: "https://www.logie.nz",
+    },
+    knowsAbout: ["Web Development", "Website Design", "Software Development"],
+    sameAs: ["https://github.com/r3cla", "https://www.facebook.com/logienz"],
+};
+
+const personalProjects = [
+    {
+        title: "HubTree",
+        href: "https://github.com/r3cla/HubTree",
+        description: "Fetches folder structures for public repos in text format with proper indenting.",
+        badges: [
+            { cls: "badge-react", label: "React" },
+            { cls: "badge-ts", label: "TypeScript" },
+        ],
+    },
+    {
+        title: "Variable Auto Clicker",
+        href: "https://github.com/r3cla/Variable-Auto-Clicker",
+        description: "Auto-clicker program made in C# that allows you to set custom intervals for clicking. Based on Garry's Hood source code.",
+        badges: [{ cls: "badge-csharp", label: "C#" }],
+    },
+];
+
+const clientWebsites = [
+    {
+        title: "Lennox's Lawncare",
+        href: "https://www.lennoxlawncare.co.nz/",
+        description: "Website I made for a Taranaki-based lawncare and property maintenance business.",
+        badges: [
+            { cls: "badge-js", label: "JavaScript" },
+            { cls: "badge-css3", label: "CSS3" },
+            { cls: "badge-html5", label: "HTML5" },
+        ],
+    },
+    {
+        title: "Complete Property Management",
+        href: "https://www.cpmrentals.co.nz",
+        description: "Made for a Waikato-based property management business with dynamic property listings utilizing Palace API and Netlify Functions.",
+        badges: [
+            { cls: "badge-js", label: "JavaScript" },
+            { cls: "badge-css3", label: "CSS3" },
+            { cls: "badge-html5", label: "HTML5" },
+            { cls: "badge-api", label: "Palace API" },
+        ],
+    },
+    {
+        title: "Pivotal Property Solutions",
+        href: "https://www.gopivotal.nz",
+        description: "Website I made for a Hamilton-based fencing and landscaping business.",
+        badges: [
+            { cls: "badge-js", label: "JavaScript" },
+            { cls: "badge-css3", label: "CSS3" },
+            { cls: "badge-html5", label: "HTML5" },
+        ],
+    },
+    {
+        title: "EziBuild",
+        description: "Currently building a website for EziBuild.",
+        badges: [
+            { cls: "badge-js", label: "JavaScript" },
+            { cls: "badge-css3", label: "CSS3" },
+            { cls: "badge-html5", label: "HTML5" },
+            { cls: "badge-wip", label: "In Progress" },
+        ],
+    },
+    {
+        title: "Bees Clean Detailing",
+        href: "https://www.beescleandetailing.nz",
+        description: "A website I made for a Paeroa-based vehicle detailing business with a basic booking system.",
+        badges: [
+            { cls: "badge-js", label: "JavaScript" },
+            { cls: "badge-css3", label: "CSS3" },
+            { cls: "badge-html5", label: "HTML5" },
+        ],
+    },
+    {
+        title: "Wanganui RSA Trust",
+        description: "Currently working on a new website for the Wanganui RSA Trust.",
+        badges: [
+            { cls: "badge-js", label: "JavaScript" },
+            { cls: "badge-css3", label: "CSS3" },
+            { cls: "badge-html5", label: "HTML5" },
+            { cls: "badge-wip", label: "In Progress" },
+        ],
+    },
+    {
+        title: "CivicCanvas (HTML Template)",
+        href: "https://github.com/r3cla/civiccanvas",
+        description: "Website template I made, available open-source on my GitHub account.",
+        badges: [
+            { cls: "badge-js", label: "JavaScript" },
+            { cls: "badge-css3", label: "CSS3" },
+            { cls: "badge-html5", label: "HTML5" },
+        ],
+    },
+];
+
+const otherProjects = [
+    {
+        title: "ASCII Dungeon Generator",
+        href: "https://github.com/r3cla/ASCIIDungeonGen",
+        description: "Generates simple dungeons for classic roguelite games in ASCII format.",
+    },
+    {
+        title: "Txt-To-Img Generator",
+        href: "https://github.com/r3cla/bsky-txt2img",
+        description: "Creates simple text posts in image format catered for social media sharing.",
+    },
+    {
+        title: "Terminal Portfolio",
+        href: "https://github.com/r3cla/TerminalPorfolio",
+        description: "Creative portfolio that imitates a computer terminal's interface. Developed using React.",
+    },
+    {
+        title: "Loot Filter",
+        href: "https://github.com/r3cla/lootfilter",
+        description: "Loot filter editor for Path of Exile 2. Deprecated.",
+    },
+    {
+        title: "TextOcean",
+        href: "https://github.com/r3cla/TextOcean",
+        description: "A browser based text editor. It is in a very early stage of development, currently not being updated. The idea was to make a self hosted, open-source alternative to Pastebin with the built in power of Monaco Editor for sharing and backing up code snippets securely.",
+    },
+    {
+        title: "Video Sharing App (Android)",
+        href: "https://github.com/r3cla/VideoSharingApp-Example",
+        description: "A simple video sharing app I made for my degree. It is not intended for production use. The code is available as reference.",
+    },
+    {
+        title: "Jotform Defer Loader",
+        href: "https://github.com/r3cla/jotform-defer-load",
+        description: "A small script that defers loading of Jotform forms until they are in view, improving page load times.",
+    },
+];
+---
+
+<BaseLayout
+    title="Nathan Addison - Portfolio"
+    description="Nathan Addison's web development portfolio showcasing websites, web applications, and creative projects. View some of my work in web development and design."
+    ogDescription="Explore Nathan Addison's web development portfolio featuring custom websites, web applications, and creative digital projects."
+    imageAlt="Nathan Addison Portfolio"
+    path="/projects.html"
+    structuredData={structuredData}
+    current="projects"
+>
+    <div class="page-header" data-elevate>
+        <h1 class="intro-header">Portfolio & Projects</h1>
+        <p class="page-subtitle">A collection of client work and personal projects — each one a different challenge.</p>
+    </div>
+
+    <section class="portfolio-section glass-card">
+        <h2 class="section-title">Personal Projects</h2>
+        <ul class="project-list" data-elevate>
+            {personalProjects.map((project) => <ProjectCard {...project} />)}
+        </ul>
+    </section>
+
+    <section class="portfolio-section glass-card">
+        <h2 class="section-title">Client Websites</h2>
+        <ul class="project-list" data-elevate>
+            {clientWebsites.map((project) => <ProjectCard {...project} />)}
+        </ul>
+    </section>
+
+    <section class="portfolio-section glass-card">
+        <h2 class="section-title">Other Projects</h2>
+        <ul class="project-list" data-elevate>
+            {otherProjects.map((project) => <ProjectCard {...project} />)}
+        </ul>
+    </section>
+
+    <section class="intro-section cta-section">
+        <p class="intro" style="text-align: center;">Interested in working together?</p>
+        <a href="https://form.jotform.com/243067662032856" class="learn-more-button">Get a Free Quote</a>
+    </section>
+</BaseLayout>
+
+<script>
+    import { gsap } from "gsap";
+    import { TextPlugin } from "gsap/TextPlugin";
+
+    gsap.registerPlugin(TextPlugin);
+
+    const targets = document.querySelectorAll<HTMLElement>("[data-typewriter]");
+    const observer = new IntersectionObserver(
+        (entries) => {
+            for (const entry of entries) {
+                if (!entry.isIntersecting) continue;
+                const el = entry.target as HTMLElement;
+                const text = el.dataset.text ?? el.textContent ?? "";
+                gsap.to(el, {
+                    duration: Math.max(text.length / 16, 0.3),
+                    text: { value: text },
+                    ease: "none",
+                });
+                observer.unobserve(el);
+            }
+        },
+        { threshold: 0.4 }
+    );
+    targets.forEach((el) => {
+        el.textContent = "";
+        observer.observe(el);
+    });
+</script>

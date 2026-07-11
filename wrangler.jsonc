@@ -1,0 +1,17 @@
+{
+    "$schema": "node_modules/wrangler/config-schema.json",
+    "name": "logie-web-services",
+    "compatibility_date": "2026-07-06",
+    "main": "./worker/index.ts",
+    "assets": {
+        "directory": "./dist",
+        "binding": "ASSETS",
+        // Site URLs are literal *.html (build.format: "file" in astro.config.mjs),
+        // matching the old static site's indexed/canonical URLs. The default
+        // "auto-trailing-slash" handling 307-redirects /foo.html -> /foo, which
+        // would break those URLs, so HTML handling is disabled entirely here.
+        // worker/index.ts handles the "/" -> "/index.html" mapping that this
+        // also disables.
+        "html_handling": "none"
+    }
+}

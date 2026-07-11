@@ -1,0 +1,45 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const posts = (await getCollection("blog")).sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    name: "Logie Web Services Blog",
+    description: "Articles on web development, design, and running a website for your New Zealand business.",
+    url: "https://www.logie.nz/blog.html",
+};
+---
+
+<BaseLayout
+    title="Blog - Logie Web Services NZ"
+    description="Articles on web development, design, and running a website for your New Zealand business."
+    path="/blog.html"
+    structuredData={structuredData}
+    current="blog"
+>
+    <div class="page-header">
+        <h1 class="intro-header">Blog</h1>
+        <p class="page-subtitle">Notes on web development, design, and running a website in NZ.</p>
+    </div>
+
+    {posts.length === 0 ? (
+        <p class="blog-empty">No posts yet — check back soon.</p>
+    ) : (
+        <ul class="blog-list" data-elevate>
+            {posts.map((post) => (
+                <li class="blog-post-item">
+                    <a href={`/blog/${post.id}.html`} class="blog-post-link">{post.data.title}</a>
+                    <span class="blog-post-date">
+                        {post.data.pubDate.toLocaleDateString("en-NZ", { year: "numeric", month: "long", day: "numeric" })}
+                    </span>
+                    <p class="blog-post-description">{post.data.description}</p>
+                </li>
+            ))}
+        </ul>
+    )}
+</BaseLayout>

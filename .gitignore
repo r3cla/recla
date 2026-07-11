@@ -1,5 +1,11 @@
+# build output
+dist/
+# generated types
+.astro/
+# wrangler local dev state
+.wrangler/
+
 node_modules/
-package-lock.json
 .idea/
 .vscode/
 .env
