@@ -1,3 +1,11 @@
 [build]
   command = "npm run build"
   publish = "dist"
+
+[build.processing.html]
+  # Site URLs are literal *.html (build.format: "file" in astro.config.mjs),
+  # matching the sitemap/canonical URLs and the Cloudflare Workers config
+  # (html_handling: "none"). Netlify's "Pretty URLs" post-processing would
+  # otherwise rewrite/redirect these inconsistently, so it's disabled here
+  # rather than left to whatever the dashboard toggle happens to be set to.
+  pretty_urls = false
