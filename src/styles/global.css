@@ -912,6 +912,12 @@ nav.nav {
     border-color: rgba(33, 117, 155, 0.3);
 }
 
+.badge-java {
+    background: rgba(176, 114, 25, 0.15);
+    color: #b07219;
+    border-color: rgba(176, 114, 25, 0.3);
+}
+
 .badge-wip {
     background: rgba(242, 196, 100, 0.15);
     color: var(--tertiary-text);
@@ -1781,6 +1787,25 @@ pre code {
     border-radius: var(--radius-lg);
     border: var(--border);
     margin: 1rem 0;
+}
+
+.prose figure {
+    margin: 1rem 0;
+}
+
+.prose figure img {
+    margin-bottom: 0.4rem;
+}
+
+.prose figcaption {
+    font-size: 0.75rem;
+    color: var(--secondary);
+    text-align: center;
+}
+
+.prose figcaption a {
+    color: var(--secondary);
+    text-decoration-color: var(--secondary);
 }
 
 .prose blockquote {

@@ -17,24 +17,6 @@ const structuredData = {
     sameAs: ["https://github.com/r3cla", "https://www.facebook.com/logienz"],
 };
 
-const personalProjects = [
-    {
-        title: "HubTree",
-        href: "https://github.com/r3cla/HubTree",
-        description: "Fetches folder structures for public repos in text format with proper indenting.",
-        badges: [
-            { cls: "badge-react", label: "React" },
-            { cls: "badge-ts", label: "TypeScript" },
-        ],
-    },
-    {
-        title: "Variable Auto Clicker",
-        href: "https://github.com/r3cla/Variable-Auto-Clicker",
-        description: "Auto-clicker program made in C# that allows you to set custom intervals for clicking. Based on Garry's Hood source code.",
-        badges: [{ cls: "badge-csharp", label: "C#" }],
-    },
-];
-
 const clientWebsites = [
     {
         title: "Lennox's Lawncare",
@@ -118,6 +100,24 @@ const clientWebsites = [
             { cls: "badge-html5", label: "HTML5" },
         ],
     },
+];
+
+const githubProjects = [
+    {
+        title: "HubTree",
+        href: "https://github.com/r3cla/HubTree",
+        description: "Fetches folder structures for public repos in text format with proper indenting.",
+        badges: [
+            { cls: "badge-react", label: "React" },
+            { cls: "badge-ts", label: "TypeScript" },
+        ],
+    },
+    {
+        title: "Variable Auto Clicker",
+        href: "https://github.com/r3cla/Variable-Auto-Clicker",
+        description: "Auto-clicker program made in C# that allows you to set custom intervals for clicking. Based on Garry's Hood source code.",
+        badges: [{ cls: "badge-csharp", label: "C#" }],
+    },
     {
         title: "CivicCanvas (HTML Template)",
         href: "https://github.com/r3cla/civiccanvas",
@@ -128,43 +128,50 @@ const clientWebsites = [
             { cls: "badge-html5", label: "HTML5" },
         ],
     },
-];
-
-const otherProjects = [
     {
         title: "ASCII Dungeon Generator",
         href: "https://github.com/r3cla/ASCIIDungeonGen",
         description: "Generates simple dungeons for classic roguelite games in ASCII format.",
+        badges: [{ cls: "badge-js", label: "JavaScript" }],
     },
     {
         title: "Txt-To-Img Generator",
         href: "https://github.com/r3cla/bsky-txt2img",
         description: "Creates simple text posts in image format catered for social media sharing.",
+        badges: [{ cls: "badge-ts", label: "TypeScript" }],
     },
     {
         title: "Terminal Portfolio",
         href: "https://github.com/r3cla/TerminalPorfolio",
         description: "Creative portfolio that imitates a computer terminal's interface. Developed using React.",
+        badges: [
+            { cls: "badge-react", label: "React" },
+            { cls: "badge-ts", label: "TypeScript" },
+        ],
     },
     {
         title: "Loot Filter",
         href: "https://github.com/r3cla/lootfilter",
         description: "Loot filter editor for Path of Exile 2. Deprecated.",
+        badges: [{ cls: "badge-ts", label: "TypeScript" }],
     },
     {
         title: "TextOcean",
         href: "https://github.com/r3cla/TextOcean",
         description: "A browser based text editor. It is in a very early stage of development, currently not being updated. The idea was to make a self hosted, open-source alternative to Pastebin with the built in power of Monaco Editor for sharing and backing up code snippets securely.",
+        badges: [{ cls: "badge-ts", label: "TypeScript" }],
     },
     {
         title: "Video Sharing App (Android)",
-        href: "https://github.com/r3cla/VideoSharingApp-Example",
+        href: "https://github.com/r3cla/VideoSharingApp-Exam",
         description: "A simple video sharing app I made for my degree. It is not intended for production use. The code is available as reference.",
+        badges: [{ cls: "badge-java", label: "Java" }],
     },
     {
         title: "Jotform Defer Loader",
         href: "https://github.com/r3cla/jotform-defer-load",
         description: "A small script that defers loading of Jotform forms until they are in view, improving page load times.",
+        badges: [{ cls: "badge-js", label: "JavaScript" }],
     },
 ];
 ---
@@ -180,15 +187,8 @@ const otherProjects = [
 >
     <div class="page-header" data-elevate>
         <h1 class="intro-header">Portfolio & Projects</h1>
-        <p class="page-subtitle">A collection of client work and personal projects — each one a different challenge.</p>
+        <p class="page-subtitle">A collection of client work and personal projects, each one a different challenge.</p>
     </div>
-
-    <section class="portfolio-section glass-card">
-        <h2 class="section-title">Personal Projects</h2>
-        <ul class="project-list" data-elevate>
-            {personalProjects.map((project) => <ProjectCard {...project} />)}
-        </ul>
-    </section>
 
     <section class="portfolio-section glass-card">
         <h2 class="section-title">Client Websites</h2>
@@ -198,9 +198,9 @@ const otherProjects = [
     </section>
 
     <section class="portfolio-section glass-card">
-        <h2 class="section-title">Other Projects</h2>
+        <h2 class="section-title">GitHub Projects</h2>
         <ul class="project-list" data-elevate>
-            {otherProjects.map((project) => <ProjectCard {...project} />)}
+            {githubProjects.map((project) => <ProjectCard {...project} />)}
         </ul>
     </section>
 
