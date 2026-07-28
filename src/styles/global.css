@@ -918,6 +918,12 @@ nav.nav {
     border-color: rgba(176, 114, 25, 0.3);
 }
 
+.badge-astro {
+    background: rgba(255, 93, 1, 0.15);
+    color: #ff5d01;
+    border-color: rgba(255, 93, 1, 0.3);
+}
+
 .badge-wip {
     background: rgba(242, 196, 100, 0.15);
     color: var(--tertiary-text);

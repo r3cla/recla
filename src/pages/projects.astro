@@ -101,6 +101,17 @@ const clientWebsites = [
             { cls: "badge-html5", label: "HTML5" },
         ],
     },
+    {
+        title: "Logie Web Services (This Website)",
+        href: "https://github.com/r3cla/recla",
+        description: "The website you're on right now, my own portfolio and business site, open-source on GitHub.",
+        badges: [
+            { cls: "badge-astro", label: "Astro" },
+            { cls: "badge-css3", label: "CSS" },
+            { cls: "badge-ts", label: "TypeScript" },
+            { cls: "badge-js", label: "JavaScript" },
+        ],
+    },
 ];
 
 const githubProjects = [
@@ -192,7 +203,7 @@ const githubProjects = [
     </div>
 
     <section class="portfolio-section glass-card">
-        <h2 class="section-title">Client Websites</h2>
+        <h2 class="section-title">Websites</h2>
         <ul class="project-list" data-elevate>
             {clientWebsites.map((project) => <ProjectCard {...project} />)}
         </ul>
