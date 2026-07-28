@@ -209,16 +209,16 @@ const githubProjects = [
         </ul>
     </section>
 
-    <section class="portfolio-section glass-card">
+    <section class="intro-section cta-section">
+        <p class="intro" style="text-align: center;">Interested in working together?</p>
+        <a href="https://form.jotform.com/243067662032856" class="learn-more-button">Get a Free Quote</a>
+    </section>
+
+    <section class="portfolio-section github-section">
         <h2 class="section-title">GitHub Projects</h2>
         <ul class="project-list" data-elevate>
             {githubProjects.map((project) => <ProjectCard {...project} />)}
         </ul>
-    </section>
-
-    <section class="intro-section cta-section">
-        <p class="intro" style="text-align: center;">Interested in working together?</p>
-        <a href="https://form.jotform.com/243067662032856" class="learn-more-button">Get a Free Quote</a>
     </section>
 </BaseLayout>
 

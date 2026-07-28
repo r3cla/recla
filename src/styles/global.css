@@ -838,6 +838,44 @@ nav.nav {
     font-size: 0.95rem;
 }
 
+/* Subtler treatment for the GitHub Projects section, secondary to the Websites section */
+.github-section {
+    padding: 0;
+}
+
+.github-section .section-title {
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+.github-section .project-item {
+    padding: 1rem;
+    box-shadow: none;
+}
+
+.github-section .project-item:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: var(--tertiary);
+}
+
+.github-section .project-title {
+    font-size: 1rem;
+}
+
+.github-section .project-description {
+    font-size: 0.85rem;
+    color: var(--secondary);
+}
+
+.github-section .badge {
+    font-size: 0.68rem;
+    padding: 0.2rem 0.6rem;
+}
+
 .tech-badges {
     display: flex;
     flex-wrap: wrap;
