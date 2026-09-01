@@ -9,3 +9,13 @@
   # otherwise rewrite/redirect these inconsistently, so it's disabled here
   # rather than left to whatever the dashboard toggle happens to be set to.
   pretty_urls = false
+
+# naddison.netlify.app is this same site's default subdomain and stays
+# publicly live/crawlable even with the custom domain attached unless
+# redirected explicitly - so redirect it to the canonical domain rather
+# than leaving two indexable copies of every page.
+[[redirects]]
+  from = "https://naddison.netlify.app/*"
+  to = "https://www.logie.nz/:splat"
+  status = 301
+  force = true

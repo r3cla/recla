@@ -497,6 +497,16 @@ nav.nav {
     font-weight: 400;
 }
 
+.intro a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-decoration-color: var(--tertiary);
+}
+
+.intro a:hover {
+    color: var(--tertiary-text);
+}
+
 .form-placeholder {
     max-height: 800px;
     width: 100%;
@@ -717,6 +727,126 @@ nav.nav {
     color: var(--secondary);
     font-size: 0.9rem;
     line-height: 1.65;
+}
+
+.testimonials-section {
+    width: 100%;
+}
+
+.testimonial-carousel {
+    width: 100%;
+    max-width: 700px;
+    margin: 2.5rem auto 0;
+}
+
+.testimonial-viewport {
+    width: 100%;
+    overflow: hidden;
+    transition: height var(--transition-normal);
+}
+
+.testimonial-track {
+    display: flex;
+    width: 100%;
+    transition: transform var(--transition-normal);
+}
+
+.glass-card.testimonial-card {
+    flex: 0 0 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 1.75rem 2rem;
+    text-align: left;
+}
+
+.carousel-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.carousel-arrow {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: var(--radius-sm);
+    border: var(--border);
+    background: var(--surface);
+    box-shadow: 3px 3px 0 0 var(--shadow);
+    color: var(--tertiary-text);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.carousel-arrow:hover {
+    transform: translate3d(-1px, -1px, 0);
+    box-shadow: 4px 4px 0 0 var(--shadow);
+}
+
+.carousel-arrow:active {
+    transform: translate3d(1px, 1px, 0);
+    box-shadow: 1px 1px 0 0 var(--shadow);
+}
+
+.carousel-counter {
+    min-width: 3.5rem;
+    text-align: center;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--secondary);
+    letter-spacing: 0.3px;
+}
+
+.testimonial-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.testimonial-name {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--primary);
+    line-height: 1.4;
+}
+
+.testimonial-stars {
+    flex-shrink: 0;
+    color: var(--tertiary);
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.testimonial-meta {
+    margin: 0.3rem 0 0;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    color: var(--secondary);
+    opacity: 0.75;
+    letter-spacing: 0.2px;
+}
+
+.testimonial-quote {
+    margin: 1.1rem 0 0;
+}
+
+.testimonial-quote p {
+    color: var(--secondary);
+    font-size: 1rem;
+    line-height: 1.75;
 }
 
 /* ======================
@@ -1076,6 +1206,20 @@ nav.nav {
     font-weight: var(--font-semibold);
 }
 
+.faq-answer a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-decoration-color: var(--tertiary);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    transition: all var(--transition-fast);
+}
+
+.faq-answer a:hover {
+    color: var(--tertiary-text);
+    text-decoration-color: var(--tertiary-light);
+}
+
 /* ======================
    8. Footer
    ====================== */
@@ -1431,6 +1575,15 @@ footer {
 
     .value-card {
         padding: 1.1rem;
+    }
+
+    .glass-card.testimonial-card {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .testimonial-header {
+        flex-direction: column;
+        gap: 0.35rem;
     }
 
     .learn-more-button {

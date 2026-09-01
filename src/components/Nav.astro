@@ -2,7 +2,7 @@
 import ThemeSwitch from "./ThemeSwitch.astro";
 
 export interface Props {
-    current?: "projects" | "faq" | "blog";
+    current?: "projects" | "faq" | "blog" | "contact";
 }
 
 const { current } = Astro.props;
@@ -52,6 +52,15 @@ const { current } = Astro.props;
                 </svg>
             </span>
             <span class="nav-link-text">FAQ</span>
+        </a>
+        <a class={`nav-link${current === "contact" ? " active" : ""}`} href="/contact.html">
+            <span class="nav-link-icon-wrapper">
+                <svg class="nav-link-icon" viewBox="0 0 24 24">
+                    <rect x="3" y="5" width="18" height="14" rx="2"/>
+                    <path d="M3 7l9 6 9-6"/>
+                </svg>
+            </span>
+            <span class="nav-link-text">Contact</span>
         </a>
     </div>
 

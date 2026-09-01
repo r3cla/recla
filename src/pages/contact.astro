@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    name: "Contact Logie Web Services",
+    description: "Get in touch with Logie Web Services for web development enquiries in New Zealand and Australia.",
+    url: "https://www.logie.nz/contact.html",
+    about: {
+        "@type": "LocalBusiness",
+        name: "Logie Web Services NZ",
+        email: "kiaora@logie.nz",
+        areaServed: [
+            { "@type": "Country", name: "New Zealand" },
+            { "@type": "Country", name: "Australia" },
+        ],
+    },
+};
+---
+
+<BaseLayout
+    title="Contact - Logie Web Services NZ"
+    description="Get in touch with Logie Web Services for affordable web development in New Zealand and Australia. Email kiaora@logie.nz or request a free quote."
+    ogDescription="Get in touch for web development enquiries across New Zealand and Australia, based in Whanganui."
+    twitterDescription="Get in touch for web development enquiries across New Zealand and Australia."
+    path="/contact.html"
+    twitterCard="summary"
+    structuredData={structuredData}
+    current="contact"
+>
+    <h1 class="intro-header">Get in Touch</h1>
+
+    <section class="intro-section">
+        <p class="intro">
+            Based in Whanganui, working with small businesses and startups across New Zealand and Australia.
+            Reach out by email or request a free, no-obligation quote below.
+        </p>
+    </section>
+
+    <section class="intro-section glass-card" data-elevate style="text-align:center;">
+        <p class="intro" style="text-align:center;"><a href="mailto:kiaora@logie.nz">kiaora@logie.nz</a></p>
+        <a href="https://form.jotform.com/243067662032856" class="learn-more-button">Get a Free Quote</a>
+    </section>
+</BaseLayout>

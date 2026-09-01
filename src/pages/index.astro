@@ -1,12 +1,54 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
+const testimonials = [
+    {
+        quote: "Nathan built a new website for me and overhauled my other, making it much faster than it was before. He did some back-end work on my WordPress site to make it super easy to edit and update my products. Great to deal with and excellent work!",
+        author: "Kyle de Lange",
+        business: "KDL Cabins / KDL Trailers",
+    },
+    {
+        quote: "Extremely happy with Nathan's services, and love our new website! Will be using him for all future projects!",
+        author: "Jonny Findlay",
+        business: "EziBuild",
+    },
+    {
+        quote: "Absolutely great to deal with from start to finish! Nathan created exactly what I was looking for — a clean, professional, easy to navigate website. Nathan was very helpful, responsive, and easy to communicate with throughout the entire process. Pricing was very reasonable for the quality of service provided. Highly recommend Nathan!",
+        author: "Sarah",
+        business: "Complete Property Management",
+    },
+    {
+        quote: "Stoked with the new website! The whole process was easy as — good communication, Nathan listened to what I wanted and made it happen. The site looks sharp, works mint on mobile and desktop, and already had a few people comment on how professional it looks. Really happy with how it turned out, would definitely recommend to anyone needing a website that does the job properly.",
+        author: "Aaron",
+        business: "Pivotal Property Solutions",
+    },
+    {
+        quote: "Fast efficient and top notch service. Any questions asked are quickly responded too in a clear and concise way. He has done an amazing job with my website and I couldn't be happier. 10/10 would recommend.",
+        author: "Lennox",
+        business: "Lennox's Lawncare & Property Maintenance",
+    },
+    {
+        quote: "Very professional and fast. I had so many questions that were always answered very efficiently. My website absolutely looks amazing — Logie Web Services NZ is so quick to bring your vision to life.",
+        author: "Tess Reid",
+    },
+    {
+        quote: "Excellent to deal with and reasonably priced. Would recommend to all.",
+        author: "Kieran Leonard",
+    },
+    {
+        quote: "Nate does an amazing job from start to finish. I couldn't be happier with how my website turned out. Will be recommending for sure.",
+        author: "Bees Clean Detailing",
+    },
+];
+
 const structuredData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Logie Web Services NZ",
     description: "Professional and affordable web development services for small businesses and startups in New Zealand",
     url: "https://www.logie.nz",
+    email: "kiaora@logie.nz",
+    hasMap: "https://share.google/KZHRxEVwJ7FY83Nue",
     address: {
         "@type": "PostalAddress",
         addressCountry: "NZ",
@@ -23,12 +65,18 @@ const structuredData = {
     ],
     serviceType: ["Web Development", "Website Design", "Software Development"],
     priceRange: "$$",
+    review: testimonials.map((t) => ({
+        "@type": "Review",
+        author: { "@type": "Person", name: t.business ? `${t.author}, ${t.business}` : t.author },
+        reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+        reviewBody: t.quote,
+    })),
 };
 ---
 
 <BaseLayout
     title="Web Development & Design Services NZ | Logie Web Services"
-    description="Professional web development services in New Zealand specializing in custom websites, e-commerce solutions, and web applications. Affordable web development for small businesses, startups, and non-profits across NZ."
+    description="Professional web development services in New Zealand specializing in custom websites, e-commerce solutions, and web applications. Affordable web development for small businesses, startups, and registered NZ charities."
     ogDescription="Professional web development for NZ small businesses and startups. Affordable, custom websites and e-commerce solutions with personalized service. Serving Wellington, Auckland, and beyond."
     twitterDescription="Professional web development for NZ small businesses and startups. Affordable, custom websites and e-commerce solutions with personalized service."
     path="/"
@@ -46,7 +94,7 @@ const structuredData = {
     <div class="value-cards" data-elevate>
         <div class="value-card">
             <h3>Affordable</h3>
-            <p>Competitive pricing for small businesses, with special discounts for registered non-profits.</p>
+            <p>Competitive pricing for small businesses, with special discounts for registered NZ charities.</p>
         </div>
         <div class="value-card">
             <h3>Responsive</h3>
@@ -57,6 +105,34 @@ const structuredData = {
             <p>Work directly with me, no agencies, no middlemen. Just you and your developer.</p>
         </div>
     </div>
+
+    <section class="testimonials-section">
+        <h2 class="section-title">What Clients Say</h2>
+        <div class="testimonial-carousel" data-elevate>
+            <div class="testimonial-viewport">
+                <div class="testimonial-track">
+                    {testimonials.map((t) => (
+                        <article class="testimonial-card glass-card">
+                            <header class="testimonial-header">
+                                <cite class="testimonial-name">{t.author}</cite>
+                                <div class="testimonial-stars">
+                                    <span aria-hidden="true">★★★★★</span>
+                                    <span class="sr-only">Rated 5 out of 5 stars</span>
+                                </div>
+                            </header>
+                            {t.business && <p class="testimonial-meta">{t.business}</p>}
+                            <blockquote class="testimonial-quote"><p>{t.quote}</p></blockquote>
+                        </article>
+                    ))}
+                </div>
+            </div>
+            <div class="carousel-controls">
+                <button type="button" class="carousel-arrow carousel-prev" aria-label="Previous review">‹</button>
+                <span class="carousel-counter" aria-live="polite">1 / {testimonials.length}</span>
+                <button type="button" class="carousel-arrow carousel-next" aria-label="Next review">›</button>
+            </div>
+        </div>
+    </section>
 </BaseLayout>
 
 <script>
@@ -92,5 +168,35 @@ const structuredData = {
         tl.from(sub, { opacity: 0, yPercent: 20 }, "-=0.3");
         tl.from(button, { opacity: 0, scale: 0.6, duration: 0.6, ease: "elastic.out(1, 0.5)" }, "-=0.2");
         tl.from(figure, { opacity: 0, duration: 0.8 }, "-=0.5");
+    }
+</script>
+
+<script>
+    const viewport = document.querySelector<HTMLElement>(".testimonial-viewport");
+    const track = document.querySelector<HTMLElement>(".testimonial-track");
+    const cards = Array.from(document.querySelectorAll<HTMLElement>(".testimonial-card"));
+    const prevBtn = document.querySelector<HTMLButtonElement>(".carousel-prev");
+    const nextBtn = document.querySelector<HTMLButtonElement>(".carousel-next");
+    const counter = document.querySelector<HTMLElement>(".carousel-counter");
+
+    if (viewport && track && prevBtn && nextBtn && counter && cards.length > 0) {
+        let index = 0;
+
+        const render = () => {
+            track.style.transform = `translateX(-${index * 100}%)`;
+            viewport.style.height = `${cards[index].offsetHeight}px`;
+            counter.textContent = `${index + 1} / ${cards.length}`;
+        };
+
+        const go = (next: number) => {
+            index = (next + cards.length) % cards.length;
+            render();
+        };
+
+        prevBtn.addEventListener("click", () => go(index - 1));
+        nextBtn.addEventListener("click", () => go(index + 1));
+        window.addEventListener("resize", render);
+
+        render();
     }
 </script>
