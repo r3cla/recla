@@ -193,8 +193,21 @@ const structuredData = {
             render();
         };
 
-        prevBtn.addEventListener("click", () => go(index - 1));
-        nextBtn.addEventListener("click", () => go(index + 1));
+        let autoplay: ReturnType<typeof setInterval> | undefined = setInterval(() => go(index + 1), 3000);
+
+        const stopAutoplay = () => {
+            clearInterval(autoplay);
+            autoplay = undefined;
+        };
+
+        prevBtn.addEventListener("click", () => {
+            stopAutoplay();
+            go(index - 1);
+        });
+        nextBtn.addEventListener("click", () => {
+            stopAutoplay();
+            go(index + 1);
+        });
         window.addEventListener("resize", render);
 
         render();

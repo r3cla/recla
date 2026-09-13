@@ -1338,6 +1338,38 @@ footer {
     }
 }
 
+.email-icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.25rem;
+    height: 3.25rem;
+    background: var(--tertiary);
+    color: var(--stroke);
+    border-radius: 50%;
+    border: var(--border);
+    box-shadow: 5px 5px 0 0 var(--shadow);
+    transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.15s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.email-icon-button svg {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .email-icon-button:hover {
+        background: var(--tertiary-light);
+        transform: translate3d(-2px, -2px, 0);
+        box-shadow: 7px 7px 0 0 var(--shadow);
+    }
+}
+
+.email-icon-button:active {
+    transform: translate3d(2px, 2px, 0);
+    box-shadow: 2px 2px 0 0 var(--shadow);
+}
+
 .learn-more-button:active {
     transform: translate3d(2px, 2px, 0);
     box-shadow: 2px 2px 0 0 var(--shadow);
