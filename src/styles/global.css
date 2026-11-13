@@ -10,7 +10,6 @@
    6. Content Areas
    7. Portfolio Styles
    7.5 FAQ Styles
-   8. Footer
    9. Components & Utilities
    10. Mobile Optimizations
    11. Accessibility
@@ -258,7 +257,7 @@ body {
 main {
     width: 100%;
     max-width: 900px;
-    padding: 1.5rem 2rem 2.5rem;
+    padding: 1.5rem 2rem var(--dock-space);
     text-align: center;
     margin: 0 auto;
     flex: 1;
@@ -1324,87 +1323,6 @@ a.project-link:focus-visible {
 }
 
 /* ======================
-   8. Footer
-   ====================== */
-footer {
-    position: relative;
-    width: 100%;
-    background: var(--surface);
-    border-top: var(--border);
-    padding: 1.5rem 2rem calc(1.5rem + var(--dock-space));
-    text-align: center;
-    font-size: 0.9rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-    z-index: 900;
-    margin-top: auto;
-}
-
-.footer-link-separator {
-    color: var(--secondary);
-    font-weight: 400;
-    margin: 0 0.5rem;
-    font-family: var(--font-mono);
-}
-
-.copyright {
-    color: var(--secondary);
-    font-family: var(--font-mono);
-    font-size: 0.85rem;
-}
-
-.social-icons {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.social-icons a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    transition: transform var(--transition-fast);
-}
-
-.social-icons a:hover {
-    transform: translateY(-2px);
-}
-
-.social-icon {
-    width: 28px;
-    height: 28px;
-    filter: drop-shadow(2px 2px 0 var(--shadow));
-}
-
-.footer-links {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.footer-links a {
-    position: relative;
-    color: var(--primary);
-    text-decoration: underline;
-    text-decoration-color: var(--tertiary);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 4px;
-    padding: 0.4rem 0.8rem;
-    border-radius: var(--radius-sm);
-    transition: all var(--transition-fast);
-    font-family: var(--font-mono);
-    font-size: 0.9rem;
-}
-
-.footer-links a:hover {
-    color: var(--tertiary-text);
-}
-
-/* ======================
    9. Components & Utilities
    ====================== */
 
@@ -1503,7 +1421,7 @@ footer {
 
     main {
         padding: 1rem;
-        padding-bottom: 2rem;
+        padding-bottom: var(--dock-space);
         gap: 1.25rem;
     }
 
@@ -1597,32 +1515,6 @@ footer {
 
 /* Small Tablets */
 @media (max-width: 600px) {
-    footer {
-        flex-direction: column;
-        gap: 1rem;
-        padding: 1.5rem 1rem calc(1.5rem + var(--dock-space));
-    }
-
-    .social-icons {
-        order: 1;
-    }
-
-    .copyright {
-        order: 2;
-    }
-
-    .footer-links {
-        order: 3;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-    }
-
-    .footer-link-separator {
-        display: none;
-    }
-
     .intro-section {
         padding: 1.25rem;
     }
@@ -1683,7 +1575,7 @@ footer {
 
     main {
         padding: 0.85rem;
-        padding-bottom: 2rem;
+        padding-bottom: var(--dock-space);
         gap: 0.85rem;
     }
 
@@ -1800,11 +1692,6 @@ footer {
     .contact-info {
         padding: 0.8rem;
         margin-top: 1rem;
-    }
-
-    footer {
-        padding: 1rem 1rem calc(1rem + var(--dock-space));
-        gap: 0.8rem;
     }
 }
 
