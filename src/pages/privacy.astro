@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { businessRef } from "../lib/business";
 
 const structuredData = {
     "@context": "https://schema.org",
@@ -10,16 +11,17 @@ const structuredData = {
     inLanguage: "en-NZ",
     isPartOf: {
         "@type": "WebSite",
-        name: "Logie Web Services NZ",
+        name: "Logie Web Services",
         url: "https://www.logie.nz",
     },
+    publisher: businessRef,
     datePublished: "2025-04-06",
     dateModified: "2025-04-06",
 };
 ---
 
 <BaseLayout
-    title="Privacy Policy - Logie Web Services"
+    title="Privacy Notice | Logie Web Services, Whanganui NZ"
     description="Privacy policy for Logie Web Services NZ. Learn how we collect, use, and protect your personal information in accordance with New Zealand Privacy Act 2020 and GDPR."
     ogDescription="Privacy policy for Logie Web Services NZ outlining data collection, usage, and security practices."
     path="/privacy.html"

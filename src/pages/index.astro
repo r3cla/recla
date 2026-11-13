@@ -1,5 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import { businessEntity } from "../lib/business";
 
 const testimonials = [
     {
@@ -43,28 +44,8 @@ const testimonials = [
 
 const structuredData = {
     "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "Logie Web Services NZ",
-    description: "Professional and affordable web development services for small businesses and startups in New Zealand",
-    url: "https://www.logie.nz",
-    email: "kiaora@logie.nz",
-    hasMap: "https://share.google/KZHRxEVwJ7FY83Nue",
-    address: {
-        "@type": "PostalAddress",
-        addressCountry: "NZ",
-        addressRegion: "Whanganui",
-    },
-    geo: {
-        "@type": "GeoCoordinates",
-        latitude: "-39.93333",
-        longitude: "175.05",
-    },
-    areaServed: [
-        { "@type": "Country", name: "New Zealand" },
-        { "@type": "Country", name: "Australia" },
-    ],
-    serviceType: ["Web Development", "Website Design", "Software Development"],
-    priceRange: "$$",
+    ...businessEntity,
+    serviceType: ["Web Development", "Website Design", "E-commerce Websites", "Website Redesign"],
     review: testimonials.map((t) => ({
         "@type": "Review",
         author: { "@type": "Person", name: t.business ? `${t.author}, ${t.business}` : t.author },
@@ -75,10 +56,9 @@ const structuredData = {
 ---
 
 <BaseLayout
-    title="Web Development & Design Services NZ | Logie Web Services"
-    description="Professional web development services in New Zealand specializing in custom websites, e-commerce solutions, and web applications. Affordable web development for small businesses, startups, and registered NZ charities."
-    ogDescription="Professional web development for NZ small businesses and startups. Affordable, custom websites and e-commerce solutions with personalized service. Serving Wellington, Auckland, and beyond."
-    twitterDescription="Professional web development for NZ small businesses and startups. Affordable, custom websites and e-commerce solutions with personalized service."
+    title="Web Design & Development in Whanganui, NZ | Logie Web Services"
+    description="Affordable custom websites for small businesses in Whanganui and across New Zealand. Local web design, e-commerce and web apps, with discounts for NZ charities."
+    ogDescription="Affordable, custom websites for small businesses in Whanganui and across New Zealand, with personalised service from a local developer."
     path="/"
     current="home"
     structuredData={structuredData}
@@ -86,8 +66,8 @@ const structuredData = {
     <section class="hero-section">
         <img src="/assets/images/logienz-640.webp" alt="Logie Web Services logo" width="640" height="627" fetchpriority="high" class="profile-image profile-image--logo" />
         <div class="hero-content">
-            <h1 class="intro-header">Web Development for New Zealand Businesses</h1>
-            <p class="hero-sub">Custom websites that won't break the bank.</p>
+            <h1 class="intro-header">Web Development for Whanganui &amp; New Zealand Businesses</h1>
+            <p class="hero-sub">Custom websites that won't break the bank, built locally in Whanganui.</p>
             <a href="https://form.jotform.com/243067662032856" class="learn-more-button">Book a Free Quote</a>
         </div>
     </section>

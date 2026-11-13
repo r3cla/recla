@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { businessRef } from "../../lib/business";
 
 const posts = (await getCollection("blog")).sort(
     (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -10,14 +11,16 @@ const structuredData = {
     "@context": "https://schema.org",
     "@type": "Blog",
     name: "Logie Web Services Blog",
-    description: "Articles on web development, design, and running a website for your New Zealand business.",
+    description: "Articles on web design and running a website for small businesses in Whanganui and across New Zealand.",
     url: "https://www.logie.nz/blog.html",
+    inLanguage: "en-NZ",
+    publisher: businessRef,
 };
 ---
 
 <BaseLayout
-    title="Blog - Logie Web Services NZ"
-    description="Articles on web development, design, and running a website for your New Zealand business."
+    title="Blog | Logie Web Services, Whanganui NZ"
+    description="Articles on web design and running a website for small businesses in Whanganui and across New Zealand."
     path="/blog.html"
     structuredData={structuredData}
     current="blog"

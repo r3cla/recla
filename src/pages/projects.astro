@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import ProjectCard from "../components/ProjectCard.astro";
+import { businessRef } from "../lib/business";
 
 const structuredData = {
     "@context": "https://schema.org",
@@ -8,11 +9,8 @@ const structuredData = {
     name: "Nathan Addison",
     jobTitle: "Web Developer",
     url: "https://www.logie.nz/projects.html",
-    worksFor: {
-        "@type": "Organization",
-        name: "Logie Web Services NZ",
-        url: "https://www.logie.nz",
-    },
+    worksFor: businessRef,
+    homeLocation: { "@type": "City", name: "Whanganui" },
     knowsAbout: ["Web Development", "Website Design", "Software Development"],
     sameAs: ["https://github.com/r3cla", "https://www.facebook.com/logienz"],
 };
@@ -31,7 +29,7 @@ const clientWebsites = [
     {
         title: "Complete Property Management",
         href: "https://www.cpmrentals.co.nz",
-        description: "Delivered for a Waikato-based property management business with dynamic property listings utilizing Palace API and Netlify Functions.",
+        description: "Delivered for a Waikato-based property management business with dynamic property listings using Palace API and Netlify Functions.",
         badges: [
             { cls: "badge-js", label: "JavaScript" },
             { cls: "badge-css3", label: "CSS3" },
@@ -189,10 +187,9 @@ const githubProjects = [
 ---
 
 <BaseLayout
-    title="Nathan Addison - Portfolio"
-    description="Nathan Addison's web development portfolio showcasing websites, web applications, and creative projects. View some of my work in web development and design."
-    ogDescription="Explore Nathan Addison's web development portfolio featuring custom websites, web applications, and creative digital projects."
-    imageAlt="Nathan Addison Portfolio"
+    title="Web Design Portfolio | Logie Web Services, Whanganui NZ"
+    description="Websites built for businesses in Whanganui, Taranaki, Waikato and across New Zealand by Nathan Addison of Logie Web Services, plus open-source projects."
+    ogDescription="Client websites for New Zealand businesses from Whanganui to the Waikato, built by Whanganui web developer Nathan Addison."
     path="/projects.html"
     structuredData={structuredData}
     current="projects"

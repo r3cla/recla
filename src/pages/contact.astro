@@ -2,6 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Icon from "../components/Icon.astro";
 import type { IconName } from "../lib/icons";
+import { businessEntity } from "../lib/business";
 
 const QUOTE_FORM = "https://form.jotform.com/243067662032856";
 const EMAIL = "kiaora@logie.nz";
@@ -48,25 +49,16 @@ const structuredData = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
     name: "Contact Logie Web Services",
-    description: "Get in touch with Logie Web Services for web development enquiries in New Zealand and Australia.",
+    description: "Contact Logie Web Services, a web developer based in Whanganui, New Zealand.",
     url: "https://www.logie.nz/contact.html",
-    about: {
-        "@type": "LocalBusiness",
-        name: "Logie Web Services NZ",
-        email: EMAIL,
-        areaServed: [
-            { "@type": "Country", name: "New Zealand" },
-            { "@type": "Country", name: "Australia" },
-        ],
-    },
+    about: businessEntity,
 };
 ---
 
 <BaseLayout
-    title="Contact - Logie Web Services NZ"
-    description="Get in touch with Logie Web Services for affordable web development in New Zealand and Australia. Email kiaora@logie.nz or request a free quote."
-    ogDescription="Get in touch for web development enquiries across New Zealand and Australia, based in Whanganui."
-    twitterDescription="Get in touch for web development enquiries across New Zealand and Australia."
+    title="Contact | Logie Web Services, Whanganui NZ"
+    description="Contact Logie Web Services, a web developer based in Whanganui. Email kiaora@logie.nz or request a free quote for your New Zealand business website."
+    ogDescription="Get in touch with a Whanganui-based web developer working with businesses across New Zealand and Australia."
     path="/contact.html"
     twitterCard="summary"
     structuredData={structuredData}

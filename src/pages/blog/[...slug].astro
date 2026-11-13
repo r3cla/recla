@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import { BUSINESS_ID } from "../../lib/business";
 
 export async function getStaticPaths() {
     const posts = await getCollection("blog");
@@ -20,19 +21,25 @@ const structuredData = {
     description: post.data.description,
     datePublished: post.data.pubDate.toISOString(),
     dateModified: (post.data.updatedDate ?? post.data.pubDate).toISOString(),
+    inLanguage: "en-NZ",
+    mainEntityOfPage: `https://www.logie.nz/blog/${post.id}.html`,
+    image: "https://www.logie.nz/assets/images/og-image.jpg",
     author: {
         "@type": "Person",
         name: "Nathan Addison",
+        url: "https://www.logie.nz/projects.html",
     },
     publisher: {
         "@type": "Organization",
-        name: "Logie Web Services NZ",
+        "@id": BUSINESS_ID,
+        name: "Logie Web Services",
+        logo: { "@type": "ImageObject", url: "https://www.logie.nz/assets/images/logienz-640.webp" },
     },
 };
 ---
 
 <BaseLayout
-    title={`${post.data.title} - Logie Web Services Blog`}
+    title={`${post.data.title} | Logie Web Services`}
     description={post.data.description}
     path={`/blog/${post.id}.html`}
     ogType="article"
