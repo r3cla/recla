@@ -52,6 +52,7 @@
     --canvas-overlay-1: rgba(10, 14, 20, 0.9);
     --canvas-overlay-2: rgba(26, 31, 38, 0.85);
     --canvas-opacity: 0.5;
+    --dock-edge: var(--muted-dark);
 
     /* Border & hard offset shadow (neubrutalist card/button treatment) */
     --border: 2px solid var(--stroke);
@@ -103,8 +104,10 @@
     --font-family-secondary: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Roboto Mono', Consolas, monospace;
 
-    /* Nav sizing */
-    --nav-height: 64px;
+    /* Bottom dock: gap below it, and the total space it occupies (gap + bar +
+       the part of the raised tile/label that pokes above the bar). */
+    --dock-gap: 14px;
+    --dock-space: 120px;
     --icon-s: 20px;
     --icon-m: 26px;
 }
@@ -120,6 +123,7 @@
         --canvas-overlay-1: rgba(234, 242, 251, 0.85);
         --canvas-overlay-2: rgba(255, 255, 255, 0.75);
         --canvas-opacity: 0.4;
+        --dock-edge: var(--stroke);
     }
 }
 
@@ -133,6 +137,7 @@
     --canvas-overlay-1: rgba(234, 242, 251, 0.85);
     --canvas-overlay-2: rgba(255, 255, 255, 0.75);
     --canvas-opacity: 0.4;
+    --dock-edge: var(--stroke);
 }
 
 .dark-scheme {
@@ -145,6 +150,7 @@
     --canvas-overlay-1: rgba(10, 14, 20, 0.9);
     --canvas-overlay-2: rgba(26, 31, 38, 0.85);
     --canvas-opacity: 0.5;
+    --dock-edge: var(--muted-dark);
 }
 
 /* ======================
@@ -252,7 +258,7 @@ body {
 main {
     width: 100%;
     max-width: 900px;
-    padding: 1.5rem 2rem calc(var(--nav-height) + 1.5rem);
+    padding: 1.5rem 2rem 2.5rem;
     text-align: center;
     margin: 0 auto;
     flex: 1;
@@ -263,16 +269,13 @@ main {
     gap: 1rem;
 }
 
-@media screen and (min-width: 1024px) {
-    main {
-        padding-bottom: 1.5rem;
-    }
-}
 
 /* ======================
    4. Navigation
    ====================== */
-nav.nav {
+
+/* Top bar: logo + theme switch. Page links live in the bottom dock. */
+.site-header {
     width: 100%;
     display: flex;
     align-items: center;
@@ -286,118 +289,187 @@ nav.nav {
     border-bottom: var(--border);
 }
 
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
+/* Bottom dock: a floating bar of coloured tiles that poke up out of it. Tiles rise on
+   hover/focus and the current page's tile sits highest, with a dot beneath it. */
+.dock {
+    --dock-tile: 44px;
+    --dock-tile-y: -22%;
+    --dock-tile-y-hover: -42%;
+    --dock-tile-y-active: -52%;
+
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: var(--dock-gap);
+    z-index: 1000;
+    width: calc(100% - 2rem);
+    max-width: 560px;
+    height: var(--dock-tile);
+    margin: 0 auto;
+    background: var(--surface);
+    border: 2px solid var(--dock-edge);
+    border-radius: var(--radius-md);
+    box-shadow: 0 5px 0 0 var(--shadow);
 }
 
-@media screen and (max-width: 1023px) {
-    .nav-links {
-        position: fixed;
-        inset: auto 0 0 0;
-        height: var(--nav-height);
-        width: 100%;
-        margin: 0;
-        gap: 0;
-        justify-content: space-around;
-        background: var(--tertiary);
-        border-top: var(--border);
-        z-index: 1000;
+@media (min-width: 768px) {
+    .dock {
+        --dock-tile: 50px;
+        max-width: 640px;
     }
 }
 
-.nav-link {
+.dock-list {
+    list-style: none;
+    display: flex;
+    height: 100%;
+}
+
+.dock-item {
+    flex: 1;
+    display: flex;
+}
+
+.dock-link {
     position: relative;
+    flex: 1;
     display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 0.4rem;
-    color: var(--primary);
+    color: var(--stroke);
     text-decoration: none;
-    font-size: var(--text-base);
-    font-weight: var(--font-medium);
-    padding: 0.6rem 1rem;
-    transition: all var(--transition-fast);
-    border-radius: var(--radius-sm);
-    font-family: var(--font-mono);
-    letter-spacing: 0.3px;
+    -webkit-tap-highlight-color: transparent;
 }
 
-@media screen and (max-width: 1023px) {
-    .nav-link {
-        flex: 1;
-        flex-direction: column;
-        gap: 2px;
-        padding: 0.5rem 0.25rem;
-        color: var(--stroke);
-        font-size: var(--text-xs);
-    }
+.dock-link:focus-visible {
+    outline: none;
 }
 
-.nav-link-icon-wrapper {
+.dock-tile {
+    --tile-bg: var(--primary-light);
+
     display: flex;
     align-items: center;
     justify-content: center;
+    width: var(--dock-tile);
+    height: var(--dock-tile);
+    background: var(--tile-bg);
+    border: var(--border);
+    border-radius: var(--radius-sm);
+    box-shadow: 2px 2px 0 0 var(--stroke);
+    transform: translate3d(0, var(--dock-tile-y), 0);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.nav-link-icon {
-    width: var(--icon-s);
-    height: var(--icon-s);
-    stroke: currentColor;
+.dock-link--home     .dock-tile { --tile-bg: #C9B8F2; }
+.dock-link--projects .dock-tile { --tile-bg: #A5CCE8; }
+.dock-link--blog     .dock-tile { --tile-bg: #9EE8B8; }
+.dock-link--faq      .dock-tile { --tile-bg: #F8B99B; }
+.dock-link--contact  .dock-tile { --tile-bg: #F4AECB; }
+.dock-link--quote    .dock-tile { --tile-bg: var(--tertiary); }
+
+.dock-icon {
+    width: 55%;
+    height: 55%;
     fill: none;
+    stroke: currentColor;
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
-    transition: transform var(--transition-fast);
 }
 
-.nav-link:hover {
-    color: var(--tertiary-text);
-    background: rgba(242, 196, 100, 0.12);
-    transform: translateY(-1px);
+.dock-link.is-active .dock-tile {
+    transform: translate3d(0, var(--dock-tile-y-active), 0);
+    box-shadow: 3px 3px 0 0 var(--stroke);
 }
 
-@media screen and (max-width: 1023px) {
-    .nav-link:hover {
-        background: transparent;
-        transform: none;
+.dock-link:focus-visible:not(.is-active) .dock-tile {
+    transform: translate3d(0, var(--dock-tile-y-hover), 0);
+}
+
+.dock-link:focus-visible .dock-tile {
+    outline: 3px solid var(--tertiary);
+    outline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .dock-link:hover:not(.is-active) .dock-tile {
+        transform: translate3d(0, var(--dock-tile-y-hover), 0);
+        box-shadow: 3px 3px 0 0 var(--stroke);
     }
 }
 
-.nav-link.active {
+.dock-dot {
+    position: absolute;
+    bottom: 5px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--primary);
+    opacity: 0;
+    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dock-link.is-active .dock-dot {
+    opacity: 1;
+}
+
+/* Label pops up above the tile: always for the current page, and on hover/focus. */
+.dock-label {
+    position: absolute;
+    bottom: calc(100% + var(--dock-tile) * 0.45);
+    padding: 2px 8px;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
     font-weight: var(--font-semibold);
-    color: var(--tertiary-text);
+    color: var(--primary);
+    background: var(--surface);
+    border: var(--border-thin);
+    border-radius: 6px;
+    opacity: 0;
+    transform: translate3d(0, 4px, 0);
+    pointer-events: none;
+    transition: opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-@media screen and (max-width: 1023px) {
-    .nav-link.active {
-        color: var(--stroke);
+.dock-link.is-active .dock-label,
+.dock-link:focus-visible .dock-label {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .dock-link:hover .dock-label {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
     }
 
-    .nav-link.active .nav-link-icon {
-        animation: nav-bounce 0.85s cubic-bezier(0.28, 0.84, 0.42, 1);
-        stroke: var(--secondary-light);
-        fill: var(--secondary-light);
+    /* While hovering another tile, tuck the current page's label away so two
+       labels never sit side by side. */
+    .dock-list:has(.dock-link:not(.is-active):hover) .dock-link.is-active .dock-label {
+        opacity: 0;
     }
 }
 
-@keyframes nav-bounce {
-    0% { transform: scale(1, 1) translateY(0); }
-    10% { transform: scale(1.1, 0.9) translateY(0); }
-    30% { transform: scale(0.9, 1.1) translateY(-4px); }
-    50% { transform: scale(1.05, 0.95) translateY(0); }
-    100% { transform: scale(1, 1) translateY(0); }
+/* Smooth cross-page transition: the dock tiles keep their identity between pages
+   (view-transition-name set inline in Nav.astro) so the raised tile glides across. */
+@media (prefers-reduced-motion: no-preference) {
+    @view-transition {
+        navigation: auto;
+    }
+}
+
+::view-transition-group(*) {
+    animation-duration: 0.35s;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 /* ======================
    5. Logo Styles
    ====================== */
-.logo-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .logo {
     display: flex;
     align-items: baseline;
@@ -1259,7 +1331,7 @@ footer {
     width: 100%;
     background: var(--surface);
     border-top: var(--border);
-    padding: 1.5rem 2rem;
+    padding: 1.5rem 2rem calc(1.5rem + var(--dock-space));
     text-align: center;
     font-size: 0.9rem;
     display: flex;
@@ -1269,13 +1341,6 @@ footer {
     flex-wrap: wrap;
     z-index: 900;
     margin-top: auto;
-    margin-bottom: var(--nav-height);
-}
-
-@media screen and (min-width: 1024px) {
-    footer {
-        margin-bottom: 0;
-    }
 }
 
 .footer-link-separator {
@@ -1428,7 +1493,7 @@ footer {
 
 /* Tablet & Small Screens */
 @media (max-width: 768px) {
-    nav.nav {
+    .site-header {
         padding: 0.7rem 1rem;
     }
 
@@ -1438,7 +1503,7 @@ footer {
 
     main {
         padding: 1rem;
-        padding-bottom: calc(var(--nav-height) + 1rem);
+        padding-bottom: 2rem;
         gap: 1.25rem;
     }
 
@@ -1535,7 +1600,7 @@ footer {
     footer {
         flex-direction: column;
         gap: 1rem;
-        padding: 1.5rem 1rem;
+        padding: 1.5rem 1rem calc(1.5rem + var(--dock-space));
     }
 
     .social-icons {
@@ -1608,7 +1673,7 @@ footer {
 
 /* Mobile Phones */
 @media (max-width: 480px) {
-    nav.nav {
+    .site-header {
         padding: 0.6rem 0.8rem;
     }
 
@@ -1618,7 +1683,7 @@ footer {
 
     main {
         padding: 0.85rem;
-        padding-bottom: calc(var(--nav-height) + 0.85rem);
+        padding-bottom: 2rem;
         gap: 0.85rem;
     }
 
@@ -1738,7 +1803,7 @@ footer {
     }
 
     footer {
-        padding: 1rem;
+        padding: 1rem 1rem calc(1rem + var(--dock-space));
         gap: 0.8rem;
     }
 }
@@ -1793,11 +1858,6 @@ footer {
 
     .logo-text, .logo-accent, .logo-semicolon {
         font-size: 1.7rem;
-    }
-
-    .nav-link {
-        font-size: 1.05rem;
-        padding: 0.7rem 1.2rem;
     }
 
     .learn-more-button {

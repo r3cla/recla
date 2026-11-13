@@ -1,7 +1,7 @@
 ---
 import SeoHead from "../components/SeoHead.astro";
 import BackgroundCanvas from "../components/BackgroundCanvas.astro";
-import Nav from "../components/Nav.astro";
+import Nav, { type NavKey } from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 
@@ -15,7 +15,7 @@ export interface Props {
     twitterCard?: "summary" | "summary_large_image";
     imageAlt?: string;
     structuredData: Record<string, unknown>;
-    current?: "projects" | "faq" | "blog" | "contact";
+    current?: NavKey;
 }
 
 const {
