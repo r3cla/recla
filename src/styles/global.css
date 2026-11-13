@@ -17,6 +17,7 @@
    13. Blog / Prose Styles
    14. Theme Switch
    15. Scroll Reveal
+   16. Contact Page
 */
 
 /* ======================
@@ -302,7 +303,7 @@ main {
     bottom: var(--dock-gap);
     z-index: 1000;
     width: calc(100% - 2rem);
-    max-width: 560px;
+    max-width: 480px;
     height: var(--dock-tile);
     margin: 0 auto;
     background: var(--surface);
@@ -314,7 +315,7 @@ main {
 @media (min-width: 768px) {
     .dock {
         --dock-tile: 50px;
-        max-width: 640px;
+        max-width: 540px;
     }
 }
 
@@ -361,21 +362,63 @@ main {
                 box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.dock-link--home     .dock-tile { --tile-bg: #C9B8F2; }
-.dock-link--projects .dock-tile { --tile-bg: #A5CCE8; }
-.dock-link--blog     .dock-tile { --tile-bg: #9EE8B8; }
-.dock-link--faq      .dock-tile { --tile-bg: #F8B99B; }
-.dock-link--contact  .dock-tile { --tile-bg: #F4AECB; }
-.dock-link--quote    .dock-tile { --tile-bg: var(--tertiary); }
-
+/* Shared icon set (src/lib/icons.ts, rendered by Icon.astro): bold dark outline
+   with flat fills, like the avatar and card treatment. */
 .dock-icon {
-    width: 55%;
-    height: 55%;
+    width: 64%;
+    height: 64%;
+}
+
+.tile-icon {
+    color: var(--stroke);
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
+    overflow: visible;
+}
+
+.tile-icon .fl {
+    fill: var(--surface-light);
+}
+
+.tile-icon .dk {
+    fill: currentColor;
+}
+
+.tile-icon .wt {
+    fill: var(--surface-light);
+    stroke: none;
+}
+
+.tile-icon .gd {
+    fill: var(--tertiary);
+}
+
+/* Reusable icon tile (same look as the dock tiles, without the dock motion). */
+.icon-tile {
+    --tile-size: 48px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: var(--tile-size);
+    height: var(--tile-size);
+    background: var(--primary-light);
+    border: var(--border);
+    border-radius: var(--radius-sm);
+    box-shadow: 3px 3px 0 0 var(--stroke);
+}
+
+.icon-tile .tile-icon {
+    width: 62%;
+    height: 62%;
+}
+
+.icon-tile--gold {
+    background: var(--tertiary);
 }
 
 .dock-link.is-active .dock-tile {
@@ -632,6 +675,10 @@ main {
     line-height: 1.6;
     font-size: 0.95rem;
     margin-bottom: 0.85rem;
+}
+
+.privacy-text:last-child {
+    margin-bottom: 0;
 }
 
 .privacy-link a {
@@ -1350,38 +1397,6 @@ a.project-link:focus-visible {
         transform: translate3d(-2px, -2px, 0);
         box-shadow: 7px 7px 0 0 var(--shadow);
     }
-}
-
-.email-icon-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 3.25rem;
-    height: 3.25rem;
-    background: var(--tertiary);
-    color: var(--stroke);
-    border-radius: 50%;
-    border: var(--border);
-    box-shadow: 5px 5px 0 0 var(--shadow);
-    transition: transform 0.15s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.15s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.email-icon-button svg {
-    width: 1.5rem;
-    height: 1.5rem;
-}
-
-@media (hover: hover) and (pointer: fine) {
-    .email-icon-button:hover {
-        background: var(--tertiary-light);
-        transform: translate3d(-2px, -2px, 0);
-        box-shadow: 7px 7px 0 0 var(--shadow);
-    }
-}
-
-.email-icon-button:active {
-    transform: translate3d(2px, 2px, 0);
-    box-shadow: 2px 2px 0 0 var(--shadow);
 }
 
 .learn-more-button:active {
@@ -2163,6 +2178,256 @@ pre code {
         opacity: 1;
         transform: none;
         transition: none;
+    }
+}
+
+/* ======================
+   16. Contact Page
+   ====================== */
+
+/* Secondary variant of the main button: same press style, surface colour. */
+.learn-more-button--secondary {
+    background: var(--surface);
+    color: var(--primary);
+    font-family: var(--font-mono);
+    letter-spacing: 0;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .learn-more-button--secondary:hover {
+        background: var(--surface);
+        color: var(--tertiary-text);
+    }
+}
+
+.contact-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 850px;
+    margin: 1.5rem auto 0;
+}
+
+.contact-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
+    padding: 1.75rem;
+    text-align: left;
+    background: var(--surface);
+    border: var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: 6px 6px 0 0 var(--shadow);
+}
+
+.contact-card h2 {
+    color: var(--tertiary-text);
+    font-family: var(--font-family-secondary);
+    font-size: 1.4rem;
+    line-height: var(--leading-tight);
+}
+
+.contact-card p {
+    color: var(--secondary);
+    line-height: 1.65;
+}
+
+.contact-card .learn-more-button {
+    margin-top: auto;
+    padding: 0.8rem 1.75rem;
+    font-size: 1rem;
+}
+
+.contact-steps {
+    width: 100%;
+    max-width: 850px;
+    margin: 2.5rem auto 0;
+}
+
+.steps-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    counter-reset: none;
+}
+
+.step {
+    position: relative;
+    padding: 1.5rem;
+    text-align: left;
+    background: var(--surface);
+    border: var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: 5px 5px 0 0 var(--shadow);
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 0.9rem;
+    font-family: var(--font-mono);
+    font-weight: var(--font-bold);
+    font-size: 1.05rem;
+    color: var(--stroke);
+    background: var(--tertiary);
+    border: var(--border);
+    border-radius: var(--radius-sm);
+    box-shadow: 2px 2px 0 0 var(--stroke);
+}
+
+.step h3 {
+    color: var(--primary);
+    font-family: var(--font-family-secondary);
+    font-size: 1.1rem;
+    line-height: var(--leading-tight);
+    margin-bottom: 0.5rem;
+}
+
+.step p {
+    color: var(--secondary);
+    font-size: 0.92rem;
+    line-height: 1.65;
+}
+
+.contact-links {
+    width: 100%;
+    max-width: 850px;
+    margin: 2.5rem auto 0;
+}
+
+.link-cards {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.link-card {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    padding: 1.1rem;
+    text-align: left;
+    background: var(--surface);
+    border: var(--border);
+    border-radius: var(--radius-md);
+    box-shadow: 4px 4px 0 0 var(--shadow);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.link-card .icon-tile {
+    --tile-size: 40px;
+}
+
+.link-card:has(.link-card-title:hover) {
+    transform: translate3d(-3px, -3px, 0);
+    box-shadow: 7px 7px 0 0 var(--shadow);
+}
+
+.link-card:has(.link-card-title:focus-visible) {
+    outline: 3px solid var(--tertiary);
+    outline-offset: 3px;
+}
+
+.link-card-title {
+    display: block;
+    color: var(--primary);
+    font-family: var(--font-mono);
+    font-weight: var(--font-semibold);
+    font-size: 0.95rem;
+    text-decoration: none;
+    margin-bottom: 0.2rem;
+    transition: color var(--transition-fast);
+}
+
+.link-card-title::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+}
+
+.link-card-title:focus-visible {
+    outline: none;
+}
+
+.link-card-title:hover {
+    color: var(--tertiary-text);
+}
+
+.link-card p {
+    color: var(--secondary);
+    font-size: 0.85rem;
+    line-height: 1.55;
+}
+
+.contact-privacy {
+    margin-top: 1.5rem;
+    color: var(--secondary);
+    font-size: 0.85rem;
+}
+
+.contact-privacy a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-decoration-color: var(--tertiary);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+}
+
+.contact-privacy a:hover {
+    color: var(--tertiary-text);
+}
+
+@media (min-width: 1200px) {
+    .contact-options,
+    .contact-steps,
+    .contact-links {
+        max-width: 950px;
+    }
+}
+
+@media (max-width: 900px) {
+    .link-cards {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .contact-options,
+    .steps-list {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-card {
+        padding: 1.4rem;
+    }
+
+    /* Number badge beside the text on small screens to keep the steps compact. */
+    .step {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 1rem;
+        padding: 1.25rem;
+    }
+
+    .step-number {
+        grid-row: span 2;
+        margin-bottom: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-card .learn-more-button {
+        width: 100%;
+        text-align: center;
     }
 }
 

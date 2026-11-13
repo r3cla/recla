@@ -1,5 +1,48 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import type { IconName } from "../lib/icons";
+
+const QUOTE_FORM = "https://form.jotform.com/243067662032856";
+const EMAIL = "kiaora@logie.nz";
+
+const steps = [
+    {
+        title: "Tell me about your project",
+        body: "Fill in the quote form or send an email covering what your business does and what you need from a website. No technical knowledge needed.",
+    },
+    {
+        title: "Get your free quote",
+        body: "I'll come back with a clear, no-obligation quote and timeline. Most small business sites take 2–4 weeks from go-ahead to launch.",
+    },
+    {
+        title: "Design, build & launch",
+        body: "You approve the design before anything is built, and I'll keep you updated through development and testing until your site goes live.",
+    },
+];
+
+const links: Array<{ icon: IconName; title: string; body: string; href: string; external?: boolean }> = [
+    {
+        icon: "star",
+        title: "Read client reviews",
+        body: "See what other NZ businesses say about working with me.",
+        href: "https://share.google/KZHRxEVwJ7FY83Nue",
+        external: true,
+    },
+    {
+        icon: "facebook",
+        title: "Find me on Facebook",
+        body: "Follow Logie Web Services on Facebook.",
+        href: "https://www.facebook.com/logienz/",
+        external: true,
+    },
+    {
+        icon: "faq",
+        title: "Browse the FAQ",
+        body: "Answers on pricing, timelines, hosting and more.",
+        href: "/faq.html",
+    },
+];
 
 const structuredData = {
     "@context": "https://schema.org",
@@ -10,7 +53,7 @@ const structuredData = {
     about: {
         "@type": "LocalBusiness",
         name: "Logie Web Services NZ",
-        email: "kiaora@logie.nz",
+        email: EMAIL,
         areaServed: [
             { "@type": "Country", name: "New Zealand" },
             { "@type": "Country", name: "Australia" },
@@ -29,22 +72,69 @@ const structuredData = {
     structuredData={structuredData}
     current="contact"
 >
-    <h1 class="intro-header">Get in Touch</h1>
-
-    <section class="intro-section">
-        <p class="intro">
+    <div class="page-header">
+        <h1 class="intro-header">Get in Touch</h1>
+        <p class="page-subtitle">
             Based in Whanganui, working with small businesses and startups across New Zealand and Australia.
-            Reach out by email or request a free, no-obligation quote below.
         </p>
+    </div>
+
+    <section class="contact-options" aria-label="Ways to get in touch" data-elevate>
+        <article class="contact-card">
+            <span class="icon-tile icon-tile--gold"><Icon name="quote" /></span>
+            <h2>Get a free quote</h2>
+            <p>
+                The quickest way to get started. Answer a few questions about your business and what you need,
+                and I'll put together a quote with no obligation.
+            </p>
+            <a href={QUOTE_FORM} class="learn-more-button">Request a Quote</a>
+        </article>
+
+        <article class="contact-card">
+            <span class="icon-tile"><Icon name="email" /></span>
+            <h2>Send an email</h2>
+            <p>
+                Have a quick question, or rather explain your project in your own words? Email me directly
+                and I'll get back to you.
+            </p>
+            <a href={`mailto:${EMAIL}`} class="learn-more-button learn-more-button--secondary">{EMAIL}</a>
+        </article>
     </section>
 
-    <section class="intro-section glass-card" data-elevate style="text-align:center; display:flex; flex-direction:column; align-items:center; gap:1.25rem;">
-        <a href="mailto:kiaora@logie.nz" class="email-icon-button" aria-label="Email kiaora@logie.nz">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-                <path d="m22 6-10 7L2 6" />
-            </svg>
-        </a>
-        <a href="https://form.jotform.com/243067662032856" class="learn-more-button">Get a Free Quote</a>
+    <section class="contact-steps" data-elevate>
+        <h2 class="section-title">What happens next</h2>
+        <ol class="steps-list">
+            {steps.map((step, i) => (
+                <li class="step">
+                    <span class="step-number" aria-hidden="true">{i + 1}</span>
+                    <h3>{step.title}</h3>
+                    <p>{step.body}</p>
+                </li>
+            ))}
+        </ol>
+    </section>
+
+    <section class="contact-links" aria-label="More ways to connect" data-elevate>
+        <ul class="link-cards">
+            {links.map((link) => (
+                <li class="link-card">
+                    <span class="icon-tile"><Icon name={link.icon} /></span>
+                    <div>
+                        <a
+                            href={link.href}
+                            class="link-card-title"
+                            {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                        >
+                            {link.title}
+                            {link.external && <span class="sr-only"> (opens in a new tab)</span>}
+                        </a>
+                        <p>{link.body}</p>
+                    </div>
+                </li>
+            ))}
+        </ul>
+        <p class="contact-privacy">
+            Read how your information is handled in the <a href="/privacy.html">Privacy Notice</a>.
+        </p>
     </section>
 </BaseLayout>

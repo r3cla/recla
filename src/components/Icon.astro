@@ -1,0 +1,12 @@
+---
+import { icons, type IconName } from "../lib/icons";
+
+export interface Props {
+    name: IconName;
+    class?: string;
+}
+
+const { name, class: className } = Astro.props;
+---
+
+<svg class:list={["tile-icon", className]} viewBox="0 0 24 24" aria-hidden="true" set:html={icons[name]} />
