@@ -83,7 +83,7 @@ const structuredData = {
     structuredData={structuredData}
 >
     <section class="hero-section">
-        <img src="/assets/images/logienz.webp" alt="Logie Web Services logo" class="profile-image profile-image--logo" />
+        <img src="/assets/images/logienz-640.webp" alt="Logie Web Services logo" width="640" height="627" fetchpriority="high" class="profile-image profile-image--logo" />
         <div class="hero-content">
             <h1 class="intro-header">Web Development for New Zealand Businesses</h1>
             <p class="hero-sub">Custom websites that won't break the bank.</p>
@@ -108,21 +108,23 @@ const structuredData = {
 
     <section class="testimonials-section">
         <h2 class="section-title">What Clients Say</h2>
-        <div class="testimonial-carousel" data-elevate>
+        <div class="testimonial-carousel" data-elevate role="region" aria-roledescription="carousel" aria-label="Client reviews">
             <div class="testimonial-viewport">
                 <div class="testimonial-track">
-                    {testimonials.map((t) => (
-                        <article class="testimonial-card glass-card">
-                            <header class="testimonial-header">
-                                <cite class="testimonial-name">{t.author}</cite>
-                                <div class="testimonial-stars">
-                                    <span aria-hidden="true">★★★★★</span>
-                                    <span class="sr-only">Rated 5 out of 5 stars</span>
-                                </div>
-                            </header>
-                            {t.business && <p class="testimonial-meta">{t.business}</p>}
-                            <blockquote class="testimonial-quote"><p>{t.quote}</p></blockquote>
-                        </article>
+                    {testimonials.map((t, i) => (
+                        <div class="testimonial-slide" role="group" aria-roledescription="slide" aria-label={`${i + 1} of ${testimonials.length}`}>
+                            <article class="testimonial-card glass-card">
+                                <header class="testimonial-header">
+                                    <cite class="testimonial-name">{t.author}</cite>
+                                    <div class="testimonial-stars">
+                                        <span aria-hidden="true">★★★★★</span>
+                                        <span class="sr-only">Rated 5 out of 5 stars</span>
+                                    </div>
+                                </header>
+                                {t.business && <p class="testimonial-meta">{t.business}</p>}
+                                <blockquote class="testimonial-quote"><p>{t.quote}</p></blockquote>
+                            </article>
+                        </div>
                     ))}
                 </div>
             </div>
@@ -174,42 +176,97 @@ const structuredData = {
 <script>
     const viewport = document.querySelector<HTMLElement>(".testimonial-viewport");
     const track = document.querySelector<HTMLElement>(".testimonial-track");
-    const cards = Array.from(document.querySelectorAll<HTMLElement>(".testimonial-card"));
+    const carousel = document.querySelector<HTMLElement>(".testimonial-carousel");
+    const slides = Array.from(document.querySelectorAll<HTMLElement>(".testimonial-slide"));
     const prevBtn = document.querySelector<HTMLButtonElement>(".carousel-prev");
     const nextBtn = document.querySelector<HTMLButtonElement>(".carousel-next");
     const counter = document.querySelector<HTMLElement>(".carousel-counter");
 
-    if (viewport && track && prevBtn && nextBtn && counter && cards.length > 0) {
+    if (carousel && viewport && track && prevBtn && nextBtn && counter && slides.length > 0) {
+        const AUTOPLAY_MS = 7000;
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
         let index = 0;
 
         const render = () => {
             track.style.transform = `translateX(-${index * 100}%)`;
-            viewport.style.height = `${cards[index].offsetHeight}px`;
-            counter.textContent = `${index + 1} / ${cards.length}`;
+            viewport.style.height = `${slides[index].offsetHeight}px`;
+            counter.textContent = `${index + 1} / ${slides.length}`;
+            // Off-screen slides are hidden from assistive tech and the tab order.
+            slides.forEach((slide, i) => slide.toggleAttribute("inert", i !== index));
         };
 
         const go = (next: number) => {
-            index = (next + cards.length) % cards.length;
+            index = (next + slides.length) % slides.length;
             render();
         };
 
-        let autoplay: ReturnType<typeof setInterval> | undefined = setInterval(() => go(index + 1), 3000);
+        // Autoplay: long enough to read a full review, paused while the reader is
+        // hovering/focused in the carousel or the tab is hidden, off for reduced motion,
+        // and stopped for good once the visitor takes control with the arrows or a swipe.
+        let autoplay: ReturnType<typeof setInterval> | undefined;
+        let userControlled = reducedMotion;
+        let hovering = false;
+        let focused = false;
 
-        const stopAutoplay = () => {
-            clearInterval(autoplay);
-            autoplay = undefined;
+        const syncAutoplay = () => {
+            const shouldRun = !userControlled && !hovering && !focused && !document.hidden;
+            if (shouldRun && !autoplay) {
+                autoplay = setInterval(() => go(index + 1), AUTOPLAY_MS);
+            } else if (!shouldRun && autoplay) {
+                clearInterval(autoplay);
+                autoplay = undefined;
+            }
         };
 
-        prevBtn.addEventListener("click", () => {
-            stopAutoplay();
-            go(index - 1);
+        const takeControl = (next: number) => {
+            userControlled = true;
+            syncAutoplay();
+            go(next);
+        };
+
+        prevBtn.addEventListener("click", () => takeControl(index - 1));
+        nextBtn.addEventListener("click", () => takeControl(index + 1));
+
+        carousel.addEventListener("pointerenter", (e) => {
+            if (e.pointerType === "mouse") {
+                hovering = true;
+                syncAutoplay();
+            }
         });
-        nextBtn.addEventListener("click", () => {
-            stopAutoplay();
-            go(index + 1);
+        carousel.addEventListener("pointerleave", () => {
+            hovering = false;
+            syncAutoplay();
         });
+        carousel.addEventListener("focusin", () => {
+            focused = true;
+            syncAutoplay();
+        });
+        carousel.addEventListener("focusout", (e) => {
+            if (!carousel.contains(e.relatedTarget as Node | null)) {
+                focused = false;
+                syncAutoplay();
+            }
+        });
+        document.addEventListener("visibilitychange", syncAutoplay);
+
+        // Horizontal swipe on touch screens.
+        let startX = 0;
+        let startY = 0;
+        viewport.addEventListener("touchstart", (e) => {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        }, { passive: true });
+        viewport.addEventListener("touchend", (e) => {
+            const dx = e.changedTouches[0].clientX - startX;
+            const dy = e.changedTouches[0].clientY - startY;
+            if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+                takeControl(dx < 0 ? index + 1 : index - 1);
+            }
+        }, { passive: true });
+
         window.addEventListener("resize", render);
 
         render();
+        syncAutoplay();
     }
 </script>

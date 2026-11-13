@@ -1,24 +1,8 @@
 ---
+// Purely decorative, fixed-position backdrop (image + scheme-aware overlay set in
+// global.css under #backgroundCanvas). A plain div rather than a <canvas>: nothing is
+// drawn to it, and a canvas sized to the full scroll height allocated a large,
+// unused bitmap and was resized on every scroll.
 ---
 
-<canvas id="backgroundCanvas"></canvas>
-
-<script>
-    const canvas = document.getElementById("backgroundCanvas") as HTMLCanvasElement | null;
-    if (canvas) {
-        const resize = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = Math.max(window.innerHeight, document.body.scrollHeight);
-        };
-        resize();
-        window.addEventListener("resize", resize);
-        window.addEventListener(
-            "scroll",
-            () => {
-                const newHeight = Math.max(window.innerHeight, document.body.scrollHeight);
-                if (canvas.height !== newHeight) canvas.height = newHeight;
-            },
-            { passive: true }
-        );
-    }
-</script>
+<div id="backgroundCanvas" aria-hidden="true"></div>

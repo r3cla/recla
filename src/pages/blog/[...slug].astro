@@ -40,10 +40,18 @@ const structuredData = {
     current="blog"
 >
     <article class="prose" data-elevate>
+        <a href="/blog.html" class="blog-back">&larr; All posts</a>
         <p class="blog-meta">
-            {post.data.pubDate.toLocaleDateString("en-NZ", { year: "numeric", month: "long", day: "numeric" })}
+            <time datetime={post.data.pubDate.toISOString()}>
+                {post.data.pubDate.toLocaleDateString("en-NZ", { year: "numeric", month: "long", day: "numeric" })}
+            </time>
         </p>
         <h1>{post.data.title}</h1>
         <Content />
     </article>
+
+    <section class="intro-section cta-section">
+        <p class="intro" style="text-align: center;">Thinking about a website for your business?</p>
+        <a href="https://form.jotform.com/243067662032856" class="learn-more-button">Get a Free Quote</a>
+    </section>
 </BaseLayout>

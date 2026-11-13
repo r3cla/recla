@@ -87,7 +87,7 @@ const structuredData = {
     </section>
 
     <section class="faq-container" data-elevate>
-        {faqs.map((faq) => <FaqItem question={faq.question} answer={faq.answer} />)}
+        {faqs.map((faq, i) => <FaqItem id={`faq-${i + 1}`} question={faq.question} answer={faq.answer} />)}
     </section>
 
     <section class="intro-section">
@@ -102,14 +102,11 @@ const structuredData = {
 <script>
     const faqQuestions = document.querySelectorAll<HTMLButtonElement>(".faq-question");
     faqQuestions.forEach((question) => {
-        question.addEventListener("click", function () {
+        // Open/close is pure CSS off aria-expanded (grid-template-rows 0fr -> 1fr), so the
+        // answer always fits its content, even if the text reflows after opening.
+        question.addEventListener("click", () => {
             const isExpanded = question.getAttribute("aria-expanded") === "true";
-            const answer = question.nextElementSibling as HTMLElement | null;
             question.setAttribute("aria-expanded", String(!isExpanded));
-            question.classList.toggle("active");
-            if (answer) {
-                answer.style.maxHeight = isExpanded ? "0" : `${answer.scrollHeight}px`;
-            }
         });
     });
 </script>

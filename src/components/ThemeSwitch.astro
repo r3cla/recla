@@ -25,7 +25,11 @@
         html.classList.toggle("dark-scheme", isDark);
         html.classList.toggle("light-scheme", !isDark);
         button?.setAttribute("aria-checked", String(isDark));
-        localStorage.setItem("theme", isDark ? "dark" : "light");
+        try {
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+        } catch {
+            // Storage blocked (private mode / disabled site data): theme still applies for this page.
+        }
     }
 
     if (button) {

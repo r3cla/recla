@@ -34,9 +34,9 @@ const structuredData = {
             {posts.map((post) => (
                 <li class="blog-post-item">
                     <a href={`/blog/${post.id}.html`} class="blog-post-link">{post.data.title}</a>
-                    <span class="blog-post-date">
+                    <time class="blog-post-date" datetime={post.data.pubDate.toISOString()}>
                         {post.data.pubDate.toLocaleDateString("en-NZ", { year: "numeric", month: "long", day: "numeric" })}
-                    </span>
+                    </time>
                     <p class="blog-post-description">{post.data.description}</p>
                 </li>
             ))}
