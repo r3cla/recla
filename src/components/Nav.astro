@@ -73,11 +73,10 @@ const links: DockLink[] = [
                         class:list={["dock-link", `dock-link--${link.key}`, { "is-active": isActive }]}
                         aria-current={isActive ? "page" : undefined}
                     >
-                        <span class="dock-label">{link.label}</span>
                         <span class="dock-tile" style={`view-transition-name: dock-tile-${i}`}>
                             <Icon name={link.icon} class="dock-icon" />
                         </span>
-                        <span class="dock-dot" style={`view-transition-name: dock-dot-${i}`} aria-hidden="true" />
+                        <span class="dock-label">{link.label}</span>
                     </a>
                 </li>
             );

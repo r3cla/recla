@@ -2,6 +2,7 @@
 import SeoHead from "../components/SeoHead.astro";
 import BackgroundCanvas from "../components/BackgroundCanvas.astro";
 import Nav, { type NavKey } from "../components/Nav.astro";
+import ScrollHint from "../components/ScrollHint.astro";
 import "../styles/global.css";
 
 export interface Props {
@@ -74,6 +75,7 @@ const {
             <slot />
         </main>
 
+        <ScrollHint />
 
         <script is:inline defer
             src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015"

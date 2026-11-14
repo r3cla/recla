@@ -19,6 +19,7 @@
    15. Scroll Reveal
    16. Contact Page
    17. FAQ Page
+   18. Scroll Hint
 */
 
 /* ======================
@@ -290,13 +291,14 @@ main {
     border-bottom: var(--border);
 }
 
-/* Bottom dock: a floating bar of coloured tiles that poke up out of it. Tiles rise on
-   hover/focus and the current page's tile sits highest, with a dot beneath it. */
+/* Bottom dock: a floating bar of tiles that poke up out of it, each with a
+   permanent text label underneath. Tiles rise on hover/focus; the current page's
+   tile sits highest and its label is highlighted. */
 .dock {
-    --dock-tile: 44px;
-    --dock-tile-y: -22%;
-    --dock-tile-y-hover: -42%;
-    --dock-tile-y-active: -52%;
+    --dock-tile: 42px;
+    --dock-poke: 0.42;          /* fraction of the tile that sits above the bar */
+    --dock-rise-hover: -5px;
+    --dock-rise-active: -8px;
 
     position: fixed;
     left: 0;
@@ -305,7 +307,6 @@ main {
     z-index: 1000;
     width: calc(100% - 2rem);
     max-width: 480px;
-    height: var(--dock-tile);
     margin: 0 auto;
     background: var(--surface);
     border: 2px solid var(--dock-edge);
@@ -315,7 +316,7 @@ main {
 
 @media (min-width: 768px) {
     .dock {
-        --dock-tile: 50px;
+        --dock-tile: 46px;
         max-width: 540px;
     }
 }
@@ -323,20 +324,23 @@ main {
 .dock-list {
     list-style: none;
     display: flex;
-    height: 100%;
 }
 
 .dock-item {
     flex: 1;
     display: flex;
+    min-width: 0;
 }
 
 .dock-link {
     position: relative;
     flex: 1;
+    min-width: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    gap: 3px;
+    padding: 0 2px 6px;
     color: var(--stroke);
     text-decoration: none;
     -webkit-tap-highlight-color: transparent;
@@ -354,22 +358,73 @@ main {
     justify-content: center;
     width: var(--dock-tile);
     height: var(--dock-tile);
+    margin-top: calc(var(--dock-tile) * var(--dock-poke) * -1);
     background: var(--tile-bg);
     border: var(--border);
     border-radius: var(--radius-sm);
     box-shadow: 2px 2px 0 0 var(--stroke);
-    transform: translate3d(0, var(--dock-tile-y), 0);
     transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
                 box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Shared icon set (src/lib/icons.ts, rendered by Icon.astro): bold dark outline
-   with flat fills, like the avatar and card treatment. */
 .dock-icon {
     width: 64%;
     height: 64%;
 }
 
+/* Always-visible page name under each tile. */
+.dock-label {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: var(--font-semibold);
+    line-height: 1.2;
+    letter-spacing: 0.2px;
+    color: var(--secondary);
+    transition: color var(--transition-fast);
+}
+
+@media (min-width: 768px) {
+    .dock-label {
+        font-size: 0.75rem;
+    }
+}
+
+.dock-link.is-active .dock-tile {
+    transform: translate3d(0, var(--dock-rise-active), 0);
+    box-shadow: 3px 3px 0 0 var(--stroke);
+}
+
+.dock-link.is-active .dock-label {
+    color: var(--tertiary-text);
+    font-weight: var(--font-bold);
+}
+
+.dock-link:focus-visible:not(.is-active) .dock-tile {
+    transform: translate3d(0, var(--dock-rise-hover), 0);
+}
+
+.dock-link:focus-visible .dock-tile {
+    outline: 3px solid var(--tertiary);
+    outline-offset: 3px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .dock-link:hover:not(.is-active) .dock-tile {
+        transform: translate3d(0, var(--dock-rise-hover), 0);
+        box-shadow: 3px 3px 0 0 var(--stroke);
+    }
+
+    .dock-link:hover .dock-label {
+        color: var(--tertiary-text);
+    }
+}
+
+/* Shared icon set (src/lib/icons.ts, rendered by Icon.astro): bold dark outline
+   with flat fills, like the avatar and card treatment. */
 .tile-icon {
     color: var(--stroke);
     fill: none;
@@ -420,81 +475,6 @@ main {
 
 .icon-tile--gold {
     background: var(--tertiary);
-}
-
-.dock-link.is-active .dock-tile {
-    transform: translate3d(0, var(--dock-tile-y-active), 0);
-    box-shadow: 3px 3px 0 0 var(--stroke);
-}
-
-.dock-link:focus-visible:not(.is-active) .dock-tile {
-    transform: translate3d(0, var(--dock-tile-y-hover), 0);
-}
-
-.dock-link:focus-visible .dock-tile {
-    outline: 3px solid var(--tertiary);
-    outline-offset: 3px;
-}
-
-@media (hover: hover) and (pointer: fine) {
-    .dock-link:hover:not(.is-active) .dock-tile {
-        transform: translate3d(0, var(--dock-tile-y-hover), 0);
-        box-shadow: 3px 3px 0 0 var(--stroke);
-    }
-}
-
-.dock-dot {
-    position: absolute;
-    bottom: 5px;
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--primary);
-    opacity: 0;
-    transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.dock-link.is-active .dock-dot {
-    opacity: 1;
-}
-
-/* Label pops up above the tile: always for the current page, and on hover/focus. */
-.dock-label {
-    position: absolute;
-    bottom: calc(100% + var(--dock-tile) * 0.45);
-    padding: 2px 8px;
-    white-space: nowrap;
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    font-weight: var(--font-semibold);
-    color: var(--primary);
-    background: var(--surface);
-    border: var(--border-thin);
-    border-radius: 6px;
-    opacity: 0;
-    transform: translate3d(0, 4px, 0);
-    pointer-events: none;
-    transition: opacity 0.25s cubic-bezier(0.22, 1, 0.36, 1),
-                transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.dock-link.is-active .dock-label,
-.dock-link:focus-visible .dock-label {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-}
-
-@media (hover: hover) and (pointer: fine) {
-    .dock-link:hover .dock-label {
-        opacity: 1;
-        transform: translate3d(0, 0, 0);
-    }
-
-    /* While hovering another tile, tuck the current page's label away so two
-       labels never sit side by side. */
-    .dock-list:has(.dock-link:not(.is-active):hover) .dock-link.is-active .dock-label {
-        opacity: 0;
-    }
 }
 
 /* Smooth cross-page transition: the dock tiles keep their identity between pages
@@ -2541,6 +2521,84 @@ pre code {
     .faq-cta-actions .learn-more-button {
         width: 100%;
         text-align: center;
+    }
+}
+
+/* ======================
+   18. Scroll Hint
+   ====================== */
+
+/* Small "Scroll" pill centred above the dock. Its bottom edge sits just above the
+   tallest dock element (the raised current-page tile) so the two never overlap. */
+.scroll-hint {
+    position: fixed;
+    left: 50%;
+    bottom: 100px;
+    z-index: 999;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.3rem 0.55rem 0.3rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    font-weight: var(--font-semibold);
+    letter-spacing: 0.3px;
+    color: var(--secondary);
+    background: var(--surface);
+    border: var(--border-thin);
+    border-color: var(--dock-edge);
+    border-radius: 999px;
+    box-shadow: 2px 2px 0 0 var(--shadow);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translate3d(-50%, 6px, 0);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s linear 0.4s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.scroll-hint.is-visible {
+    opacity: 0.9;
+    visibility: visible;
+    transform: translate3d(-50%, 0, 0);
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .scroll-hint:hover {
+        opacity: 1;
+        color: var(--tertiary-text);
+    }
+}
+
+.scroll-hint-icon {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.scroll-hint.is-visible .scroll-hint-icon {
+    animation: scroll-hint-bob 1.6s ease-in-out infinite;
+}
+
+@keyframes scroll-hint-bob {
+    0%, 100% { transform: translateY(-1px); }
+    50% { transform: translateY(2px); }
+}
+
+@media (min-width: 768px) {
+    .scroll-hint {
+        bottom: 108px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scroll-hint.is-visible .scroll-hint-icon {
+        animation: none;
     }
 }
 

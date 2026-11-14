@@ -1,0 +1,42 @@
+---
+// Subtle "there's more below" hint. Sits centred just above the bottom dock (clear of
+// the dock's pop-up labels), fades in shortly after load only when the page has real
+// content below the fold, and fades away once the visitor starts scrolling.
+// Purely a visual nudge: hidden from assistive tech and the tab order, since the page
+// scrolls normally with keyboard and screen readers.
+---
+
+<button class="scroll-hint" type="button" tabindex="-1" aria-hidden="true">
+    <span class="scroll-hint-text">Scroll</span>
+    <svg class="scroll-hint-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6 9l6 6 6-6" />
+    </svg>
+</button>
+
+<script>
+    const hint = document.querySelector<HTMLButtonElement>(".scroll-hint");
+
+    if (hint) {
+        const SHOW_DELAY_MS = 1200;
+        const MIN_EXTRA_CONTENT = 200; // px of content below the fold before it's worth hinting
+        let ready = false;
+
+        const update = () => {
+            const below = document.documentElement.scrollHeight - window.innerHeight;
+            const atTop = window.scrollY < 40;
+            hint.classList.toggle("is-visible", ready && atTop && below > MIN_EXTRA_CONTENT);
+        };
+
+        hint.addEventListener("click", () => {
+            window.scrollBy({ top: window.innerHeight * 0.75, behavior: "smooth" });
+        });
+
+        window.addEventListener("scroll", update, { passive: true });
+        window.addEventListener("resize", update);
+
+        setTimeout(() => {
+            ready = true;
+            update();
+        }, SHOW_DELAY_MS);
+    }
+</script>
