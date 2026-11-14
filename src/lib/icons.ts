@@ -16,6 +16,8 @@ export const icons = {
     quote: '<path class="fl" d="M4.5 3.5h15a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-9l-5 4v-4h-1a2 2 0 0 1-2-2v-10a2 2 0 0 1 2-2z"/><path stroke-width="2.2" d="M14.4 7.6c-.5-.6-1.3-1-2.4-1-1.4 0-2.4.7-2.4 1.8 0 2.4 4.9 1.3 4.9 3.8 0 1.1-1 1.8-2.5 1.8-1.1 0-2-.4-2.6-1.1M12 5.2v1.4M12 14v1.4"/>',
     star: '<path class="gd" d="M12 2.8l2.8 5.8 6.3.9-4.6 4.4 1.1 6.3L12 17.2l-5.6 3 1.1-6.3L2.9 9.5l6.3-.9z"/>',
     facebook: '<circle class="fl" cx="12" cy="12" r="9.5"/><path class="dk" stroke="none" d="M13.4 21.4v-6.9h2.3l.4-2.7h-2.7v-1.7c0-.8.3-1.3 1.4-1.3h1.4V6.4c-.3 0-1.1-.1-2-.1-2 0-3.4 1.2-3.4 3.5v2H8.5v2.7h2.3v6.9z"/>',
+    cloud: '<path class="fl" d="M7.2 19.5h10.3a4.5 4.5 0 0 0 .7-8.95 6.2 6.2 0 0 0-11.9 1.2A3.9 3.9 0 0 0 7.2 19.5z"/><path d="M9.5 15.5h5"/>',
+    pin: '<path class="fl" d="M12 21.6s-7.2-6.3-7.2-11.7a7.2 7.2 0 0 1 14.4 0c0 5.4-7.2 11.7-7.2 11.7z"/><circle class="dk" cx="12" cy="9.9" r="2.7"/>',
 } as const;
 
 export type IconName = keyof typeof icons;

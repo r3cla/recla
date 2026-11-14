@@ -1,69 +1,132 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import FaqItem from "../components/FaqItem.astro";
+import Icon from "../components/Icon.astro";
+import type { IconName } from "../lib/icons";
+import { businessRef } from "../lib/business";
 
-const faqs = [
+const QUOTE_FORM = "https://form.jotform.com/243067662032856";
+const EMAIL = "kiaora@logie.nz";
+
+interface Faq {
+    question: string;
+    /** HTML allowed (links, <strong>). */
+    answer: string;
+}
+
+interface FaqGroup {
+    id: string;
+    title: string;
+    icon: IconName;
+    faqs: Faq[];
+}
+
+const groups: FaqGroup[] = [
     {
-        question: "How much does a website cost in New Zealand?",
-        answer: "Costs vary based on complexity and your specific requirements. Projects can range anywhere from <strong>$199 to $999+ NZD</strong>. Simple sites are more affordable, while feature-rich or e-commerce sites cost more. I offer flexible payment plans for small businesses and startups and special rates for registered NZ charities. Contact me for a free, personalised quote based on your specific needs.",
+        id: "pricing",
+        title: "Pricing & timelines",
+        icon: "quote",
+        faqs: [
+            {
+                question: "How much does a website cost in New Zealand?",
+                answer: `Costs vary based on complexity and your specific requirements. Projects can range anywhere from <strong>$199 to $999+ NZD</strong>. Simple sites are more affordable, while feature-rich or e-commerce sites cost more. I offer flexible payment plans for small businesses and startups, and special rates for registered NZ charities. <a href="${QUOTE_FORM}">Request a free quote</a> for a personalised price based on your needs.`,
+            },
+            {
+                question: "How long does it take to build a website?",
+                answer: "Timeline depends on project scope. A basic website typically takes <strong>2–4 weeks</strong> from project acceptance to launch. More complex sites with custom features may take <strong>6–12 weeks</strong>. The process includes planning, design approval, development, content integration, testing and launch. As I work solo, I'll give you a detailed timeline up front and keep you updated throughout the project.",
+            },
+        ],
     },
     {
-        question: "How long does it take to build a website?",
-        answer: "Timeline depends on project scope. A basic website typically takes <strong>2-4 weeks</strong> from project acceptance to launch. More complex sites with custom features may take <strong>6-12 weeks</strong>. The process includes planning, design approval, development, content integration, testing, and launch. As I typically work solo, I'll provide a detailed timeline during our initial consultation and keep you updated throughout the project.",
+        id: "working-together",
+        title: "Working together",
+        icon: "pin",
+        faqs: [
+            {
+                question: "What's the process for getting a website?",
+                answer: `It's three simple steps. <strong>1.</strong> Tell me about your project through the <a href="${QUOTE_FORM}">quote form</a> or by email, with no technical knowledge needed. <strong>2.</strong> I'll come back with a clear, no-obligation quote and timeline. <strong>3.</strong> You approve the design before anything is built, and I'll keep you updated through development and testing until your site goes live. See the <a href="/contact.html">contact page</a> for all the ways to get started.`,
+            },
+            {
+                question: "Do you work with businesses in Whanganui?",
+                answer: `Yes. I'm based in Whanganui and have built websites for local businesses and organisations, including <a href="/projects.html">EziBuild and the Wanganui RSA Trust</a>, plus KDL Cabins/Trailers across Manawatū-Whanganui. I also work with clients throughout New Zealand and Australia, with projects in Taranaki, the Waikato, Auckland and other regions. Most communication happens by email and online, so wherever you are, you get the same personalised service.`,
+            },
+            {
+                question: "Do you work with small businesses and startups?",
+                answer: "Yes! Small businesses and startups are my primary focus. I understand the challenges NZ small businesses face and offer affordable solutions without compromising quality. I provide personalised service, flexible payment options and scalable solutions that grow with your business. I also offer discounted rates for registered NZ charities and community projects.",
+            },
+        ],
     },
     {
-        question: "Do you work with small businesses and startups?",
-        answer: "Yes! Small businesses and startups are my primary focus. I understand the unique challenges NZ small businesses face and offer affordable solutions without compromising quality. I provide personalised service, flexible payment options, and scalable solutions that grow with your business. I also offer special discounted rates for registered NZ charities and community projects.",
+        id: "services",
+        title: "Services",
+        icon: "portfolio",
+        faqs: [
+            {
+                question: "Can you redesign my existing website?",
+                answer: "Yes, I specialise in refreshing websites. Whether your site looks outdated, isn't mobile-friendly or needs better functionality, I can help. This includes moving platform-built websites (such as one made on Wix) onto a standalone, code-based site hosted independently. The process includes analysing your current site, improving performance and load speed, auditing and cleaning up WordPress plugins, designing a modern interface and migrating your content.",
+            },
+            {
+                question: "Can you help with SEO for my New Zealand business?",
+                answer: "Absolutely! Every website I build includes fundamental SEO: fast loading speeds, mobile responsiveness, proper meta tags, structured data and clean code. I also offer ongoing SEO services including keyword research for NZ markets, local SEO so customers in Whanganui or your own region can find you, content strategy and Google Business Profile setup.",
+            },
+            {
+                question: "What platforms and technologies do you use?",
+                answer: "I work with a variety of modern web technologies based on project needs. This includes custom HTML/CSS/JavaScript and frameworks like Astro for maximum performance, WordPress for content-heavy sites, and WooCommerce for e-commerce. I prioritise clean, maintainable code, fast loading speeds, mobile responsiveness, and avoiding unnecessary recurring platform costs (such as Wix or Shopify). Technology choices are always tailored to your requirements and technical comfort level.",
+            },
+            {
+                question: "Will my website work on mobile phones and tablets?",
+                answer: "Absolutely! Every website I build is fully responsive and mobile-optimised from the start. With over 60% of web traffic coming from mobile devices in New Zealand, mobile-first design is essential. Your site will look great and work smoothly on smartphones, tablets, laptops and desktops. I test thoroughly across different screen sizes and browsers.",
+            },
+            {
+                question: "Do you build custom software or web apps?",
+                answer: "Yes, I've built proof-of-concept web apps for clients in the past. If you have a software idea or a specific business problem you're trying to solve, get in touch and I'm happy to go over your project with you to see if I can help.",
+            },
+        ],
     },
     {
-        question: "Do you provide website hosting and domain registration?",
-        answer: "No, I don't host websites myself, but I source affordable, reliable hosting on your behalf. For most sites, I use fast, trustworthy platforms like Cloudflare Pages. For heavier websites such as WordPress builds or e-commerce stores, I set you up with a paid, local NZ host like 1st Domains or MyHost. I'll recommend the best fit for your needs and budget, handle the setup, and provide ongoing technical support. Domain registration for .nz, .co.nz, and other extensions is also available.",
-    },
-    {
-        question: "Can you help with SEO for my New Zealand business?",
-        answer: "Absolutely! All websites I build include fundamental SEO optimisation: fast loading speeds, mobile responsiveness, proper meta tags, structured data, and clean code. I also offer ongoing SEO services including keyword research for NZ markets, local SEO optimisation, content strategy, and Google Business Profile setup. This helps your business rank well in New Zealand search results.",
-    },
-    {
-        question: "Do you offer website maintenance and support?",
-        answer: "Yes, I provide ongoing website maintenance and support packages. Services include security updates, content updates, backups, performance monitoring, and technical support. Maintenance plans can be customised to your needs, whether you need monthly updates or on-demand assistance.",
-    },
-    {
-        question: "Can you redesign my existing website?",
-        answer: "Yes, I specialise in refreshing websites. Whether your site looks outdated, isn't mobile-friendly, or needs improved functionality, I can help. This includes moving platform-built websites (such as one made on Wix) onto a standalone, code-based site hosted independently. The process includes analysing your current site, improving performance and load speed, auditing and cleaning up WordPress plugins, designing a modern interface, and migrating your content.",
-    },
-    {
-        question: "What platforms and technologies do you use?",
-        answer: "I work with a variety of modern web technologies based on project needs. This includes custom HTML/CSS/JavaScript and frameworks like Astro for maximum performance, WordPress for content-heavy sites, and WooCommerce for e-commerce. I prioritise clean, maintainable code, fast loading speeds, mobile responsiveness, and avoiding unnecessary recurring platform costs (such as Wix/Shopify). Technology choices are always tailored to your specific requirements and technical comfort level.",
-    },
-    {
-        question: "Do I own my website?",
-        answer: "Yes. Under the Copyright Act 1994, if you've commissioned and paid for a custom-coded website, you're the default owner of the copyright, even though I do the building. For custom-coded sites (HTML/CSS/JavaScript or frameworks like Astro), you can also request a full handover of the source code by emailing <a href=\"mailto:logiewebnz@gmail.com\">logiewebnz@gmail.com</a>, and I'll provide it within 14 days. This doesn't apply to sites built on platforms like WordPress, since those are built from existing themes and plugins rather than fully custom code.",
-    },
-    {
-        question: "Do you build custom software or web apps?",
-        answer: "Yes, I've built proof-of-concept web apps for clients in the past. If you have a software idea or a specific business problem you're trying to solve, get in touch and I'm happy to go over your project with you to see if I can help.",
-    },
-    {
-        question: "Will my website work on mobile phones and tablets?",
-        answer: "Absolutely! Every website I build is fully responsive and mobile-optimised from the start. With over 60% of web traffic coming from mobile devices in New Zealand, mobile-first design is essential. Your site will look great and function perfectly on all devices – smartphones, tablets, laptops, and desktops. I test thoroughly across different screen sizes and browsers.",
-    },
-    {
-        question: "What areas of New Zealand do you serve?",
-        answer: "While I'm based in Whanganui, I work with clients throughout New Zealand and Australia. Most communication happens online via email and project management tools, making location irrelevant. I've successfully completed projects for businesses in Auckland, the Taranaki, the Waikato, and other regions. Remote collaboration allows me to serve clients anywhere while maintaining high-quality, personalised service.",
+        id: "hosting-support",
+        title: "Hosting, ownership & support",
+        icon: "cloud",
+        faqs: [
+            {
+                question: "Do you provide website hosting and domain registration?",
+                answer: "I don't host websites myself, but I source affordable, reliable hosting on your behalf. For most sites, I use fast, trustworthy platforms like Cloudflare Pages. For heavier websites such as WordPress builds or e-commerce stores, I set you up with a paid, local NZ host like 1st Domains or MyHost. I'll recommend the best fit for your needs and budget, handle the setup, and provide ongoing technical support. Domain registration for .nz, .co.nz and other extensions is also available.",
+            },
+            {
+                question: "Do you offer website maintenance and support?",
+                answer: "Yes, I provide ongoing website maintenance and support packages. Services include security updates, content updates, backups, performance monitoring and technical support. Maintenance plans can be customised to your needs, whether you need monthly updates or on-demand help.",
+            },
+            {
+                question: "Do I own my website?",
+                answer: `Yes. Under the Copyright Act 1994, if you've commissioned and paid for a custom-coded website, you're the default owner of the copyright, even though I do the building. For custom-coded sites (HTML/CSS/JavaScript or frameworks like Astro), you can also request a full handover of the source code by emailing <a href="mailto:${EMAIL}">${EMAIL}</a>, and I'll provide it within 14 days. This doesn't apply to sites built on platforms like WordPress, since those are built from existing themes and plugins rather than fully custom code.`,
+            },
+        ],
     },
 ];
+
+/** Readable, stable anchor for each question, e.g. #do-i-own-my-website */
+const slug = (text: string) =>
+    text
+        .toLowerCase()
+        .replace(/['’]/g, "")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "");
 
 const structuredData = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: faqs.map((faq) => ({
-        "@type": "Question",
-        name: faq.question,
-        acceptedAnswer: {
-            "@type": "Answer",
-            text: faq.answer.replace(/<[^>]+>/g, ""),
-        },
-    })),
+    inLanguage: "en-NZ",
+    about: businessRef,
+    mainEntity: groups.flatMap((group) =>
+        group.faqs.map((faq) => ({
+            "@type": "Question",
+            name: faq.question,
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer.replace(/<[^>]+>/g, ""),
+            },
+        }))
+    ),
 };
 ---
 
@@ -76,25 +139,44 @@ const structuredData = {
     structuredData={structuredData}
     current="faq"
 >
-    <h1 class="intro-header">Frequently Asked Questions</h1>
-
-    <section class="intro-section">
-        <p class="intro">
-            Have questions about web development services in New Zealand? Find answers to common questions about
-            pricing, timelines, hosting, and how I can help your business succeed online.
+    <div class="page-header">
+        <h1 class="intro-header">Frequently Asked Questions</h1>
+        <p class="page-subtitle">
+            Pricing, timelines, hosting and more for small businesses in Whanganui and across New Zealand.
         </p>
-    </section>
+    </div>
 
-    <section class="faq-container" data-elevate>
-        {faqs.map((faq, i) => <FaqItem id={`faq-${i + 1}`} question={faq.question} answer={faq.answer} />)}
-    </section>
+    <nav class="faq-jump" aria-label="FAQ topics">
+        {groups.map((group) => (
+            <a href={`#${group.id}`} class="faq-jump-link">{group.title}</a>
+        ))}
+    </nav>
 
-    <section class="intro-section">
-        <p class="intro">
-            Still have questions? I'm here to help! Get in touch for a free consultation and let's discuss how I
-            can help your business grow online.
+    {groups.map((group) => (
+        <section class="faq-group" id={group.id} aria-labelledby={`${group.id}-title`} data-elevate>
+            <div class="faq-group-header">
+                <span class="icon-tile"><Icon name={group.icon} /></span>
+                <h2 id={`${group.id}-title`}>{group.title}</h2>
+            </div>
+            <div class="faq-container">
+                {group.faqs.map((faq) => (
+                    <FaqItem id={slug(faq.question)} question={faq.question} answer={faq.answer} />
+                ))}
+            </div>
+        </section>
+    ))}
+
+    <section class="contact-card faq-cta" data-elevate>
+        <span class="icon-tile icon-tile--gold"><Icon name="faq" /></span>
+        <h2>Still have a question?</h2>
+        <p>
+            Get in touch for a free, no-obligation chat about your project. Whether you're in Whanganui or anywhere
+            else in New Zealand, I'm happy to help.
         </p>
-        <a href="https://form.jotform.com/243067662032856" class="learn-more-button">Get a Free Quote</a>
+        <div class="faq-cta-actions">
+            <a href={QUOTE_FORM} class="learn-more-button">Request a Quote</a>
+            <a href={`mailto:${EMAIL}`} class="learn-more-button learn-more-button--secondary">{EMAIL}</a>
+        </div>
     </section>
 </BaseLayout>
 
@@ -108,4 +190,17 @@ const structuredData = {
             question.setAttribute("aria-expanded", String(!isExpanded));
         });
     });
+
+    // Shared links like faq.html#do-i-own-my-website open that answer and scroll to it.
+    const openFromHash = () => {
+        const id = decodeURIComponent(location.hash.slice(1));
+        if (!id) return;
+        const button = document.getElementById(`${id}-question`);
+        if (!button) return;
+        button.setAttribute("aria-expanded", "true");
+        document.getElementById(id)?.scrollIntoView({ block: "center" });
+        button.focus({ preventScroll: true });
+    };
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
 </script>
