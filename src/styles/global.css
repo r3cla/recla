@@ -2528,11 +2528,12 @@ pre code {
    18. Scroll Hint
    ====================== */
 
-/* Small "Scroll" pill centred above the dock. Its bottom edge sits just above the
-   tallest dock element (the raised current-page tile) so the two never overlap. */
+/* Small "Scroll" pill on the right-hand side. On phones/tablets it sits above the
+   right end of the dock (clear of the raised current-page tile); on wide screens it
+   drops into the free space to the right of the dock, level with it. */
 .scroll-hint {
     position: fixed;
-    left: 50%;
+    right: 1rem;
     bottom: 100px;
     z-index: 999;
     display: inline-flex;
@@ -2552,7 +2553,7 @@ pre code {
     cursor: pointer;
     opacity: 0;
     visibility: hidden;
-    transform: translate3d(-50%, 6px, 0);
+    transform: translate3d(0, 6px, 0);
     transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s linear 0.4s;
     -webkit-tap-highlight-color: transparent;
 }
@@ -2560,7 +2561,7 @@ pre code {
 .scroll-hint.is-visible {
     opacity: 0.9;
     visibility: visible;
-    transform: translate3d(-50%, 0, 0);
+    transform: translate3d(0, 0, 0);
     transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s;
 }
 
@@ -2593,6 +2594,13 @@ pre code {
 @media (min-width: 768px) {
     .scroll-hint {
         bottom: 108px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .scroll-hint {
+        right: 2rem;
+        bottom: calc(var(--dock-gap) + 16px);
     }
 }
 
